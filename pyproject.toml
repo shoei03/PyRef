@@ -1,0 +1,13 @@
+[project]
+name = "pyref"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pandas~=1.2.2",
+    "anytree~=2.8.0",
+    "astunparse~=1.6.3",
+    "editdistance~=0.5.3",
+    "gitpython~=3.1.18",
+]
