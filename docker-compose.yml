@@ -1,0 +1,32 @@
+services:
+  pyref:
+    build: .
+    container_name: pyref
+    volumes:
+      # Mount current directory to /app in container for development
+      - .:/app
+      # Mount a directory for repositories (can be customized)
+      - ./Repos:/app/Repos
+      # Persist data files
+      - ./data:/app/data
+    working_dir: /app
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Override default command for interactive use
+    command: ["python3", "main.py", "--help"]
+
+  # Interactive shell service for development
+  pyref-dev:
+    build: .
+    container_name: pyref-dev
+    volumes:
+      - .:/app
+      - ./Repos:/app/Repos
+      - ./data:/app/data
+    working_dir: /app
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Keep container running for interactive use
+    command: ["tail", "-f", "/dev/null"]
+    stdin_open: true
+    tty: true

@@ -1,0 +1,75 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+
+# Log files
+*.log
+logs/
+
+# Test files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Documentation
+docs/
+*.md
+
+# Docker files (to avoid recursion)
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# UV lock file (not needed in container)
+uv.lock
+
+# Large data directories (can be mounted as volumes)
+Repos/
+results/
+output/

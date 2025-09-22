@@ -1,10 +1,8 @@
 # PyRef
 
-## Description
+PyRef is a tool that automatically detects mainly method-level refactoring operations in Python projects using Docker for easy deployment and consistent environments.
 
-PyRef is a tool that automatically detect mainly method-level refactoring operations in Python projects.
-
-Current supported refactoring operations:
+## Supported Refactoring Operations
 
 - Rename Method
 - Add Parameter
@@ -16,79 +14,206 @@ Current supported refactoring operations:
 - Pull Up Method
 - Push Down Method
 
-## Usage
+## Quick Start with Docker
 
-Clone a repository from GitHub using PyRef:
+### Prerequisites
 
-```sh
-python3 main.py repoClone -u "username" -r "Repo Name"
-```
+- Docker and Docker Compose installed on your system
 
-You can also use git command to clone the repository.
-
-Extract refactorings from a given repository
+### 1. Setup
 
 ```sh
-python3 main.py getrefs -r "[PATH_TO_REPOSITORY]"
+# Clone this repository
+git clone https://github.com/shoei03/PyRef.git
+cd PyRef
+
+# Build the Docker image
+docker-compose build
 ```
 
-You can also use flag _-s_ to skip the commit which takes more than N minutes to extract the refactorings. For example, the following command skips commits which were processed for more than 10 minutes:
+### 2. Basic Usage
 
 ```sh
-python3 main.py getrefs -r "[PATH_TO_REPOSITORY]" -s 10
+# Show available commands
+docker-compose run --rm pyref --help
+
+# Clone a repository for analysis
+docker-compose run --rm pyref repoClone -u "PyRef" -r "DummyRef"
+
+# Analyze refactorings in the repository
+docker-compose run --rm pyref getrefs -r "Repos/DummyRef"
 ```
 
-If you want to look into specific commit, you can use flag _-c_.
-If you want to look into specific directory, you can use flag _-d_.
-If you want to track refactorings for a specific method, you can use flag _-m_.
+### 3. View Results
+
+Results are saved as JSON files in the project root (e.g., `DummyRef_data.json`)
+
+## Available Commands
+
+### Repository Management
 
 ```sh
-python3 main.py getrefs -r "[PATH_TO_REPOSITORY]" -c "[CommitHash]" -d "[Directory]"
+# Clone a GitHub repository
+docker-compose run --rm pyref repoClone -u "username" -r "repository_name"
 ```
 
-Extract refactorings for a specific method:
+### Refactoring Analysis
 
 ```sh
-python3 main.py getrefs -r "[PATH_TO_REPOSITORY]" -m "[MethodName]"
+# Basic analysis
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]"
+
+# Skip commits that take more than N minutes
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -s 10
+
+# Analyze specific commit
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -c "[COMMIT_HASH]"
+
+# Analyze specific directory
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -d "[DIRECTORY_PATH]"
+
+# Track specific method
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -m "[METHOD_NAME]"
 ```
 
-You can also use _--match-mode_ to change the matching behavior:
-
-- _exact_: exact method name match (default)
-- _partial_: partial method name match
-- _regex_: regular expression match
+### Method Matching Options
 
 ```sh
-python3 main.py getrefs -r "[PATH_TO_REPOSITORY]" -m "calc" --match-mode partial
+# Exact match (default)
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -m "methodName" --match-mode exact
+
+# Partial match
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -m "calc" --match-mode partial
+
+# Regex match
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -m "get.*" --match-mode regex
 ```
 
-The detected refactorings will be recorded in the current folder as a json file "[project]_data.json".
-When using the *-m* flag, results will be saved as "[project]_[method]\_[match_mode]\_data.json" with additional method tracking information.
+## Advanced Usage Examples
 
-## Play with PyRef
+### Performance Optimization
 
-You will need to first install the third-party dependencies. You can use the following command in the folder of PyRef:
+```sh
+# Process only the latest 10 commits
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" --max-count 10
+
+# Skip the first 5 commits
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" --skip-commits 5
+
+# Process commits from the last week
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" --since "1 week ago"
+```
+
+### Targeted Analysis
+
+```sh
+# Analyze commits until a specific date
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" --until "2023-12-31"
+
+# Start from a specific branch or tag
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" --rev "develop"
+
+# Focus on specific file paths
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" --paths "src/*.py" "tests/*.py"
+```
+
+### Complex Analysis Scenarios
+
+```sh
+# Latest 50 commits, specific directory, partial method matching
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" \
+  --max-count 50 \
+  --paths "src/core/*.py" \
+  -m "calculate" \
+  --match-mode partial
+
+# Date range analysis with method tracking
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" \
+  --since "2023-01-01" \
+  --until "2023-12-31" \
+  -m "init" \
+  --match-mode exact
+```
+
+## Development Environment
+
+For interactive development and debugging:
+
+```sh
+# Start development container
+docker-compose up -d pyref-dev
+
+# Access interactive shell
+docker-compose exec pyref-dev bash
+
+# Stop development container
+docker-compose down
+```
+
+## Alternative: Direct Docker Usage
+
+If you prefer not to use Docker Compose:
+
+```sh
+# Build image
+docker build -t pyref .
+
+# Run commands
+docker run --rm -v $(pwd):/app pyref [COMMAND] [ARGS]
+
+# Example
+docker run --rm -v $(pwd):/app pyref getrefs -r "Repos/DummyRef"
+```
+
+## Local Installation (Alternative)
+
+If you prefer to run without Docker:
 
 ```sh
 pip3 install -r requirements.txt
+python3 main.py [COMMAND] [ARGS]
 ```
 
-**Note: Pandas of a version lower than 2.0.0 is required, as the newer versions of pandas changed ".append" (used in the PyRef code) to ".\_append" to avoid confusion with ".append" in Python (Thanks to Zhi Li for pointing this out).**
+**Note**: Requires Python 3.9+ and pandas < 2.0.0 for compatibility.
 
-We provide a toy project for you to test PyRef, which can be found at https://github.com/PyRef/DummyRef
-Please execute the following commands in order:
+## Output Format
 
-```sh
-python3 main.py repoClone -u "PyRef" -r "DummyRef"
-python3 main.py getrefs -r "Repos/DummyRef"
+Results are saved as JSON files with the following naming convention:
+
+- Basic analysis: `[project_name]_data.json`
+- Method tracking: `[project_name]_[method_name]_[match_mode]_data.json`
+
+Example output structure:
+
+```json
+[
+  {
+    "Refactoring Type": ["Add Parameter"],
+    "Original": "methodName",
+    "Updated": "methodName",
+    "Location": "file.py/ClassName",
+    "Original Line": 10,
+    "Updated Line": 10,
+    "Description": ["The parameters [param1] are added to the method..."],
+    "Commit": "abcd1234..."
+  }
+]
 ```
 
-The detected refactorings can be found in the file "DummyRef_data.json"
+## Docker Environment Details
 
-## Dataset for the Paper
+- **Base Image**: Python 3.9-slim (optimized for compatibility with pandas 1.2.2)
+- **Security**: Runs as non-root user `pyref`
+- **Persistence**:
+  - Repositories stored in `./Repos/` directory
+  - Results saved to project root
+  - Data files mounted to `./data/`
+- **Dependencies**: Pre-installed and version-locked for consistency
 
-This tool was part of the following study:
+## Academic Reference
 
-H. Atwi, B. Lin, N. Tsantalis, Y. Kashiwa, Y. Kamei, N. Ubayashi, G. Bavota and M. Lanza, "PyRef: Refactoring Detection in Python Projects," 2021 IEEE 21st International Working Conference on Source Code Analysis and Manipulation (SCAM), 2021, accepted.
+This tool was developed as part of the following research:
 
-The labeled oracle used in the paper can be found in the file "data/dataset.csv".
+H. Atwi, B. Lin, N. Tsantalis, Y. Kashiwa, Y. Kamei, N. Ubayashi, G. Bavota and M. Lanza, "PyRef: Refactoring Detection in Python Projects," 2021 IEEE 21st International Working Conference on Source Code Analysis and Manipulation (SCAM), 2021.
+
+The labeled oracle dataset is available in `data/dataset.csv`.
