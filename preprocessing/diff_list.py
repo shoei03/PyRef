@@ -317,7 +317,22 @@ def extract_refs(args):
         )
     else:
         print("\nExtracting commit history...")
-        repo_changes.all_commits(repo_path)
+        # Prepare iter_commits options
+        iter_commits_kwargs = {}
+        if hasattr(args, "max_count") and args.max_count:
+            iter_commits_kwargs["max_count"] = args.max_count
+        if hasattr(args, "skip_commits") and args.skip_commits:
+            iter_commits_kwargs["skip"] = args.skip_commits
+        if hasattr(args, "since") and args.since:
+            iter_commits_kwargs["since"] = args.since
+        if hasattr(args, "until") and args.until:
+            iter_commits_kwargs["until"] = args.until
+        if hasattr(args, "rev") and args.rev:
+            iter_commits_kwargs["rev"] = args.rev
+        if hasattr(args, "paths") and args.paths:
+            iter_commits_kwargs["paths"] = args.paths
+
+        repo_changes.all_commits(repo_path, **iter_commits_kwargs)
         print("\nExtracting Refs...")
         build_diff_lists(
             repo_path + "/changes/",

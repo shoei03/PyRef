@@ -48,6 +48,25 @@ repo_changes.add_argument(
 repo_changes.add_argument(
     "-al", "--allcommits", action="store_true", help="changes among all commits"
 )
+# New iter_commits options
+repo_changes.add_argument(
+    "--max-count", type=int, help="maximum number of commits to retrieve"
+)
+repo_changes.add_argument(
+    "--skip", type=int, help="number of commits to skip from the beginning"
+)
+repo_changes.add_argument(
+    "--since", help="only commits after this date (e.g., '2023-01-01' or '1 week ago')"
+)
+repo_changes.add_argument(
+    "--until", help="only commits before this date (e.g., '2023-12-31' or '1 day ago')"
+)
+repo_changes.add_argument(
+    "--rev", help="revision or branch to start from (default: HEAD)"
+)
+repo_changes.add_argument(
+    "--paths", nargs="+", help="only commits that modified these file paths"
+)
 repo_changes.set_defaults(func=repo_changes_access)
 
 diff_list = subparsers.add_parser("reflist", help="build the diff lists")
@@ -78,6 +97,25 @@ extract_ref.add_argument(
     choices=["exact", "partial", "regex"],
     default="exact",
     help="method name matching mode",
+)
+# Add iter_commits options for getrefs command
+extract_ref.add_argument(
+    "--max-count", type=int, help="maximum number of commits to retrieve"
+)
+extract_ref.add_argument(
+    "--skip-commits", type=int, help="number of commits to skip from the beginning"
+)
+extract_ref.add_argument(
+    "--since", help="only commits after this date (e.g., '2023-01-01' or '1 week ago')"
+)
+extract_ref.add_argument(
+    "--until", help="only commits before this date (e.g., '2023-12-31' or '1 day ago')"
+)
+extract_ref.add_argument(
+    "--rev", help="revision or branch to start from (default: HEAD)"
+)
+extract_ref.add_argument(
+    "--paths", nargs="+", help="only commits that modified these file paths"
 )
 extract_ref.set_defaults(func=extract_refs)
 
