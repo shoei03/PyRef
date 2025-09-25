@@ -1,0 +1,4646 @@
+[
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_numba_vs_python_reductions",
+        "Updated": "test_numba_vs_python_reductions",
+        "Location": "pandas/tests/apply/test_numba.py",
+        "Original Line": 63,
+        "Updated Line": 63,
+        "Description": [
+            "The parameters [ float_frame ] of the method test_numba_vs_python_reductions from the module pandas/tests/apply/test_numba.py is/are removed"
+        ],
+        "Commit": "00a0216f39b2e790a8db93c295664949862756c6"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_build_table_schema",
+        "Updated": "test_build_table_schema",
+        "Location": "pandas/tests/io/json/test_json_table_schema.py/TestBuildSchema",
+        "Original Line": 59,
+        "Updated Line": 59,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_build_table_schema from the module pandas/tests/io/json/test_json_table_schema.py in class TestBuildSchema"
+        ],
+        "Commit": "02324e677468083c14a0164212178e67a508b322"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_multiindex",
+        "Updated": "test_multiindex",
+        "Location": "pandas/tests/io/json/test_json_table_schema.py/TestBuildSchema",
+        "Original Line": 100,
+        "Updated Line": 102,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_multiindex from the module pandas/tests/io/json/test_json_table_schema.py in class TestBuildSchema"
+        ],
+        "Commit": "02324e677468083c14a0164212178e67a508b322"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_to_json",
+        "Updated": "test_to_json",
+        "Location": "pandas/tests/io/json/test_json_table_schema.py/TestTableOrient",
+        "Original Line": 264,
+        "Updated Line": 276,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_to_json from the module pandas/tests/io/json/test_json_table_schema.py in class TestTableOrient"
+        ],
+        "Commit": "02324e677468083c14a0164212178e67a508b322"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_blocks_compat_GH9037",
+        "Updated": "test_blocks_compat_GH9037",
+        "Location": "pandas/tests/io/json/test_pandas.py/TestPandasContainer",
+        "Original Line": 522,
+        "Updated Line": 527,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_blocks_compat_GH9037 from the module pandas/tests/io/json/test_pandas.py in class TestPandasContainer"
+        ],
+        "Commit": "02324e677468083c14a0164212178e67a508b322"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_read_json_dtype_backend",
+        "Updated": "test_read_json_dtype_backend",
+        "Location": "pandas/tests/io/json/test_pandas.py/TestPandasContainer",
+        "Original Line": 1993,
+        "Updated Line": 2011,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_read_json_dtype_backend from the module pandas/tests/io/json/test_pandas.py in class TestPandasContainer"
+        ],
+        "Commit": "02324e677468083c14a0164212178e67a508b322"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_roundtrip_categorical",
+        "Updated": "test_roundtrip_categorical",
+        "Location": "pandas/tests/io/json/test_pandas.py/TestPandasContainer",
+        "Original Line": 239,
+        "Updated Line": 242,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_roundtrip_categorical from the module pandas/tests/io/json/test_pandas.py in class TestPandasContainer"
+        ],
+        "Commit": "02324e677468083c14a0164212178e67a508b322"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_series_roundtrip_simple",
+        "Updated": "test_series_roundtrip_simple",
+        "Location": "pandas/tests/io/json/test_pandas.py/TestPandasContainer",
+        "Original Line": 683,
+        "Updated Line": 690,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_series_roundtrip_simple from the module pandas/tests/io/json/test_pandas.py in class TestPandasContainer"
+        ],
+        "Commit": "02324e677468083c14a0164212178e67a508b322"
+    },
+    {
+        "Refactoring Type": "Move Method",
+        "Original": "skipna_wrapper",
+        "Updated": "skipna_wrapper",
+        "Old Location": "pandas/_testing/__init__.py",
+        "New Location": "pandas/tests/frame/test_reductions.py",
+        "Old Method Line": 378,
+        "New Method Line": 61,
+        "Description": " method skipna_wrapper from the module pandas/_testing/__init__.py was moved to module pandas/tests/frame/test_reductions.py ",
+        "Commit": "025a2394d6a0c340aa85f9d513416725fcca2304"
+    },
+    {
+        "Refactoring Type": "Move Method",
+        "Original": "skipna_wrapper",
+        "Updated": "skipna_wrapper",
+        "Old Location": "pandas/_testing/__init__.py",
+        "New Location": "pandas/tests/frame/test_reductions.py",
+        "Old Method Line": 383,
+        "New Method Line": 66,
+        "Description": " method skipna_wrapper from the module pandas/_testing/__init__.py was moved to module pandas/tests/frame/test_reductions.py ",
+        "Commit": "025a2394d6a0c340aa85f9d513416725fcca2304"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "setup",
+        "Updated": "setup",
+        "Location": "asv_bench/benchmarks/join_merge.py/MergeEA",
+        "Original Line": 289,
+        "Updated Line": 292,
+        "Description": [
+            "The parameters [ monotonic ] are added to the method setup from the module asv_bench/benchmarks/join_merge.py in class MergeEA"
+        ],
+        "Commit": "061c2e9190438a0df8d68e2765f486d7e9c82cda"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_merge",
+        "Updated": "time_merge",
+        "Location": "asv_bench/benchmarks/join_merge.py/MergeEA",
+        "Original Line": 303,
+        "Updated Line": 309,
+        "Description": [
+            "The parameters [ monotonic ] are added to the method time_merge from the module asv_bench/benchmarks/join_merge.py in class MergeEA"
+        ],
+        "Commit": "061c2e9190438a0df8d68e2765f486d7e9c82cda"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "setup",
+        "Updated": "setup",
+        "Location": "asv_bench/benchmarks/join_merge.py/MergeDatetime",
+        "Original Line": 336,
+        "Updated Line": 343,
+        "Description": [
+            "The parameters [ monotonic ] are added to the method setup from the module asv_bench/benchmarks/join_merge.py in class MergeDatetime"
+        ],
+        "Commit": "061c2e9190438a0df8d68e2765f486d7e9c82cda"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_merge",
+        "Updated": "time_merge",
+        "Location": "asv_bench/benchmarks/join_merge.py/MergeDatetime",
+        "Original Line": 353,
+        "Updated Line": 363,
+        "Description": [
+            "The parameters [ monotonic ] are added to the method time_merge from the module asv_bench/benchmarks/join_merge.py in class MergeDatetime"
+        ],
+        "Commit": "061c2e9190438a0df8d68e2765f486d7e9c82cda"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "_get_join_indexers",
+        "Updated": "_get_join_indexers",
+        "Location": "pandas/core/reshape/merge.py/_MergeOperation",
+        "Original Line": 1106,
+        "Updated Line": 1119,
+        "Description": [
+            "The return type of method _get_join_indexers from the module pandas/core/reshape/merge.py in class _MergeOperation is updated"
+        ],
+        "Commit": "061c2e9190438a0df8d68e2765f486d7e9c82cda"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_basic_frame_alignment",
+        "Updated": "test_basic_frame_alignment",
+        "Location": "pandas/tests/computation/test_eval.py/TestAlignment",
+        "Original Line": 776,
+        "Updated Line": 788,
+        "Description": [
+            "The parameters [ idx_func_dict ] are added to the method test_basic_frame_alignment from the module pandas/tests/computation/test_eval.py in class TestAlignment"
+        ],
+        "Commit": "0b9e784fe5606d8383a8e825e5475d35e9552a2a"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_basic_frame_series_alignment",
+        "Updated": "test_basic_frame_series_alignment",
+        "Location": "pandas/tests/computation/test_eval.py/TestAlignment",
+        "Original Line": 830,
+        "Updated Line": 864,
+        "Description": [
+            "The parameters [ idx_func_dict ] are added to the method test_basic_frame_series_alignment from the module pandas/tests/computation/test_eval.py in class TestAlignment"
+        ],
+        "Commit": "0b9e784fe5606d8383a8e825e5475d35e9552a2a"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_basic_series_frame_alignment",
+        "Updated": "test_basic_series_frame_alignment",
+        "Location": "pandas/tests/computation/test_eval.py/TestAlignment",
+        "Original Line": 857,
+        "Updated Line": 893,
+        "Description": [
+            "The parameters [ idx_func_dict ] are added to the method test_basic_series_frame_alignment from the module pandas/tests/computation/test_eval.py in class TestAlignment"
+        ],
+        "Commit": "0b9e784fe5606d8383a8e825e5475d35e9552a2a"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_complex_series_frame_alignment",
+        "Updated": "test_complex_series_frame_alignment",
+        "Location": "pandas/tests/computation/test_eval.py/TestAlignment",
+        "Original Line": 924,
+        "Updated Line": 964,
+        "Description": [
+            "The parameters [ idx_func_dict ] are added to the method test_complex_series_frame_alignment from the module pandas/tests/computation/test_eval.py in class TestAlignment"
+        ],
+        "Commit": "0b9e784fe5606d8383a8e825e5475d35e9552a2a"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_frame_comparison",
+        "Updated": "test_frame_comparison",
+        "Location": "pandas/tests/computation/test_eval.py/TestAlignment",
+        "Original Line": 795,
+        "Updated Line": 811,
+        "Description": [
+            "The parameters [ idx_func_dict ] are added to the method test_frame_comparison from the module pandas/tests/computation/test_eval.py in class TestAlignment"
+        ],
+        "Commit": "0b9e784fe5606d8383a8e825e5475d35e9552a2a"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_medium_complex_frame_alignment",
+        "Updated": "test_medium_complex_frame_alignment",
+        "Location": "pandas/tests/computation/test_eval.py/TestAlignment",
+        "Original Line": 815,
+        "Updated Line": 835,
+        "Description": [
+            "The parameters [ idx_func_dict ] are added to the method test_medium_complex_frame_alignment from the module pandas/tests/computation/test_eval.py in class TestAlignment"
+        ],
+        "Commit": "0b9e784fe5606d8383a8e825e5475d35e9552a2a"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_series_frame_commutativity",
+        "Updated": "test_series_frame_commutativity",
+        "Location": "pandas/tests/computation/test_eval.py/TestAlignment",
+        "Original Line": 895,
+        "Updated Line": 933,
+        "Description": [
+            "The parameters [ idx_func_dict ] are added to the method test_series_frame_commutativity from the module pandas/tests/computation/test_eval.py in class TestAlignment"
+        ],
+        "Commit": "0b9e784fe5606d8383a8e825e5475d35e9552a2a"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_concat_invalid",
+        "Updated": "test_concat_invalid",
+        "Location": "pandas/tests/reshape/concat/test_invalid.py/TestInvalidConcat",
+        "Original Line": 15,
+        "Updated Line": 16,
+        "Description": [
+            "The parameters [ obj ] are added to the method test_concat_invalid from the module pandas/tests/reshape/concat/test_invalid.py in class TestInvalidConcat"
+        ],
+        "Commit": "0b9e784fe5606d8383a8e825e5475d35e9552a2a"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_mul",
+        "Updated": "test_mul",
+        "Location": "pandas/tests/arrays/string_/test_string.py",
+        "Original Line": 179,
+        "Updated Line": 179,
+        "Description": [
+            "The parameters [ request arrow_string_storage ] of the method test_mul from the module pandas/tests/arrays/string_/test_string.py is/are removed"
+        ],
+        "Commit": "0d853e7707bdc6995e0cb058fc34bd042a6e9ec5"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "_to_dict_of_blocks",
+        "Updated": "_to_dict_of_blocks",
+        "Location": "pandas/core/frame.py/DataFrame",
+        "Original Line": 12487,
+        "Updated Line": 12487,
+        "Description": [
+            "The parameters [ copy ] of the method _to_dict_of_blocks from the module pandas/core/frame.py in class DataFrame is/are removed"
+        ],
+        "Commit": "114f067a93c0e2c120d6538696d32d46a94f8eb8"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "_combine",
+        "Updated": "_combine",
+        "Location": "pandas/core/internals/managers.py/BaseBlockManager",
+        "Original Line": 538,
+        "Updated Line": 525,
+        "Description": [
+            "The parameters [ copy ] of the method _combine from the module pandas/core/internals/managers.py in class BaseBlockManager is/are removed"
+        ],
+        "Commit": "114f067a93c0e2c120d6538696d32d46a94f8eb8"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "get_bool_data",
+        "Updated": "get_bool_data",
+        "Location": "pandas/core/internals/managers.py/BaseBlockManager",
+        "Original Line": 500,
+        "Updated Line": 500,
+        "Description": [
+            "The parameters [ copy ] of the method get_bool_data from the module pandas/core/internals/managers.py in class BaseBlockManager is/are removed"
+        ],
+        "Commit": "114f067a93c0e2c120d6538696d32d46a94f8eb8"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "get_numeric_data",
+        "Updated": "get_numeric_data",
+        "Location": "pandas/core/internals/managers.py/BaseBlockManager",
+        "Original Line": 523,
+        "Updated Line": 518,
+        "Description": [
+            "The parameters [ copy ] of the method get_numeric_data from the module pandas/core/internals/managers.py in class BaseBlockManager is/are removed"
+        ],
+        "Commit": "114f067a93c0e2c120d6538696d32d46a94f8eb8"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "to_dict",
+        "Updated": "to_dict",
+        "Location": "pandas/core/internals/managers.py/BlockManager",
+        "Original Line": 1639,
+        "Updated Line": 1621,
+        "Description": [
+            "The parameters [ copy ] of the method to_dict from the module pandas/core/internals/managers.py in class BlockManager is/are removed"
+        ],
+        "Commit": "114f067a93c0e2c120d6538696d32d46a94f8eb8"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "get_numeric_data",
+        "Updated": "get_numeric_data",
+        "Location": "pandas/core/internals/managers.py/SingleBlockManager",
+        "Original Line": 2037,
+        "Updated Line": 2015,
+        "Description": [
+            "The parameters [ copy ] of the method get_numeric_data from the module pandas/core/internals/managers.py in class SingleBlockManager is/are removed"
+        ],
+        "Commit": "114f067a93c0e2c120d6538696d32d46a94f8eb8"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "_coerce_to_data_and_mask",
+        "Updated": "_coerce_to_data_and_mask",
+        "Location": "pandas/core/arrays/numeric.py",
+        "Original Line": 135,
+        "Updated Line": 135,
+        "Description": [
+            "The parameters [ mask ] of the method _coerce_to_data_and_mask from the module pandas/core/arrays/numeric.py is/are removed"
+        ],
+        "Commit": "14cf864c6e97269f6adc0e1146747aa9fd7234f1"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "test_from_sequence_no_mutate",
+        "Updated": "test_from_sequence_no_mutate",
+        "Location": "pandas/tests/arrays/string_/test_string.py",
+        "Original Line": 364,
+        "Updated Line": 364,
+        "Description": [
+            "The parameters [ request ] of the method test_from_sequence_no_mutate from the module pandas/tests/arrays/string_/test_string.py are changed/renamed to [dtype]"
+        ],
+        "Commit": "14cf864c6e97269f6adc0e1146747aa9fd7234f1"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_min_max",
+        "Updated": "test_min_max",
+        "Location": "pandas/tests/arrays/string_/test_string.py",
+        "Original Line": 439,
+        "Updated Line": 439,
+        "Description": [
+            "The parameters [ request ] of the method test_min_max from the module pandas/tests/arrays/string_/test_string.py is/are removed"
+        ],
+        "Commit": "14cf864c6e97269f6adc0e1146747aa9fd7234f1"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_none_to_nan",
+        "Updated": "test_none_to_nan",
+        "Location": "pandas/tests/arrays/string_/test_string.py",
+        "Original Line": 67,
+        "Updated Line": 67,
+        "Description": [
+            "The parameters [ dtype ] are added to the method test_none_to_nan from the module pandas/tests/arrays/string_/test_string.py"
+        ],
+        "Commit": "14cf864c6e97269f6adc0e1146747aa9fd7234f1"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_setitem_validates",
+        "Updated": "test_setitem_validates",
+        "Location": "pandas/tests/arrays/string_/test_string.py",
+        "Original Line": 73,
+        "Updated Line": 73,
+        "Description": [
+            "The parameters [ dtype ] are added to the method test_setitem_validates from the module pandas/tests/arrays/string_/test_string.py"
+        ],
+        "Commit": "14cf864c6e97269f6adc0e1146747aa9fd7234f1"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "_from_sequence",
+        "Updated": "_from_sequence",
+        "Location": "pandas/tests/arrays/test_array.py/DecimalArray2",
+        "Original Line": 419,
+        "Updated Line": 439,
+        "Description": [
+            "The parameters [ dtype copy ] of the method _from_sequence from the module pandas/tests/arrays/test_array.py in class DecimalArray2 is/are removed"
+        ],
+        "Commit": "14cf864c6e97269f6adc0e1146747aa9fd7234f1"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_cumsum",
+        "Updated": "test_cumsum",
+        "Location": "pandas/tests/arrays/timedeltas/test_cumulative.py/TestAccumulator",
+        "Original Line": 14,
+        "Updated Line": 14,
+        "Description": [
+            "The parameters [ unit ] are added to the method test_cumsum from the module pandas/tests/arrays/timedeltas/test_cumulative.py in class TestAccumulator"
+        ],
+        "Commit": "14cf864c6e97269f6adc0e1146747aa9fd7234f1"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_min_max",
+        "Updated": "test_min_max",
+        "Location": "pandas/tests/arrays/timedeltas/test_reductions.py/TestReductions",
+        "Original Line": 37,
+        "Updated Line": 37,
+        "Description": [
+            "The parameters [ unit ] are added to the method test_min_max from the module pandas/tests/arrays/timedeltas/test_reductions.py in class TestReductions"
+        ],
+        "Commit": "14cf864c6e97269f6adc0e1146747aa9fd7234f1"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "_from_sequence",
+        "Updated": "_from_sequence",
+        "Location": "pandas/tests/extension/array_with_attr/array.py/FloatAttrArray",
+        "Original Line": 51,
+        "Updated Line": 51,
+        "Description": [
+            "The parameters [ dtype copy ] of the method _from_sequence from the module pandas/tests/extension/array_with_attr/array.py in class FloatAttrArray is/are removed"
+        ],
+        "Commit": "14cf864c6e97269f6adc0e1146747aa9fd7234f1"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "_from_sequence",
+        "Updated": "_from_sequence",
+        "Location": "pandas/tests/extension/decimal/array.py/DecimalArray",
+        "Original Line": 100,
+        "Updated Line": 100,
+        "Description": [
+            "The parameters [ dtype copy ] of the method _from_sequence from the module pandas/tests/extension/decimal/array.py in class DecimalArray is/are removed"
+        ],
+        "Commit": "14cf864c6e97269f6adc0e1146747aa9fd7234f1"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "_from_sequence",
+        "Updated": "_from_sequence",
+        "Location": "pandas/tests/extension/decimal/test_decimal.py/DecimalArrayWithoutFromSequence",
+        "Original Line": 331,
+        "Updated Line": 331,
+        "Description": [
+            "The parameters [ dtype copy ] of the method _from_sequence from the module pandas/tests/extension/decimal/test_decimal.py in class DecimalArrayWithoutFromSequence is/are removed"
+        ],
+        "Commit": "14cf864c6e97269f6adc0e1146747aa9fd7234f1"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "_from_sequence",
+        "Updated": "_from_sequence",
+        "Location": "pandas/tests/extension/json/array.py/JSONArray",
+        "Original Line": 86,
+        "Updated Line": 86,
+        "Description": [
+            "The parameters [ dtype copy ] of the method _from_sequence from the module pandas/tests/extension/json/array.py in class JSONArray is/are removed"
+        ],
+        "Commit": "14cf864c6e97269f6adc0e1146747aa9fd7234f1"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_dtypes",
+        "Updated": "test_dtypes",
+        "Location": "pandas/tests/reshape/concat/test_append_common.py/TestConcatAppendCommon",
+        "Original Line": 60,
+        "Updated Line": 60,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_dtypes from the module pandas/tests/reshape/concat/test_append_common.py in class TestConcatAppendCommon"
+        ],
+        "Commit": "224ea88399c250226bea0cc8eedf2f3d857f0bc0"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_categorical_concat_dtypes",
+        "Updated": "test_categorical_concat_dtypes",
+        "Location": "pandas/tests/reshape/concat/test_categorical.py/TestCategoricalConcat",
+        "Original Line": 54,
+        "Updated Line": 54,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_categorical_concat_dtypes from the module pandas/tests/reshape/concat/test_categorical.py in class TestCategoricalConcat"
+        ],
+        "Commit": "224ea88399c250226bea0cc8eedf2f3d857f0bc0"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_concat_empty_dataframe_different_dtypes",
+        "Updated": "test_concat_empty_dataframe_different_dtypes",
+        "Location": "pandas/tests/reshape/concat/test_empty.py/TestEmptyConcat",
+        "Original Line": 278,
+        "Updated Line": 280,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_concat_empty_dataframe_different_dtypes from the module pandas/tests/reshape/concat/test_empty.py in class TestEmptyConcat"
+        ],
+        "Commit": "224ea88399c250226bea0cc8eedf2f3d857f0bc0"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_handle_empty_objects",
+        "Updated": "test_handle_empty_objects",
+        "Location": "pandas/tests/reshape/concat/test_empty.py/TestEmptyConcat",
+        "Original Line": 16,
+        "Updated Line": 16,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_handle_empty_objects from the module pandas/tests/reshape/concat/test_empty.py in class TestEmptyConcat"
+        ],
+        "Commit": "224ea88399c250226bea0cc8eedf2f3d857f0bc0"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_concat_axis_1_sort_false_rangeindex",
+        "Updated": "test_concat_axis_1_sort_false_rangeindex",
+        "Location": "pandas/tests/reshape/concat/test_index.py/TestMultiIndexConcat",
+        "Original Line": 450,
+        "Updated Line": 450,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_concat_axis_1_sort_false_rangeindex from the module pandas/tests/reshape/concat/test_index.py in class TestMultiIndexConcat"
+        ],
+        "Commit": "224ea88399c250226bea0cc8eedf2f3d857f0bc0"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "_factorize_keys",
+        "Updated": "_factorize_keys",
+        "Location": "pandas/core/reshape/merge.py",
+        "Original Line": 2312,
+        "Updated Line": 2311,
+        "Description": [
+            "The parameters [ how ] of the method _factorize_keys from the module pandas/core/reshape/merge.py is/are removed"
+        ],
+        "Commit": "2fc264aeb0b906168eab462ba7183aa6fa51da7e"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "TestMethods",
+        "Updated": "TestJSONArray",
+        "Location": "pandas/tests/extension/json/test_json.py",
+        "Description": " class TestMethods was renamed to class TestJSONArray ",
+        "Commit": "32aeafdd2390080022349fe1a585fd0162a2658f"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_apply_modify_traceback",
+        "Updated": "test_apply_modify_traceback",
+        "Location": "pandas/tests/apply/test_invalid_arg.py",
+        "Original Line": 155,
+        "Updated Line": 152,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] of the method test_apply_modify_traceback from the module pandas/tests/apply/test_invalid_arg.py is/are removed"
+        ],
+        "Commit": "3395ca3f1a1e7bdcee2ce8d7ef114bb4c8d9ece4"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "import_optional_dependency",
+        "Updated": "import_optional_dependency",
+        "Location": "pandas/compat/_optional.py",
+        "Original Line": 85,
+        "Updated Line": 111,
+        "Description": [
+            "The parameters [ errors ] of the method import_optional_dependency from the module pandas/compat/_optional.py is/are removed"
+        ],
+        "Commit": "37975ebafae0ded16951a23d027ba63d23dca349"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "make_invalid_op",
+        "Updated": "make_invalid_op",
+        "Location": "pandas/core/ops/invalid.py",
+        "Original Line": 44,
+        "Updated Line": 48,
+        "Description": [
+            "The return type of method make_invalid_op from the module pandas/core/ops/invalid.py is updated"
+        ],
+        "Commit": "37975ebafae0ded16951a23d027ba63d23dca349"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_interp_fillna_methods",
+        "Updated": "test_interp_fillna_methods",
+        "Location": "pandas/tests/frame/methods/test_interpolate.py/TestDataFrameInterpolate",
+        "Original Line": 473,
+        "Updated Line": 473,
+        "Description": [
+            "The parameters [ request ] of the method test_interp_fillna_methods from the module pandas/tests/frame/methods/test_interpolate.py in class TestDataFrameInterpolate is/are removed"
+        ],
+        "Commit": "3c15cfdf0e961c4e8f74a205bac6d34e0930f988"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_dict_nocopy",
+        "Updated": "test_dict_nocopy",
+        "Location": "pandas/tests/frame/test_constructors.py/TestDataFrameConstructors",
+        "Original Line": 2490,
+        "Updated Line": 2487,
+        "Description": [
+            "The parameters [ request ] of the method test_dict_nocopy from the module pandas/tests/frame/test_constructors.py in class TestDataFrameConstructors is/are removed"
+        ],
+        "Commit": "3c15cfdf0e961c4e8f74a205bac6d34e0930f988"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_join_on",
+        "Updated": "test_join_on",
+        "Location": "pandas/tests/reshape/merge/test_join.py/TestJoin",
+        "Original Line": 121,
+        "Updated Line": 126,
+        "Description": [
+            "The parameters [ infer_string ] are added to the method test_join_on from the module pandas/tests/reshape/merge/test_join.py in class TestJoin"
+        ],
+        "Commit": "3fdf0d344100fa25974e7250311b98d90682ce4c"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_to_dict_of_blocks_item_cache",
+        "Updated": "test_to_dict_of_blocks_item_cache",
+        "Location": "pandas/tests/frame/methods/test_to_dict_of_blocks.py",
+        "Original Line": 38,
+        "Updated Line": 38,
+        "Description": [
+            "The parameters [ request ] of the method test_to_dict_of_blocks_item_cache from the module pandas/tests/frame/methods/test_to_dict_of_blocks.py is/are removed"
+        ],
+        "Commit": "400ae748367cf9a356b8433c1aa59f34033f02a4"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "_maybe_localize_point",
+        "Updated": "_maybe_localize_point",
+        "Location": "pandas/core/arrays/datetimes.py",
+        "Original Line": 2691,
+        "Updated Line": 2686,
+        "Description": [
+            "The parameters [ is_none is_not_none ] of the method _maybe_localize_point from the module pandas/core/arrays/datetimes.py is/are removed"
+        ],
+        "Commit": "45361a48582bde02941b02050fb4a9ae096faadd"
+    },
+    {
+        "Refactoring Type": "Move Method",
+        "Original": "_helper_hypothesis_delimited_date",
+        "Updated": "_helper_hypothesis_delimited_date",
+        "Old Location": "pandas/tests/io/parser/test_parse_dates.py",
+        "New Location": "pandas/tests/tslibs/test_parsing.py",
+        "Old Method Line": 1841,
+        "New Method Line": 374,
+        "Description": " method _helper_hypothesis_delimited_date from the module pandas/tests/io/parser/test_parse_dates.py was moved to module pandas/tests/tslibs/test_parsing.py ",
+        "Commit": "4f8bb2b0ff03b83d8783de0918c336c4ab000327"
+    },
+    {
+        "Refactoring Type": "Move Method",
+        "Original": "test_hypothesis_delimited_date",
+        "Updated": "test_hypothesis_delimited_date",
+        "Old Location": "pandas/tests/io/parser/test_parse_dates.py",
+        "New Location": "pandas/tests/tslibs/test_parsing.py",
+        "Old Method Line": 1857,
+        "New Method Line": 390,
+        "Description": " method test_hypothesis_delimited_date from the module pandas/tests/io/parser/test_parse_dates.py was moved to module pandas/tests/tslibs/test_parsing.py ",
+        "Commit": "4f8bb2b0ff03b83d8783de0918c336c4ab000327"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "fillna",
+        "Updated": "fillna",
+        "Location": "pandas/core/internals/blocks.py/Block",
+        "Original Line": 1587,
+        "Updated Line": 1587,
+        "Description": [
+            "The parameters [ already_warned ] are added to the method fillna from the module pandas/core/internals/blocks.py in class Block"
+        ],
+        "Commit": "52649eab12137913b6df0d0b2e55fdf5f42dc1b5"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "fillna",
+        "Updated": "fillna",
+        "Location": "pandas/core/internals/blocks.py/ExtensionBlock",
+        "Original Line": 2204,
+        "Updated Line": 2207,
+        "Description": [
+            "The parameters [ already_warned ] are added to the method fillna from the module pandas/core/internals/blocks.py in class ExtensionBlock"
+        ],
+        "Commit": "52649eab12137913b6df0d0b2e55fdf5f42dc1b5"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_fillna_inplace_reference",
+        "Updated": "test_fillna_inplace_reference",
+        "Location": "pandas/tests/copy_view/test_interp_fillna.py",
+        "Original Line": 232,
+        "Updated Line": 232,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_fillna_inplace_reference from the module pandas/tests/copy_view/test_interp_fillna.py"
+        ],
+        "Commit": "52649eab12137913b6df0d0b2e55fdf5f42dc1b5"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_fillna_interval_inplace_reference",
+        "Updated": "test_fillna_interval_inplace_reference",
+        "Location": "pandas/tests/copy_view/test_interp_fillna.py",
+        "Original Line": 253,
+        "Updated Line": 254,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_fillna_interval_inplace_reference from the module pandas/tests/copy_view/test_interp_fillna.py"
+        ],
+        "Commit": "52649eab12137913b6df0d0b2e55fdf5f42dc1b5"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "TestMethods",
+        "Updated": "TestSparseArray",
+        "Location": "pandas/tests/extension/test_sparse.py",
+        "Description": " class TestMethods was renamed to class TestSparseArray ",
+        "Commit": "55639a375a6e8a6f9a77aa7581c9b50789fda9f5"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "_apply_blockwise",
+        "Updated": "_apply_columnwise",
+        "Location": "pandas/core/window/rolling.py/BaseWindow",
+        "Original Line": 458,
+        "Updated Line": 460,
+        "Description": [
+            "The method _apply_blockwise from the module pandas/core/window/rolling.py in class BaseWindow is renamed to _apply_columnwise"
+        ],
+        "Commit": "55b969b11cea1f8d96aa85955a0bf41330bb716e"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "test_apply_to_empty_series",
+        "Updated": "test_apply_to_empty_series",
+        "Location": "pandas/tests/resample/test_base.py",
+        "Original Line": 366,
+        "Updated Line": 384,
+        "Description": [
+            "The parameters [ empty_series_dti ] of the method test_apply_to_empty_series from the module pandas/tests/resample/test_base.py are changed/renamed to [index]"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "test_resample_count_empty_series",
+        "Updated": "test_resample_count_empty_series",
+        "Location": "pandas/tests/resample/test_base.py",
+        "Original Line": 185,
+        "Updated Line": 191,
+        "Description": [
+            "The parameters [ empty_series_dti ] of the method test_resample_count_empty_series from the module pandas/tests/resample/test_base.py are changed/renamed to [index]"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "test_resample_empty_dataframe",
+        "Updated": "test_resample_empty_dataframe",
+        "Location": "pandas/tests/resample/test_base.py",
+        "Original Line": 218,
+        "Updated Line": 226,
+        "Description": [
+            "The parameters [ empty_frame_dti ] of the method test_resample_empty_dataframe from the module pandas/tests/resample/test_base.py are changed/renamed to [index]"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_resample_nat_index_series",
+        "Updated": "test_resample_nat_index_series",
+        "Location": "pandas/tests/resample/test_base.py",
+        "Original Line": 159,
+        "Updated Line": 159,
+        "Description": [
+            "The parameters [ series ] of the method test_resample_nat_index_series from the module pandas/tests/resample/test_base.py is/are removed"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_custom_grouper",
+        "Updated": "test_custom_grouper",
+        "Location": "pandas/tests/resample/test_datetime_index.py",
+        "Original Line": 72,
+        "Updated Line": 57,
+        "Description": [
+            "The parameters [ index ] of the method test_custom_grouper from the module pandas/tests/resample/test_datetime_index.py is/are removed"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_custom_grouper_df",
+        "Updated": "test_custom_grouper_df",
+        "Location": "pandas/tests/resample/test_datetime_index.py",
+        "Original Line": 108,
+        "Updated Line": 94,
+        "Description": [
+            "The parameters [ index ] of the method test_custom_grouper_df from the module pandas/tests/resample/test_datetime_index.py is/are removed"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_resample_apply_with_additional_args",
+        "Updated": "test_resample_apply_with_additional_args",
+        "Location": "pandas/tests/resample/test_datetime_index.py",
+        "Original Line": 1857,
+        "Updated Line": 1840,
+        "Description": [
+            "The parameters [ series ] of the method test_resample_apply_with_additional_args from the module pandas/tests/resample/test_datetime_index.py is/are removed"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_resample_basic",
+        "Updated": "test_resample_basic",
+        "Location": "pandas/tests/resample/test_datetime_index.py",
+        "Original Line": 145,
+        "Updated Line": 128,
+        "Description": [
+            "The parameters [ series ] of the method test_resample_basic from the module pandas/tests/resample/test_datetime_index.py is/are removed"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_resample_basic_grouper",
+        "Updated": "test_resample_basic_grouper",
+        "Location": "pandas/tests/resample/test_datetime_index.py",
+        "Original Line": 178,
+        "Updated Line": 163,
+        "Description": [
+            "The parameters [ series ] of the method test_resample_basic_grouper from the module pandas/tests/resample/test_datetime_index.py is/are removed"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_resample_how",
+        "Updated": "test_resample_how",
+        "Location": "pandas/tests/resample/test_datetime_index.py",
+        "Original Line": 211,
+        "Updated Line": 193,
+        "Description": [
+            "The parameters [ series ] of the method test_resample_how from the module pandas/tests/resample/test_datetime_index.py is/are removed"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_resample_how_ohlc",
+        "Updated": "test_resample_how_ohlc",
+        "Location": "pandas/tests/resample/test_datetime_index.py",
+        "Original Line": 237,
+        "Updated Line": 216,
+        "Description": [
+            "The parameters [ series ] of the method test_resample_how_ohlc from the module pandas/tests/resample/test_datetime_index.py is/are removed"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_resample_ohlc",
+        "Updated": "test_resample_ohlc",
+        "Location": "pandas/tests/resample/test_datetime_index.py",
+        "Original Line": 561,
+        "Updated Line": 542,
+        "Description": [
+            "The parameters [ series ] of the method test_resample_ohlc from the module pandas/tests/resample/test_datetime_index.py is/are removed"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_resample_string_kwargs",
+        "Updated": "test_resample_string_kwargs",
+        "Location": "pandas/tests/resample/test_datetime_index.py",
+        "Original Line": 198,
+        "Updated Line": 181,
+        "Description": [
+            "The parameters [ series ] of the method test_resample_string_kwargs from the module pandas/tests/resample/test_datetime_index.py is/are removed"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "test_asfreq",
+        "Updated": "test_asfreq",
+        "Location": "pandas/tests/resample/test_period_index.py/TestPeriodIndex",
+        "Original Line": 72,
+        "Updated Line": 63,
+        "Description": [
+            "The parameters [ series_and_frame ] of the method test_asfreq from the module pandas/tests/resample/test_period_index.py in class TestPeriodIndex are changed/renamed to [klass]"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_asfreq_fill_value",
+        "Updated": "test_asfreq_fill_value",
+        "Location": "pandas/tests/resample/test_period_index.py/TestPeriodIndex",
+        "Original Line": 89,
+        "Updated Line": 80,
+        "Description": [
+            "The parameters [ series ] of the method test_asfreq_fill_value from the module pandas/tests/resample/test_period_index.py in class TestPeriodIndex is/are removed"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_selection",
+        "Updated": "test_selection",
+        "Location": "pandas/tests/resample/test_period_index.py/TestPeriodIndex",
+        "Original Line": 119,
+        "Updated Line": 111,
+        "Description": [
+            "The parameters [ index ] of the method test_selection from the module pandas/tests/resample/test_period_index.py in class TestPeriodIndex is/are removed"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "test_resample_frequency_ME_QE_YE_error_message",
+        "Updated": "test_resample_frequency_ME_QE_YE_error_message",
+        "Location": "pandas/tests/resample/test_period_index.py",
+        "Original Line": 1036,
+        "Updated Line": 1031,
+        "Description": [
+            "The parameters [ series_and_frame ] of the method test_resample_frequency_ME_QE_YE_error_message from the module pandas/tests/resample/test_period_index.py are changed/renamed to [klass]"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "test_resample_frequency_invalid_freq",
+        "Updated": "test_resample_frequency_invalid_freq",
+        "Location": "pandas/tests/resample/test_period_index.py",
+        "Original Line": 1065,
+        "Updated Line": 1061,
+        "Description": [
+            "The parameters [ series_and_frame ] of the method test_resample_frequency_invalid_freq from the module pandas/tests/resample/test_period_index.py are changed/renamed to [klass]"
+        ],
+        "Commit": "58ba00060d661978d4060ef48964678543296b17"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_methods_iloc_getitem_item_cache",
+        "Updated": "test_methods_iloc_getitem_item_cache",
+        "Location": "pandas/tests/copy_view/test_chained_assignment_deprecation.py",
+        "Original Line": 45,
+        "Updated Line": 45,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_methods_iloc_getitem_item_cache from the module pandas/tests/copy_view/test_chained_assignment_deprecation.py"
+        ],
+        "Commit": "657da071c86fdef5e35ba3bfd45cda2ebc35fad4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_interpolate_inplace_with_refs",
+        "Updated": "test_interpolate_inplace_with_refs",
+        "Location": "pandas/tests/copy_view/test_interp_fillna.py",
+        "Original Line": 94,
+        "Updated Line": 94,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_interpolate_inplace_with_refs from the module pandas/tests/copy_view/test_interp_fillna.py"
+        ],
+        "Commit": "657da071c86fdef5e35ba3bfd45cda2ebc35fad4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_datetime_cut_roundtrip",
+        "Updated": "test_datetime_cut_roundtrip",
+        "Location": "pandas/tests/reshape/test_cut.py",
+        "Original Line": 579,
+        "Updated Line": 575,
+        "Description": [
+            "The parameters [ unit ] are added to the method test_datetime_cut_roundtrip from the module pandas/tests/reshape/test_cut.py"
+        ],
+        "Commit": "65af776208578edf1a42be8f6ca76c3d2b1487fb"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_qcut_nat",
+        "Updated": "test_qcut_nat",
+        "Location": "pandas/tests/reshape/test_qcut.py",
+        "Original Line": 219,
+        "Updated Line": 217,
+        "Description": [
+            "The parameters [ unit ] are added to the method test_qcut_nat from the module pandas/tests/reshape/test_qcut.py"
+        ],
+        "Commit": "65af776208578edf1a42be8f6ca76c3d2b1487fb"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_iloc_interval",
+        "Updated": "test_iloc_interval",
+        "Location": "pandas/tests/indexing/test_iloc.py/TestiLocBaseIndependent",
+        "Original Line": 1150,
+        "Updated Line": 1148,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] of the method test_iloc_interval from the module pandas/tests/indexing/test_iloc.py in class TestiLocBaseIndependent is/are removed"
+        ],
+        "Commit": "6669aee381c03baf0e845714c339ca85b2e4e762"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_iloc_setitem",
+        "Updated": "test_iloc_setitem",
+        "Location": "pandas/tests/indexing/test_iloc.py/TestiLocBaseIndependent",
+        "Original Line": 431,
+        "Updated Line": 429,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_iloc_setitem from the module pandas/tests/indexing/test_iloc.py in class TestiLocBaseIndependent"
+        ],
+        "Commit": "6669aee381c03baf0e845714c339ca85b2e4e762"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "_formatter",
+        "Updated": "_formatter",
+        "Location": "pandas/core/arrays/period.py/PeriodArray",
+        "Original Line": 762,
+        "Updated Line": 762,
+        "Description": [
+            "The return type of method _formatter from the module pandas/core/arrays/period.py in class PeriodArray is updated"
+        ],
+        "Commit": "6703fece160e49970cb931bf679d23e2750974d0"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "_ints_to_td64ns",
+        "Updated": "_ints_to_td64ns",
+        "Location": "pandas/core/arrays/timedeltas.py",
+        "Original Line": 1083,
+        "Updated Line": 1083,
+        "Description": [
+            "The return type of method _ints_to_td64ns from the module pandas/core/arrays/timedeltas.py is updated"
+        ],
+        "Commit": "6703fece160e49970cb931bf679d23e2750974d0"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "_pad_2d",
+        "Updated": "_pad_2d",
+        "Location": "pandas/core/missing.py",
+        "Original Line": 959,
+        "Updated Line": 959,
+        "Description": [
+            "The return type of method _pad_2d from the module pandas/core/missing.py is updated"
+        ],
+        "Commit": "6703fece160e49970cb931bf679d23e2750974d0"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "__dir__",
+        "Updated": "__dir__",
+        "Location": "pandas/_config/config.py/DictWrapper",
+        "Original Line": 253,
+        "Updated Line": 255,
+        "Description": [
+            "The return type of method __dir__ from the module pandas/_config/config.py in class DictWrapper is updated"
+        ],
+        "Commit": "67872451d9a195c801c2395c92dab27edb3ecbbe"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "normalize_keyword_aggregation",
+        "Updated": "normalize_keyword_aggregation",
+        "Location": "pandas/core/apply.py",
+        "Original Line": 1731,
+        "Updated Line": 1738,
+        "Description": [
+            "The return type of method normalize_keyword_aggregation from the module pandas/core/apply.py is updated"
+        ],
+        "Commit": "67872451d9a195c801c2395c92dab27edb3ecbbe"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "reconstruct_func",
+        "Updated": "reconstruct_func",
+        "Location": "pandas/core/apply.py",
+        "Original Line": 1643,
+        "Updated Line": 1643,
+        "Description": [
+            "The return type of method reconstruct_func from the module pandas/core/apply.py is updated"
+        ],
+        "Commit": "67872451d9a195c801c2395c92dab27edb3ecbbe"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "get_sheet_data",
+        "Updated": "get_sheet_data",
+        "Location": "pandas/io/excel/_calamine.py/CalamineReader",
+        "Original Line": 99,
+        "Updated Line": 99,
+        "Description": [
+            "The return type of method get_sheet_data from the module pandas/io/excel/_calamine.py in class CalamineReader is updated"
+        ],
+        "Commit": "67872451d9a195c801c2395c92dab27edb3ecbbe"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_methods_iloc_getitem_item_cache",
+        "Updated": "test_methods_iloc_getitem_item_cache",
+        "Location": "pandas/tests/copy_view/test_chained_assignment_deprecation.py",
+        "Original Line": 45,
+        "Updated Line": 45,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] of the method test_methods_iloc_getitem_item_cache from the module pandas/tests/copy_view/test_chained_assignment_deprecation.py is/are removed"
+        ],
+        "Commit": "68c1af5358561b4655861f99ac1dfb27ac5d4d56"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_repr_str_float_truncation",
+        "Updated": "test_repr_str_float_truncation",
+        "Location": "pandas/tests/io/formats/test_format.py/TestDataFrameFormatting",
+        "Original Line": 1298,
+        "Updated Line": 1300,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_repr_str_float_truncation from the module pandas/tests/io/formats/test_format.py in class TestDataFrameFormatting"
+        ],
+        "Commit": "6dfcbce015b71257aef06c326d769797efa10d5e"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "_sanitize_mixed_ndim",
+        "Updated": "_sanitize_mixed_ndim",
+        "Location": "pandas/core/reshape/concat.py/_Concatenator",
+        "Original Line": 577,
+        "Updated Line": 577,
+        "Description": [
+            "The return type of method _sanitize_mixed_ndim from the module pandas/core/reshape/concat.py in class _Concatenator is updated"
+        ],
+        "Commit": "71a3e3c12abd934159f43fc4d925803e063c8c6d"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "test_concat_mixed_objs",
+        "Updated": "test_concat_mixed_objs_columns",
+        "Location": "pandas/tests/reshape/concat/test_concat.py/TestConcatenate",
+        "Original Line": 270,
+        "Updated Line": 270,
+        "Description": [
+            "The method test_concat_mixed_objs from the module pandas/tests/reshape/concat/test_concat.py in class TestConcatenate is renamed to test_concat_mixed_objs_columns"
+        ],
+        "Commit": "71a3e3c12abd934159f43fc4d925803e063c8c6d"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_ix_categorical_index_non_unique",
+        "Updated": "test_ix_categorical_index_non_unique",
+        "Location": "pandas/tests/indexing/test_categorical.py/TestCategoricalIndex",
+        "Original Line": 431,
+        "Updated Line": 437,
+        "Description": [
+            "The parameters [ infer_string ] are added to the method test_ix_categorical_index_non_unique from the module pandas/tests/indexing/test_categorical.py in class TestCategoricalIndex"
+        ],
+        "Commit": "726e8e8a61cb3f103bc89e773089645a748ce4a4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_no_prefix_string_cats_default_category",
+        "Updated": "test_no_prefix_string_cats_default_category",
+        "Location": "pandas/tests/reshape/test_from_dummies.py",
+        "Original Line": 331,
+        "Updated Line": 331,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_no_prefix_string_cats_default_category from the module pandas/tests/reshape/test_from_dummies.py"
+        ],
+        "Commit": "777a1f236e88ef9b61eb6091ee69b24420dc73eb"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_dataframe_dummies_string_dtype",
+        "Updated": "test_dataframe_dummies_string_dtype",
+        "Location": "pandas/tests/reshape/test_get_dummies.py/TestGetDummies",
+        "Original Line": 216,
+        "Updated Line": 217,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_dataframe_dummies_string_dtype from the module pandas/tests/reshape/test_get_dummies.py in class TestGetDummies"
+        ],
+        "Commit": "777a1f236e88ef9b61eb6091ee69b24420dc73eb"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_get_dummies_basic_types",
+        "Updated": "test_get_dummies_basic_types",
+        "Location": "pandas/tests/reshape/test_get_dummies.py/TestGetDummies",
+        "Original Line": 82,
+        "Updated Line": 82,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_get_dummies_basic_types from the module pandas/tests/reshape/test_get_dummies.py in class TestGetDummies"
+        ],
+        "Commit": "777a1f236e88ef9b61eb6091ee69b24420dc73eb"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "TestMissing",
+        "Updated": "TestStringArray",
+        "Location": "pandas/tests/extension/test_string.py",
+        "Description": " class TestMissing was renamed to class TestStringArray ",
+        "Commit": "78d8b2e7b30f0421ef383e10ac63ddbb15df1e73"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_getitem_setitem_ellipsis",
+        "Updated": "test_getitem_setitem_ellipsis",
+        "Location": "pandas/tests/series/indexing/test_indexing.py",
+        "Original Line": 104,
+        "Updated Line": 104,
+        "Description": [
+            "The parameters [ using_copy_on_write warn_copy_on_write ] are added to the method test_getitem_setitem_ellipsis from the module pandas/tests/series/indexing/test_indexing.py"
+        ],
+        "Commit": "7b528c91e5e273f38ea779b548ca64e80df4b346"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "_replace_regex",
+        "Updated": "_replace_regex",
+        "Location": "pandas/core/internals/blocks.py/Block",
+        "Original Line": 930,
+        "Updated Line": 945,
+        "Description": [
+            "The parameters [ already_warned ] are added to the method _replace_regex from the module pandas/core/internals/blocks.py in class Block"
+        ],
+        "Commit": "8399185ad3618cd7d4bc5018e8afad5cd357e813"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "replace",
+        "Updated": "replace",
+        "Location": "pandas/core/internals/blocks.py/Block",
+        "Original Line": 825,
+        "Updated Line": 825,
+        "Description": [
+            "The parameters [ already_warned ] are added to the method replace from the module pandas/core/internals/blocks.py in class Block"
+        ],
+        "Commit": "8399185ad3618cd7d4bc5018e8afad5cd357e813"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "replace_list",
+        "Updated": "replace_list",
+        "Location": "pandas/core/internals/blocks.py/Block",
+        "Original Line": 988,
+        "Updated Line": 1018,
+        "Description": [
+            "The parameters [ already_warned ] are added to the method replace_list from the module pandas/core/internals/blocks.py in class Block"
+        ],
+        "Commit": "8399185ad3618cd7d4bc5018e8afad5cd357e813"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_replace_inplace_reference",
+        "Updated": "test_replace_inplace_reference",
+        "Location": "pandas/tests/copy_view/test_replace.py",
+        "Original Line": 205,
+        "Updated Line": 206,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_replace_inplace_reference from the module pandas/tests/copy_view/test_replace.py"
+        ],
+        "Commit": "8399185ad3618cd7d4bc5018e8afad5cd357e813"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_replace_list_none_inplace_refs",
+        "Updated": "test_replace_list_none_inplace_refs",
+        "Location": "pandas/tests/copy_view/test_replace.py",
+        "Original Line": 357,
+        "Updated Line": 359,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_replace_list_none_inplace_refs from the module pandas/tests/copy_view/test_replace.py"
+        ],
+        "Commit": "8399185ad3618cd7d4bc5018e8afad5cd357e813"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_replace_listlike_inplace",
+        "Updated": "test_replace_listlike_inplace",
+        "Location": "pandas/tests/copy_view/test_replace.py",
+        "Original Line": 434,
+        "Updated Line": 437,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_replace_listlike_inplace from the module pandas/tests/copy_view/test_replace.py"
+        ],
+        "Commit": "8399185ad3618cd7d4bc5018e8afad5cd357e813"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_replace_regex_inplace_refs",
+        "Updated": "test_replace_regex_inplace_refs",
+        "Location": "pandas/tests/copy_view/test_replace.py",
+        "Original Line": 51,
+        "Updated Line": 51,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_replace_regex_inplace_refs from the module pandas/tests/copy_view/test_replace.py"
+        ],
+        "Commit": "8399185ad3618cd7d4bc5018e8afad5cd357e813"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_union_categoricals_empty",
+        "Updated": "test_union_categoricals_empty",
+        "Location": "pandas/tests/reshape/test_union_categoricals.py/TestUnionCategoricals",
+        "Original Line": 126,
+        "Updated Line": 126,
+        "Description": [
+            "The parameters [ request using_infer_string ] are added to the method test_union_categoricals_empty from the module pandas/tests/reshape/test_union_categoricals.py in class TestUnionCategoricals"
+        ],
+        "Commit": "849296460dc91b0b89327539874fc6a47baaa72f"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "as_unit",
+        "Updated": "as_unit",
+        "Location": "pandas/core/arrays/datetimelike.py/TimelikeOps",
+        "Original Line": 2141,
+        "Updated Line": 2147,
+        "Description": [
+            "The parameters [ round_ok ] are added to the method as_unit from the module pandas/core/arrays/datetimelike.py in class TimelikeOps"
+        ],
+        "Commit": "8614088df2338c1db170bcd0961348220669e082"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_datetime64_tz_fillna",
+        "Updated": "test_datetime64_tz_fillna",
+        "Location": "pandas/tests/series/methods/test_fillna.py/TestSeriesFillNA",
+        "Original Line": 395,
+        "Updated Line": 467,
+        "Description": [
+            "The parameters [ unit ] are added to the method test_datetime64_tz_fillna from the module pandas/tests/series/methods/test_fillna.py in class TestSeriesFillNA"
+        ],
+        "Commit": "8614088df2338c1db170bcd0961348220669e082"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_timedelta_fillna",
+        "Updated": "test_timedelta_fillna",
+        "Location": "pandas/tests/series/methods/test_fillna.py/TestSeriesFillNA",
+        "Original Line": 242,
+        "Updated Line": 243,
+        "Description": [
+            "The parameters [ unit ] are added to the method test_timedelta_fillna from the module pandas/tests/series/methods/test_fillna.py in class TestSeriesFillNA"
+        ],
+        "Commit": "8614088df2338c1db170bcd0961348220669e082"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "_make_reader",
+        "Updated": "_make_reader",
+        "Location": "pandas/io/parsers/python_parser.py/PythonParser",
+        "Original Line": 182,
+        "Updated Line": 186,
+        "Description": [
+            "The return type of method _make_reader from the module pandas/io/parsers/python_parser.py in class PythonParser is updated"
+        ],
+        "Commit": "8872b9e01dfbb2c632b7b404b7d0e4fc2a1d9db6"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "_remove_empty_lines",
+        "Updated": "_remove_empty_lines",
+        "Location": "pandas/io/parsers/python_parser.py/PythonParser",
+        "Original Line": 858,
+        "Updated Line": 862,
+        "Description": [
+            "The return type of method _remove_empty_lines from the module pandas/io/parsers/python_parser.py in class PythonParser is updated"
+        ],
+        "Commit": "8872b9e01dfbb2c632b7b404b7d0e4fc2a1d9db6"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "get_chunk",
+        "Updated": "get_chunk",
+        "Location": "pandas/io/parsers/python_parser.py/PythonParser",
+        "Original Line": 326,
+        "Updated Line": 332,
+        "Description": [
+            "The return type of method get_chunk from the module pandas/io/parsers/python_parser.py in class PythonParser is updated"
+        ],
+        "Commit": "8872b9e01dfbb2c632b7b404b7d0e4fc2a1d9db6"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "read",
+        "Updated": "read",
+        "Location": "pandas/io/parsers/python_parser.py/PythonParser",
+        "Original Line": 246,
+        "Updated Line": 250,
+        "Description": [
+            "The return type of method read from the module pandas/io/parsers/python_parser.py in class PythonParser is updated"
+        ],
+        "Commit": "8872b9e01dfbb2c632b7b404b7d0e4fc2a1d9db6"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "_remove_empty_lines",
+        "Updated": "_remove_empty_lines",
+        "Location": "pandas/io/parsers/python_parser.py/FixedWidthFieldParser",
+        "Original Line": 1341,
+        "Updated Line": 1342,
+        "Description": [
+            "The return type of method _remove_empty_lines from the module pandas/io/parsers/python_parser.py in class FixedWidthFieldParser is updated"
+        ],
+        "Commit": "8872b9e01dfbb2c632b7b404b7d0e4fc2a1d9db6"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "get_standard_colors",
+        "Updated": "get_standard_colors",
+        "Location": "pandas/plotting/_matplotlib/style.py",
+        "Original Line": 29,
+        "Updated Line": 64,
+        "Description": [
+            "The parameters [ color ] of the method get_standard_colors from the module pandas/plotting/_matplotlib/style.py is/are removed"
+        ],
+        "Commit": "8872b9e01dfbb2c632b7b404b7d0e4fc2a1d9db6"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_error_invalid_values",
+        "Updated": "test_error_invalid_values",
+        "Location": "pandas/tests/arrays/boolean/test_arithmetic.py",
+        "Original Line": 93,
+        "Updated Line": 93,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_error_invalid_values from the module pandas/tests/arrays/boolean/test_arithmetic.py"
+        ],
+        "Commit": "8aa7a96765ff4f5e2e157fdbacedc442381292b4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_print",
+        "Updated": "test_print",
+        "Location": "pandas/tests/arrays/categorical/test_repr.py/TestCategoricalReprWithFactor",
+        "Original Line": 16,
+        "Updated Line": 20,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_print from the module pandas/tests/arrays/categorical/test_repr.py in class TestCategoricalReprWithFactor"
+        ],
+        "Commit": "8aa7a96765ff4f5e2e157fdbacedc442381292b4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_error_invalid_values",
+        "Updated": "test_error_invalid_values",
+        "Location": "pandas/tests/arrays/floating/test_arithmetic.py",
+        "Original Line": 125,
+        "Updated Line": 125,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_error_invalid_values from the module pandas/tests/arrays/floating/test_arithmetic.py"
+        ],
+        "Commit": "8aa7a96765ff4f5e2e157fdbacedc442381292b4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_error_invalid_values",
+        "Updated": "test_error_invalid_values",
+        "Location": "pandas/tests/arrays/integer/test_arithmetic.py",
+        "Original Line": 175,
+        "Updated Line": 175,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_error_invalid_values from the module pandas/tests/arrays/integer/test_arithmetic.py"
+        ],
+        "Commit": "8aa7a96765ff4f5e2e157fdbacedc442381292b4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_mixed_reductions",
+        "Updated": "test_mixed_reductions",
+        "Location": "pandas/tests/arrays/integer/test_reduction.py",
+        "Original Line": 105,
+        "Updated Line": 105,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_mixed_reductions from the module pandas/tests/arrays/integer/test_reduction.py"
+        ],
+        "Commit": "8aa7a96765ff4f5e2e157fdbacedc442381292b4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_arrow_load_from_zero_chunks",
+        "Updated": "test_arrow_load_from_zero_chunks",
+        "Location": "pandas/tests/arrays/string_/test_string.py",
+        "Original Line": 519,
+        "Updated Line": 526,
+        "Description": [
+            "The parameters [ request using_infer_string ] are added to the method test_arrow_load_from_zero_chunks from the module pandas/tests/arrays/string_/test_string.py"
+        ],
+        "Commit": "8aa7a96765ff4f5e2e157fdbacedc442381292b4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_arrow_roundtrip",
+        "Updated": "test_arrow_roundtrip",
+        "Location": "pandas/tests/arrays/string_/test_string.py",
+        "Original Line": 501,
+        "Updated Line": 501,
+        "Description": [
+            "The parameters [ request using_infer_string ] are added to the method test_arrow_roundtrip from the module pandas/tests/arrays/string_/test_string.py"
+        ],
+        "Commit": "8aa7a96765ff4f5e2e157fdbacedc442381292b4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_config",
+        "Updated": "test_config",
+        "Location": "pandas/tests/arrays/string_/test_string_arrow.py",
+        "Original Line": 29,
+        "Updated Line": 29,
+        "Description": [
+            "The parameters [ request using_infer_string ] are added to the method test_config from the module pandas/tests/arrays/string_/test_string_arrow.py"
+        ],
+        "Commit": "8aa7a96765ff4f5e2e157fdbacedc442381292b4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_from_sequence_wrong_dtype_raises",
+        "Updated": "test_from_sequence_wrong_dtype_raises",
+        "Location": "pandas/tests/arrays/string_/test_string_arrow.py",
+        "Original Line": 104,
+        "Updated Line": 106,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_from_sequence_wrong_dtype_raises from the module pandas/tests/arrays/string_/test_string_arrow.py"
+        ],
+        "Commit": "8aa7a96765ff4f5e2e157fdbacedc442381292b4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_pivot_integer_bug",
+        "Updated": "test_pivot_integer_bug",
+        "Location": "pandas/tests/reshape/test_pivot.py/TestPivot",
+        "Original Line": 2523,
+        "Updated Line": 2524,
+        "Description": [
+            "The parameters [ dtype ] are added to the method test_pivot_integer_bug from the module pandas/tests/reshape/test_pivot.py in class TestPivot"
+        ],
+        "Commit": "90f3c1073e59800e6e17c10ba95c1eaab30aaabd"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_insert_missing",
+        "Updated": "test_insert_missing",
+        "Location": "pandas/tests/indexes/base_class/test_reshape.py/TestReshape",
+        "Original Line": 38,
+        "Updated Line": 38,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_insert_missing from the module pandas/tests/indexes/base_class/test_reshape.py in class TestReshape"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_repr_missing",
+        "Updated": "test_repr_missing",
+        "Location": "pandas/tests/indexes/interval/test_formats.py/TestIntervalIndexRendering",
+        "Original Line": 34,
+        "Updated Line": 36,
+        "Description": [
+            "The parameters [ using_infer_string request ] are added to the method test_repr_missing from the module pandas/tests/indexes/interval/test_formats.py in class TestIntervalIndexRendering"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_dtype_representation",
+        "Updated": "test_dtype_representation",
+        "Location": "pandas/tests/indexes/multi/test_constructors.py",
+        "Original Line": 850,
+        "Updated Line": 850,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_dtype_representation from the module pandas/tests/indexes/multi/test_constructors.py"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_get_dtypes",
+        "Updated": "test_get_dtypes",
+        "Location": "pandas/tests/indexes/multi/test_get_set.py",
+        "Original Line": 37,
+        "Updated Line": 37,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_get_dtypes from the module pandas/tests/indexes/multi/test_get_set.py"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_get_dtypes_duplicate_level_names",
+        "Updated": "test_get_dtypes_duplicate_level_names",
+        "Location": "pandas/tests/indexes/multi/test_get_set.py",
+        "Original Line": 72,
+        "Updated Line": 75,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_get_dtypes_duplicate_level_names from the module pandas/tests/indexes/multi/test_get_set.py"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_get_dtypes_no_level_name",
+        "Updated": "test_get_dtypes_no_level_name",
+        "Location": "pandas/tests/indexes/multi/test_get_set.py",
+        "Original Line": 53,
+        "Updated Line": 55,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_get_dtypes_no_level_name from the module pandas/tests/indexes/multi/test_get_set.py"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_reindex_lvl_preserves_type_if_target_is_empty_list_or_array",
+        "Updated": "test_reindex_lvl_preserves_type_if_target_is_empty_list_or_array",
+        "Location": "pandas/tests/indexes/multi/test_reindex.py",
+        "Original Line": 78,
+        "Updated Line": 78,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_reindex_lvl_preserves_type_if_target_is_empty_list_or_array from the module pandas/tests/indexes/multi/test_reindex.py"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_union_with_regular_index",
+        "Updated": "test_union_with_regular_index",
+        "Location": "pandas/tests/indexes/multi/test_setops.py",
+        "Original Line": 266,
+        "Updated Line": 266,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_union_with_regular_index from the module pandas/tests/indexes/multi/test_setops.py"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_get_indexer_non_unique_nas",
+        "Updated": "test_get_indexer_non_unique_nas",
+        "Location": "pandas/tests/indexes/object/test_indexing.py/TestGetIndexerNonUnique",
+        "Original Line": 61,
+        "Updated Line": 82,
+        "Description": [
+            "The parameters [ request using_infer_string ] are added to the method test_get_indexer_non_unique_nas from the module pandas/tests/indexes/object/test_indexing.py in class TestGetIndexerNonUnique"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_constructor_copy",
+        "Updated": "test_constructor_copy",
+        "Location": "pandas/tests/indexes/test_base.py/TestIndex",
+        "Original Line": 75,
+        "Updated Line": 75,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_constructor_copy from the module pandas/tests/indexes/test_base.py in class TestIndex"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_constructor_from_frame_series_freq",
+        "Updated": "test_constructor_from_frame_series_freq",
+        "Location": "pandas/tests/indexes/test_base.py/TestIndex",
+        "Original Line": 148,
+        "Updated Line": 153,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_constructor_from_frame_series_freq from the module pandas/tests/indexes/test_base.py in class TestIndex"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_empty_fancy",
+        "Updated": "test_empty_fancy",
+        "Location": "pandas/tests/indexes/test_base.py/TestIndex",
+        "Original Line": 462,
+        "Updated Line": 472,
+        "Description": [
+            "The parameters [ request using_infer_string ] are added to the method test_empty_fancy from the module pandas/tests/indexes/test_base.py in class TestIndex"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_equals_op_index_vs_mi_same_length",
+        "Updated": "test_equals_op_index_vs_mi_same_length",
+        "Location": "pandas/tests/indexes/test_base.py/TestIndex",
+        "Original Line": 1234,
+        "Updated Line": 1257,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_equals_op_index_vs_mi_same_length from the module pandas/tests/indexes/test_base.py in class TestIndex"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_isin_nan_common_object",
+        "Updated": "test_isin_nan_common_object",
+        "Location": "pandas/tests/indexes/test_base.py/TestIndex",
+        "Original Line": 841,
+        "Updated Line": 855,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_isin_nan_common_object from the module pandas/tests/indexes/test_base.py in class TestIndex"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_inv",
+        "Updated": "test_inv",
+        "Location": "pandas/tests/indexes/test_old_base.py/TestBase",
+        "Original Line": 843,
+        "Updated Line": 849,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_inv from the module pandas/tests/indexes/test_old_base.py in class TestBase"
+        ],
+        "Commit": "91ddc8b66a0eef9312014387ce0108f1be29a3a9"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_str_cat",
+        "Updated": "test_str_cat",
+        "Location": "pandas/tests/strings/test_cat.py",
+        "Original Line": 29,
+        "Updated Line": 35,
+        "Description": [
+            "The parameters [ infer_string ] are added to the method test_str_cat from the module pandas/tests/strings/test_cat.py"
+        ],
+        "Commit": "a3626f27f297b1d22b0690548fd3c5016e7522d4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_str_cat_categorical",
+        "Updated": "test_str_cat_categorical",
+        "Location": "pandas/tests/strings/test_cat.py",
+        "Original Line": 84,
+        "Updated Line": 94,
+        "Description": [
+            "The parameters [ infer_string ] are added to the method test_str_cat_categorical from the module pandas/tests/strings/test_cat.py"
+        ],
+        "Commit": "a3626f27f297b1d22b0690548fd3c5016e7522d4"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "_reconstructed_codes",
+        "Updated": "reconstructed_codes",
+        "Location": "pandas/core/groupby/ops.py/BinGrouper",
+        "Original Line": 1104,
+        "Updated Line": 1082,
+        "Description": [
+            "The method _reconstructed_codes from the module pandas/core/groupby/ops.py in class BinGrouper is renamed to reconstructed_codes"
+        ],
+        "Commit": "ac170fdc3570b55bfcaf44b8587825bcb274bc60"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "_where",
+        "Updated": "_where",
+        "Location": "pandas/core/generic.py/NDFrame",
+        "Original Line": 10574,
+        "Updated Line": 10574,
+        "Description": [
+            "The parameters [ warn ] are added to the method _where from the module pandas/core/generic.py in class NDFrame"
+        ],
+        "Commit": "ae76ad49003536f02e697fb6077c4ec3a90ce048"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "putmask",
+        "Updated": "putmask",
+        "Location": "pandas/core/internals/base.py/DataManager",
+        "Original Line": 199,
+        "Updated Line": 212,
+        "Description": [
+            "The parameters [ warn ] are added to the method putmask from the module pandas/core/internals/base.py in class DataManager"
+        ],
+        "Commit": "ae76ad49003536f02e697fb6077c4ec3a90ce048"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "putmask",
+        "Updated": "putmask",
+        "Location": "pandas/core/internals/blocks.py/Block",
+        "Original Line": 1358,
+        "Updated Line": 1382,
+        "Description": [
+            "The parameters [ already_warned ] are added to the method putmask from the module pandas/core/internals/blocks.py in class Block"
+        ],
+        "Commit": "ae76ad49003536f02e697fb6077c4ec3a90ce048"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "putmask",
+        "Updated": "putmask",
+        "Location": "pandas/core/internals/blocks.py/EABackedBlock",
+        "Original Line": 2023,
+        "Updated Line": 2062,
+        "Description": [
+            "The parameters [ already_warned ] are added to the method putmask from the module pandas/core/internals/blocks.py in class EABackedBlock"
+        ],
+        "Commit": "ae76ad49003536f02e697fb6077c4ec3a90ce048"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_series_setitem",
+        "Updated": "test_series_setitem",
+        "Location": "pandas/tests/copy_view/test_chained_assignment_deprecation.py",
+        "Original Line": 79,
+        "Updated Line": 79,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_series_setitem from the module pandas/tests/copy_view/test_chained_assignment_deprecation.py"
+        ],
+        "Commit": "ae76ad49003536f02e697fb6077c4ec3a90ce048"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_clip_inplace_reference",
+        "Updated": "test_clip_inplace_reference",
+        "Location": "pandas/tests/copy_view/test_clip.py",
+        "Original Line": 11,
+        "Updated Line": 11,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_clip_inplace_reference from the module pandas/tests/copy_view/test_clip.py"
+        ],
+        "Commit": "ae76ad49003536f02e697fb6077c4ec3a90ce048"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_putmask",
+        "Updated": "test_putmask",
+        "Location": "pandas/tests/copy_view/test_methods.py",
+        "Original Line": 1410,
+        "Updated Line": 1410,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_putmask from the module pandas/tests/copy_view/test_methods.py"
+        ],
+        "Commit": "ae76ad49003536f02e697fb6077c4ec3a90ce048"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_putmask_dont_copy_some_blocks",
+        "Updated": "test_putmask_dont_copy_some_blocks",
+        "Location": "pandas/tests/copy_view/test_methods.py",
+        "Original Line": 1448,
+        "Updated Line": 1449,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_putmask_dont_copy_some_blocks from the module pandas/tests/copy_view/test_methods.py"
+        ],
+        "Commit": "ae76ad49003536f02e697fb6077c4ec3a90ce048"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_update_series",
+        "Updated": "test_update_series",
+        "Location": "pandas/tests/copy_view/test_methods.py",
+        "Original Line": 1799,
+        "Updated Line": 1806,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_update_series from the module pandas/tests/copy_view/test_methods.py"
+        ],
+        "Commit": "ae76ad49003536f02e697fb6077c4ec3a90ce048"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_masking_inplace",
+        "Updated": "test_masking_inplace",
+        "Location": "pandas/tests/copy_view/test_replace.py",
+        "Original Line": 282,
+        "Updated Line": 282,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_masking_inplace from the module pandas/tests/copy_view/test_replace.py"
+        ],
+        "Commit": "ae76ad49003536f02e697fb6077c4ec3a90ce048"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_describe",
+        "Updated": "test_describe",
+        "Location": "pandas/tests/arrays/categorical/test_api.py/TestCategoricalAPIWithFactor",
+        "Original Line": 388,
+        "Updated Line": 388,
+        "Description": [
+            "The parameters [ factor ] of the method test_describe from the module pandas/tests/arrays/categorical/test_api.py in class TestCategoricalAPIWithFactor is/are removed"
+        ],
+        "Commit": "b0c2e45997e8f164a181ce8e896dfb414e3eb60c"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_getitem",
+        "Updated": "test_getitem",
+        "Location": "pandas/tests/arrays/categorical/test_indexing.py/TestCategoricalIndexingWithFactor",
+        "Original Line": 24,
+        "Updated Line": 24,
+        "Description": [
+            "The parameters [ factor ] of the method test_getitem from the module pandas/tests/arrays/categorical/test_indexing.py in class TestCategoricalIndexingWithFactor is/are removed"
+        ],
+        "Commit": "b0c2e45997e8f164a181ce8e896dfb414e3eb60c"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_setitem",
+        "Updated": "test_setitem",
+        "Location": "pandas/tests/arrays/categorical/test_indexing.py/TestCategoricalIndexingWithFactor",
+        "Original Line": 34,
+        "Updated Line": 35,
+        "Description": [
+            "The parameters [ factor ] of the method test_setitem from the module pandas/tests/arrays/categorical/test_indexing.py in class TestCategoricalIndexingWithFactor is/are removed"
+        ],
+        "Commit": "b0c2e45997e8f164a181ce8e896dfb414e3eb60c"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_comparisons",
+        "Updated": "test_comparisons",
+        "Location": "pandas/tests/arrays/categorical/test_operators.py/TestCategoricalOpsWithFactor",
+        "Original Line": 20,
+        "Updated Line": 20,
+        "Description": [
+            "The parameters [ factor ] of the method test_comparisons from the module pandas/tests/arrays/categorical/test_operators.py in class TestCategoricalOpsWithFactor is/are removed"
+        ],
+        "Commit": "b0c2e45997e8f164a181ce8e896dfb414e3eb60c"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_print",
+        "Updated": "test_print",
+        "Location": "pandas/tests/arrays/categorical/test_repr.py/TestCategoricalReprWithFactor",
+        "Original Line": 20,
+        "Updated Line": 20,
+        "Description": [
+            "The parameters [ factor ] of the method test_print from the module pandas/tests/arrays/categorical/test_repr.py in class TestCategoricalReprWithFactor is/are removed"
+        ],
+        "Commit": "b0c2e45997e8f164a181ce8e896dfb414e3eb60c"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_Mult1",
+        "Updated": "test_Mult1",
+        "Location": "pandas/tests/tseries/offsets/test_common.py",
+        "Original Line": 253,
+        "Updated Line": 253,
+        "Description": [
+            "The parameters [ dt ] of the method test_Mult1 from the module pandas/tests/tseries/offsets/test_common.py is/are removed"
+        ],
+        "Commit": "b0c2e45997e8f164a181ce8e896dfb414e3eb60c"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "TestSetitem",
+        "Updated": "TestNumpyExtensionArray",
+        "Location": "pandas/tests/extension/test_numpy.py",
+        "Description": " class TestSetitem was renamed to class TestNumpyExtensionArray ",
+        "Commit": "bb14870efaee648b9aceeddaf081cc3988f413a1"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_object_comparisons",
+        "Updated": "test_object_comparisons",
+        "Location": "pandas/tests/arithmetic/test_object.py/TestObjectComparisons",
+        "Original Line": 36,
+        "Updated Line": 42,
+        "Description": [
+            "The parameters [ infer_string ] are added to the method test_object_comparisons from the module pandas/tests/arithmetic/test_object.py in class TestObjectComparisons"
+        ],
+        "Commit": "c369d93cf7c82455bd3dd98233c7c09d8c567025"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "test_dtype_univalent",
+        "Updated": "test_dtype_idempotent",
+        "Location": "pandas/tests/arrays/numpy_/test_numpy.py",
+        "Original Line": 90,
+        "Updated Line": 90,
+        "Description": [
+            "The method test_dtype_univalent from the module pandas/tests/arrays/numpy_/test_numpy.py is renamed to test_dtype_idempotent"
+        ],
+        "Commit": "cbe1b321d928bb00ab9809f109ab483db2bb6b2d"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_fillna_args",
+        "Updated": "test_fillna_args",
+        "Location": "pandas/tests/arrays/string_/test_string.py",
+        "Original Line": 466,
+        "Updated Line": 466,
+        "Description": [
+            "The parameters [ request ] of the method test_fillna_args from the module pandas/tests/arrays/string_/test_string.py is/are removed"
+        ],
+        "Commit": "cbe1b321d928bb00ab9809f109ab483db2bb6b2d"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "test_dti_construction_univalent",
+        "Updated": "test_dti_construction_idempotent",
+        "Location": "pandas/tests/indexes/datetimes/test_constructors.py/TestDatetimeIndex",
+        "Original Line": 962,
+        "Updated Line": 962,
+        "Description": [
+            "The method test_dti_construction_univalent from the module pandas/tests/indexes/datetimes/test_constructors.py in class TestDatetimeIndex is renamed to test_dti_construction_idempotent"
+        ],
+        "Commit": "cbe1b321d928bb00ab9809f109ab483db2bb6b2d"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_setitem",
+        "Updated": "test_setitem",
+        "Location": "pandas/tests/frame/indexing/test_indexing.py/TestDataFrameIndexing",
+        "Original Line": 291,
+        "Updated Line": 291,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_setitem from the module pandas/tests/frame/indexing/test_indexing.py in class TestDataFrameIndexing"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_setitem_None",
+        "Updated": "test_setitem_None",
+        "Location": "pandas/tests/frame/indexing/test_indexing.py/TestDataFrameIndexing",
+        "Original Line": 504,
+        "Updated Line": 518,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_setitem_None from the module pandas/tests/frame/indexing/test_indexing.py in class TestDataFrameIndexing"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_setitem_ambig",
+        "Updated": "test_setitem_ambig",
+        "Location": "pandas/tests/frame/indexing/test_indexing.py/TestDataFrameIndexing",
+        "Original Line": 486,
+        "Updated Line": 497,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_setitem_ambig from the module pandas/tests/frame/indexing/test_indexing.py in class TestDataFrameIndexing"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_setitem_corner",
+        "Updated": "test_setitem_corner",
+        "Location": "pandas/tests/frame/indexing/test_indexing.py/TestDataFrameIndexing",
+        "Original Line": 429,
+        "Updated Line": 434,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_setitem_corner from the module pandas/tests/frame/indexing/test_indexing.py in class TestDataFrameIndexing"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_set_value_resize",
+        "Updated": "test_set_value_resize",
+        "Location": "pandas/tests/frame/indexing/test_set_value.py/TestSetValue",
+        "Original Line": 19,
+        "Updated Line": 19,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_set_value_resize from the module pandas/tests/frame/indexing/test_set_value.py in class TestSetValue"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_where_int_overflow",
+        "Updated": "test_where_int_overflow",
+        "Location": "pandas/tests/frame/indexing/test_where.py",
+        "Original Line": 1080,
+        "Updated Line": 1080,
+        "Description": [
+            "The parameters [ using_infer_string request ] are added to the method test_where_int_overflow from the module pandas/tests/frame/indexing/test_where.py"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_astype_dt64_to_string",
+        "Updated": "test_astype_dt64_to_string",
+        "Location": "pandas/tests/frame/methods/test_astype.py/TestAstype",
+        "Original Line": 757,
+        "Updated Line": 760,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_astype_dt64_to_string from the module pandas/tests/frame/methods/test_astype.py in class TestAstype"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_combine_first",
+        "Updated": "test_combine_first",
+        "Location": "pandas/tests/frame/methods/test_combine_first.py/TestDataFrameCombineFirst",
+        "Original Line": 33,
+        "Updated Line": 33,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_combine_first from the module pandas/tests/frame/methods/test_combine_first.py in class TestDataFrameCombineFirst"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_convert_dtypes",
+        "Updated": "test_convert_dtypes",
+        "Location": "pandas/tests/frame/methods/test_convert_dtypes.py/TestConvertDtypes",
+        "Original Line": 14,
+        "Updated Line": 14,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_convert_dtypes from the module pandas/tests/frame/methods/test_convert_dtypes.py in class TestConvertDtypes"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_corrwith_with_objects",
+        "Updated": "test_corrwith_with_objects",
+        "Location": "pandas/tests/frame/methods/test_cov_corr.py/TestDataFrameCorrWith",
+        "Original Line": 329,
+        "Updated Line": 329,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_corrwith_with_objects from the module pandas/tests/frame/methods/test_cov_corr.py in class TestDataFrameCorrWith"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_frame_apply_np_array_return_type",
+        "Updated": "test_frame_apply_np_array_return_type",
+        "Location": "pandas/tests/frame/methods/test_dtypes.py/TestDataFrameDataTypes",
+        "Original Line": 145,
+        "Updated Line": 145,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_frame_apply_np_array_return_type from the module pandas/tests/frame/methods/test_dtypes.py in class TestDataFrameDataTypes"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_equals_different_blocks",
+        "Updated": "test_equals_different_blocks",
+        "Location": "pandas/tests/frame/methods/test_equals.py/TestEquals",
+        "Original Line": 17,
+        "Updated Line": 17,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_equals_different_blocks from the module pandas/tests/frame/methods/test_equals.py in class TestEquals"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_fillna_different_dtype",
+        "Updated": "test_fillna_different_dtype",
+        "Location": "pandas/tests/frame/methods/test_fillna.py/TestFillNA",
+        "Original Line": 125,
+        "Updated Line": 128,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_fillna_different_dtype from the module pandas/tests/frame/methods/test_fillna.py in class TestFillNA"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_fillna_dtype_conversion",
+        "Updated": "test_fillna_dtype_conversion",
+        "Location": "pandas/tests/frame/methods/test_fillna.py/TestFillNA",
+        "Original Line": 361,
+        "Updated Line": 372,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_fillna_dtype_conversion from the module pandas/tests/frame/methods/test_fillna.py in class TestFillNA"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_get_numeric_data",
+        "Updated": "test_get_numeric_data",
+        "Location": "pandas/tests/frame/methods/test_get_numeric_data.py/TestGetNumericData",
+        "Original Line": 23,
+        "Updated Line": 23,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_get_numeric_data from the module pandas/tests/frame/methods/test_get_numeric_data.py in class TestGetNumericData"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_interp_basic_with_non_range_index",
+        "Updated": "test_interp_basic_with_non_range_index",
+        "Location": "pandas/tests/frame/methods/test_interpolate.py/TestDataFrameInterpolate",
+        "Original Line": 111,
+        "Updated Line": 119,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_interp_basic_with_non_range_index from the module pandas/tests/frame/methods/test_interpolate.py in class TestDataFrameInterpolate"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_rank_object_first",
+        "Updated": "test_rank_object_first",
+        "Location": "pandas/tests/frame/methods/test_rank.py/TestRank",
+        "Original Line": 472,
+        "Updated Line": 473,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_rank_object_first from the module pandas/tests/frame/methods/test_rank.py in class TestRank"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_regex_replace_dict_nested_non_first_character",
+        "Updated": "test_regex_replace_dict_nested_non_first_character",
+        "Location": "pandas/tests/frame/methods/test_replace.py/TestDataFrameReplace",
+        "Original Line": 281,
+        "Updated Line": 286,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_regex_replace_dict_nested_non_first_character from the module pandas/tests/frame/methods/test_replace.py in class TestDataFrameReplace"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_replace_intervals",
+        "Updated": "test_replace_intervals",
+        "Location": "pandas/tests/frame/methods/test_replace.py/TestDataFrameReplace",
+        "Original Line": 1494,
+        "Updated Line": 1569,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_replace_intervals from the module pandas/tests/frame/methods/test_replace.py in class TestDataFrameReplace"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_replace_mixed2",
+        "Updated": "test_replace_mixed2",
+        "Location": "pandas/tests/frame/methods/test_replace.py/TestDataFrameReplace",
+        "Original Line": 591,
+        "Updated Line": 641,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_replace_mixed2 from the module pandas/tests/frame/methods/test_replace.py in class TestDataFrameReplace"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_replace_swapping_bug",
+        "Updated": "test_replace_swapping_bug",
+        "Location": "pandas/tests/frame/methods/test_replace.py/TestDataFrameReplace",
+        "Original Line": 1052,
+        "Updated Line": 1118,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_replace_swapping_bug from the module pandas/tests/frame/methods/test_replace.py in class TestDataFrameReplace"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_reset_index_dtypes_on_empty_frame_with_multiindex",
+        "Updated": "test_reset_index_dtypes_on_empty_frame_with_multiindex",
+        "Location": "pandas/tests/frame/methods/test_reset_index.py",
+        "Original Line": 657,
+        "Updated Line": 657,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_reset_index_dtypes_on_empty_frame_with_multiindex from the module pandas/tests/frame/methods/test_reset_index.py"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_reset_index_empty_frame_with_datetime64_multiindex_from_groupby",
+        "Updated": "test_reset_index_empty_frame_with_datetime64_multiindex_from_groupby",
+        "Location": "pandas/tests/frame/methods/test_reset_index.py",
+        "Original Line": 679,
+        "Updated Line": 683,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_reset_index_empty_frame_with_datetime64_multiindex_from_groupby from the module pandas/tests/frame/methods/test_reset_index.py"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_select_dtypes_not_an_attr_but_still_valid_dtype",
+        "Updated": "test_select_dtypes_not_an_attr_but_still_valid_dtype",
+        "Location": "pandas/tests/frame/methods/test_select_dtypes.py/TestSelectDtypes",
+        "Original Line": 285,
+        "Updated Line": 285,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_select_dtypes_not_an_attr_but_still_valid_dtype from the module pandas/tests/frame/methods/test_select_dtypes.py in class TestSelectDtypes"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_to_csv_interval_index",
+        "Updated": "test_to_csv_interval_index",
+        "Location": "pandas/tests/frame/methods/test_to_csv.py/TestDataFrameToCSV",
+        "Original Line": 685,
+        "Updated Line": 685,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_to_csv_interval_index from the module pandas/tests/frame/methods/test_to_csv.py in class TestDataFrameToCSV"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_update_modify_view",
+        "Updated": "test_update_modify_view",
+        "Location": "pandas/tests/frame/methods/test_update.py/TestDataFrameUpdate",
+        "Original Line": 173,
+        "Updated Line": 179,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_update_modify_view from the module pandas/tests/frame/methods/test_update.py in class TestDataFrameUpdate"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_construction_with_mixed",
+        "Updated": "test_construction_with_mixed",
+        "Location": "pandas/tests/frame/test_block_internals.py/TestDataFrameBlockInternals",
+        "Original Line": 186,
+        "Updated Line": 186,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_construction_with_mixed from the module pandas/tests/frame/test_block_internals.py in class TestDataFrameBlockInternals"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_constructor_dict_cast",
+        "Updated": "test_constructor_dict_cast",
+        "Location": "pandas/tests/frame/test_constructors.py/TestDataFrameConstructors",
+        "Original Line": 776,
+        "Updated Line": 781,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_constructor_dict_cast from the module pandas/tests/frame/test_constructors.py in class TestDataFrameConstructors"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_constructor_for_list_with_dtypes",
+        "Updated": "test_constructor_for_list_with_dtypes",
+        "Location": "pandas/tests/frame/test_constructors.py/TestDataFrameConstructors",
+        "Original Line": 2069,
+        "Updated Line": 2074,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_constructor_for_list_with_dtypes from the module pandas/tests/frame/test_constructors.py in class TestDataFrameConstructors"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_constructor_list_of_lists",
+        "Updated": "test_constructor_list_of_lists",
+        "Location": "pandas/tests/frame/test_constructors.py/TestDataFrameConstructors",
+        "Original Line": 1285,
+        "Updated Line": 1290,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_constructor_list_of_lists from the module pandas/tests/frame/test_constructors.py in class TestDataFrameConstructors"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_constructor_scalar_inference",
+        "Updated": "test_constructor_scalar_inference",
+        "Location": "pandas/tests/frame/test_constructors.py/TestDataFrameConstructors",
+        "Original Line": 1198,
+        "Updated Line": 1203,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_constructor_scalar_inference from the module pandas/tests/frame/test_constructors.py in class TestDataFrameConstructors"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_constructor_with_datetimes",
+        "Updated": "test_constructor_with_datetimes",
+        "Location": "pandas/tests/frame/test_constructors.py/TestDataFrameConstructors",
+        "Original Line": 1838,
+        "Updated Line": 1843,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_constructor_with_datetimes from the module pandas/tests/frame/test_constructors.py in class TestDataFrameConstructors"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_logical_ops_invalid",
+        "Updated": "test_logical_ops_invalid",
+        "Location": "pandas/tests/frame/test_logical_ops.py/TestDataFrameLogicalOperators",
+        "Original Line": 99,
+        "Updated Line": 99,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_logical_ops_invalid from the module pandas/tests/frame/test_logical_ops.py in class TestDataFrameLogicalOperators"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_object_array_eq_ne",
+        "Updated": "test_object_array_eq_ne",
+        "Location": "pandas/tests/frame/test_query_eval.py/TestDataFrameQueryStrings",
+        "Original Line": 1038,
+        "Updated Line": 1038,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_object_array_eq_ne from the module pandas/tests/frame/test_query_eval.py in class TestDataFrameQueryStrings"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_query_lex_compare_strings",
+        "Updated": "test_query_lex_compare_strings",
+        "Location": "pandas/tests/frame/test_query_eval.py/TestDataFrameQueryStrings",
+        "Original Line": 1090,
+        "Updated Line": 1093,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_query_lex_compare_strings from the module pandas/tests/frame/test_query_eval.py in class TestDataFrameQueryStrings"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_any_all_object_dtype",
+        "Updated": "test_any_all_object_dtype",
+        "Location": "pandas/tests/frame/test_reductions.py/TestDataFrameAnalytics",
+        "Original Line": 1344,
+        "Updated Line": 1365,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_any_all_object_dtype from the module pandas/tests/frame/test_reductions.py in class TestDataFrameAnalytics"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_mode_sortwarning",
+        "Updated": "test_mode_sortwarning",
+        "Location": "pandas/tests/frame/test_reductions.py/TestDataFrameAnalytics",
+        "Original Line": 675,
+        "Updated Line": 694,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_mode_sortwarning from the module pandas/tests/frame/test_reductions.py in class TestDataFrameAnalytics"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_stat_op_api_float_string_frame",
+        "Updated": "test_stat_op_api_float_string_frame",
+        "Location": "pandas/tests/frame/test_reductions.py/TestDataFrameAnalytics",
+        "Original Line": 246,
+        "Updated Line": 248,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_stat_op_api_float_string_frame from the module pandas/tests/frame/test_reductions.py in class TestDataFrameAnalytics"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_unstack_dtypes",
+        "Updated": "test_unstack_dtypes",
+        "Location": "pandas/tests/frame/test_stack_unstack.py/TestDataFrameReshape",
+        "Original Line": 622,
+        "Updated Line": 622,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_unstack_dtypes from the module pandas/tests/frame/test_stack_unstack.py in class TestDataFrameReshape"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_unstack_preserve_types",
+        "Updated": "test_unstack_preserve_types",
+        "Location": "pandas/tests/frame/test_stack_unstack.py/TestStackUnstackMultiLevel",
+        "Original Line": 2300,
+        "Updated Line": 2303,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_unstack_preserve_types from the module pandas/tests/frame/test_stack_unstack.py in class TestStackUnstackMultiLevel"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_apply_datetime_issue",
+        "Updated": "test_apply_datetime_issue",
+        "Location": "pandas/tests/groupby/test_apply.py",
+        "Original Line": 944,
+        "Updated Line": 947,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_apply_datetime_issue from the module pandas/tests/groupby/test_apply.py"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_apply_index_date",
+        "Updated": "test_apply_index_date",
+        "Location": "pandas/tests/groupby/test_apply.py",
+        "Original Line": 40,
+        "Updated Line": 40,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_apply_index_date from the module pandas/tests/groupby/test_apply.py"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_apply_index_date_object",
+        "Updated": "test_apply_index_date_object",
+        "Location": "pandas/tests/groupby/test_apply.py",
+        "Original Line": 80,
+        "Updated Line": 80,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_apply_index_date_object from the module pandas/tests/groupby/test_apply.py"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_apply_trivial",
+        "Updated": "test_apply_trivial",
+        "Location": "pandas/tests/groupby/test_apply.py",
+        "Original Line": 124,
+        "Updated Line": 125,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_apply_trivial from the module pandas/tests/groupby/test_apply.py"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_apply_trivial_fail",
+        "Updated": "test_apply_trivial_fail",
+        "Location": "pandas/tests/groupby/test_apply.py",
+        "Original Line": 141,
+        "Updated Line": 143,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_apply_trivial_fail from the module pandas/tests/groupby/test_apply.py"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_groupby_apply_datetime_result_dtypes",
+        "Updated": "test_groupby_apply_datetime_result_dtypes",
+        "Location": "pandas/tests/groupby/test_apply.py",
+        "Original Line": 1024,
+        "Updated Line": 1026,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_groupby_apply_datetime_result_dtypes from the module pandas/tests/groupby/test_apply.py"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_basic",
+        "Updated": "test_basic",
+        "Location": "pandas/tests/groupby/test_categorical.py",
+        "Original Line": 85,
+        "Updated Line": 85,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_basic from the module pandas/tests/groupby/test_categorical.py"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_empty_groupby",
+        "Updated": "test_empty_groupby",
+        "Location": "pandas/tests/groupby/test_groupby.py",
+        "Original Line": 2027,
+        "Updated Line": 2034,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_empty_groupby from the module pandas/tests/groupby/test_groupby.py"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_groupby_complex_numbers",
+        "Updated": "test_groupby_complex_numbers",
+        "Location": "pandas/tests/groupby/test_groupby.py",
+        "Original Line": 1196,
+        "Updated Line": 1198,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_groupby_complex_numbers from the module pandas/tests/groupby/test_groupby.py"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_set_group_name",
+        "Updated": "test_set_group_name",
+        "Location": "pandas/tests/groupby/test_groupby.py",
+        "Original Line": 1723,
+        "Updated Line": 1726,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_set_group_name from the module pandas/tests/groupby/test_groupby.py"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_axis1_numeric_only",
+        "Updated": "test_axis1_numeric_only",
+        "Location": "pandas/tests/groupby/test_numeric_only.py",
+        "Original Line": 209,
+        "Updated Line": 211,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_axis1_numeric_only from the module pandas/tests/groupby/test_numeric_only.py"
+        ],
+        "Commit": "ce4169ac51d20786864157912072b68ae331dc52"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_timestamp_with_timezone",
+        "Updated": "test_timestamp_with_timezone",
+        "Location": "pandas/tests/indexes/interval/test_formats.py/TestIntervalIndexRendering",
+        "Original Line": 103,
+        "Updated Line": 104,
+        "Description": [
+            "The parameters [ unit ] are added to the method test_timestamp_with_timezone from the module pandas/tests/indexes/interval/test_formats.py in class TestIntervalIndexRendering"
+        ],
+        "Commit": "d44f6c11909616209ae14dd5805c378f6abbef19"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_dtype_backend",
+        "Updated": "test_dtype_backend",
+        "Location": "pandas/tests/io/excel/test_readers.py/TestReaders",
+        "Original Line": 581,
+        "Updated Line": 594,
+        "Description": [
+            "The parameters [ engine ] are added to the method test_dtype_backend from the module pandas/tests/io/excel/test_readers.py in class TestReaders"
+        ],
+        "Commit": "d44f6c11909616209ae14dd5805c378f6abbef19"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method",
+            "Change/Rename Parameter"
+        ],
+        "Original": "adjust_expected",
+        "Updated": "get_exp_unit",
+        "Location": "pandas/tests/io/excel/test_readers.py",
+        "Original Line": 133,
+        "Updated Line": 135,
+        "Description": [
+            "The method adjust_expected from the module pandas/tests/io/excel/test_readers.py is renamed to get_exp_unit",
+            "The parameters [ expected ] of the method adjust_expected from the module pandas/tests/io/excel/test_readers.py are changed/renamed to [engine]"
+        ],
+        "Commit": "d44f6c11909616209ae14dd5805c378f6abbef19"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_series",
+        "Updated": "test_series",
+        "Location": "pandas/tests/tools/test_to_numeric.py",
+        "Original Line": 71,
+        "Updated Line": 77,
+        "Description": [
+            "The parameters [ infer_string ] are added to the method test_series from the module pandas/tests/tools/test_to_numeric.py"
+        ],
+        "Commit": "d47ad02987402273c9b012a9124b0fcd0930b9ba"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_series_midx_slice",
+        "Updated": "test_series_midx_slice",
+        "Location": "pandas/tests/copy_view/test_indexing.py",
+        "Original Line": 1144,
+        "Updated Line": 1144,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_series_midx_slice from the module pandas/tests/copy_view/test_indexing.py"
+        ],
+        "Commit": "dd7c34f1f3c32bc51ebcf4f9c22389c01ee1df62"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_series_midx_tuples_slice",
+        "Updated": "test_series_midx_tuples_slice",
+        "Location": "pandas/tests/copy_view/test_indexing.py",
+        "Original Line": 1184,
+        "Updated Line": 1186,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_series_midx_tuples_slice from the module pandas/tests/copy_view/test_indexing.py"
+        ],
+        "Commit": "dd7c34f1f3c32bc51ebcf4f9c22389c01ee1df62"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "test_str_unsupported_extract",
+        "Updated": "test_str_extract_non_symbolic",
+        "Location": "pandas/tests/extension/test_arrow.py",
+        "Original Line": 2162,
+        "Updated Line": 2162,
+        "Description": [
+            "The method test_str_unsupported_extract from the module pandas/tests/extension/test_arrow.py is renamed to test_str_extract_non_symbolic"
+        ],
+        "Commit": "df7498f2192d660ff79b466d6431f5553ff458f5"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_assignment_single_assign_local_overlap",
+        "Updated": "test_assignment_single_assign_local_overlap",
+        "Location": "pandas/tests/computation/test_eval.py/TestOperations",
+        "Original Line": 1178,
+        "Updated Line": 1176,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] of the method test_assignment_single_assign_local_overlap from the module pandas/tests/computation/test_eval.py in class TestOperations is/are removed"
+        ],
+        "Commit": "e0f3a188f9c0b5c334dffe11a5a3ab47fe0870b4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_multi_line_expression",
+        "Updated": "test_multi_line_expression",
+        "Location": "pandas/tests/computation/test_eval.py/TestOperations",
+        "Original Line": 1247,
+        "Updated Line": 1243,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_multi_line_expression from the module pandas/tests/computation/test_eval.py in class TestOperations"
+        ],
+        "Commit": "e0f3a188f9c0b5c334dffe11a5a3ab47fe0870b4"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_check_dtype",
+        "Updated": "test_check_dtype",
+        "Location": "pandas/tests/extension/test_numpy.py/TestDtype",
+        "Original Line": 199,
+        "Updated Line": 199,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_check_dtype from the module pandas/tests/extension/test_numpy.py in class TestDtype"
+        ],
+        "Commit": "e3073b503527c17ed8bed848f534db8188428b71"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_mixed_column_raises",
+        "Updated": "test_mixed_column_raises",
+        "Location": "pandas/tests/apply/test_frame_apply.py",
+        "Original Line": 1467,
+        "Updated Line": 1467,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_mixed_column_raises from the module pandas/tests/apply/test_frame_apply.py"
+        ],
+        "Commit": "eb7a8c85d2ad92164d5de5d19118214462e427b8"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_agg_cython_table_raises_frame",
+        "Updated": "test_agg_cython_table_raises_frame",
+        "Location": "pandas/tests/apply/test_invalid_arg.py",
+        "Original Line": 227,
+        "Updated Line": 227,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_agg_cython_table_raises_frame from the module pandas/tests/apply/test_invalid_arg.py"
+        ],
+        "Commit": "eb7a8c85d2ad92164d5de5d19118214462e427b8"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_agg_cython_table_raises_series",
+        "Updated": "test_agg_cython_table_raises_series",
+        "Location": "pandas/tests/apply/test_invalid_arg.py",
+        "Original Line": 252,
+        "Updated Line": 257,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_agg_cython_table_raises_series from the module pandas/tests/apply/test_invalid_arg.py"
+        ],
+        "Commit": "eb7a8c85d2ad92164d5de5d19118214462e427b8"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_apply_categorical",
+        "Updated": "test_apply_categorical",
+        "Location": "pandas/tests/apply/test_series_apply.py",
+        "Original Line": 225,
+        "Updated Line": 225,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_apply_categorical from the module pandas/tests/apply/test_series_apply.py"
+        ],
+        "Commit": "eb7a8c85d2ad92164d5de5d19118214462e427b8"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "_from_sequence",
+        "Updated": "_from_sequence",
+        "Location": "pandas/core/arrays/string_arrow.py/ArrowStringArray",
+        "Original Line": 153,
+        "Updated Line": 153,
+        "Description": [
+            "The parameters [ dtype copy ] of the method _from_sequence from the module pandas/core/arrays/string_arrow.py in class ArrowStringArray is/are removed"
+        ],
+        "Commit": "ee4ceec8e313c83bbbb53309e412b470ab13a642"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "_from_sequence",
+        "Updated": "_from_sequence",
+        "Location": "pandas/tests/extension/list/array.py/ListArray",
+        "Original Line": 57,
+        "Updated Line": 57,
+        "Description": [
+            "The parameters [ dtype copy ] of the method _from_sequence from the module pandas/tests/extension/list/array.py in class ListArray is/are removed"
+        ],
+        "Commit": "ee4ceec8e313c83bbbb53309e412b470ab13a642"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_apply_mutating",
+        "Updated": "test_apply_mutating",
+        "Location": "pandas/tests/apply/test_frame_apply.py",
+        "Original Line": 1490,
+        "Updated Line": 1490,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_apply_mutating from the module pandas/tests/apply/test_frame_apply.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_df_mod_zero_df",
+        "Updated": "test_df_mod_zero_df",
+        "Location": "pandas/tests/arithmetic/test_numeric.py/TestDivisionByZero",
+        "Original Line": 589,
+        "Updated Line": 589,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_df_mod_zero_df from the module pandas/tests/arithmetic/test_numeric.py in class TestDivisionByZero is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_td64arr_floordiv_td64arr_with_nat",
+        "Updated": "test_td64arr_floordiv_td64arr_with_nat",
+        "Location": "pandas/tests/arithmetic/test_timedelta64.py/TestTimedeltaArraylikeMulDivOps",
+        "Original Line": 1739,
+        "Updated Line": 1739,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_td64arr_floordiv_td64arr_with_nat from the module pandas/tests/arithmetic/test_timedelta64.py in class TestTimedeltaArraylikeMulDivOps is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_dataframe_array_string_dtype",
+        "Updated": "test_dataframe_array_string_dtype",
+        "Location": "pandas/tests/copy_view/test_array.py",
+        "Original Line": 160,
+        "Updated Line": 157,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_dataframe_array_string_dtype from the module pandas/tests/copy_view/test_array.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_dataframe_values",
+        "Updated": "test_dataframe_values",
+        "Location": "pandas/tests/copy_view/test_array.py",
+        "Original Line": 51,
+        "Updated Line": 51,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_dataframe_values from the module pandas/tests/copy_view/test_array.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_frame_from_numpy_array",
+        "Updated": "test_frame_from_numpy_array",
+        "Location": "pandas/tests/copy_view/test_constructors.py",
+        "Original Line": 342,
+        "Updated Line": 342,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_frame_from_numpy_array from the module pandas/tests/copy_view/test_constructors.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_column_as_series",
+        "Updated": "test_column_as_series",
+        "Location": "pandas/tests/copy_view/test_indexing.py",
+        "Original Line": 970,
+        "Updated Line": 932,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_column_as_series from the module pandas/tests/copy_view/test_indexing.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_column_as_series_no_item_cache",
+        "Updated": "test_column_as_series_no_item_cache",
+        "Location": "pandas/tests/copy_view/test_indexing.py",
+        "Original Line": 1060,
+        "Updated Line": 1020,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_column_as_series_no_item_cache from the module pandas/tests/copy_view/test_indexing.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_column_as_series_set_with_upcast",
+        "Updated": "test_column_as_series_set_with_upcast",
+        "Location": "pandas/tests/copy_view/test_indexing.py",
+        "Original Line": 1006,
+        "Updated Line": 966,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_column_as_series_set_with_upcast from the module pandas/tests/copy_view/test_indexing.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_getitem_midx_slice",
+        "Updated": "test_getitem_midx_slice",
+        "Location": "pandas/tests/copy_view/test_indexing.py",
+        "Original Line": 1184,
+        "Updated Line": 1143,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_getitem_midx_slice from the module pandas/tests/copy_view/test_indexing.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_subset_chained_getitem",
+        "Updated": "test_subset_chained_getitem",
+        "Location": "pandas/tests/copy_view/test_indexing.py",
+        "Original Line": 597,
+        "Updated Line": 569,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_subset_chained_getitem from the module pandas/tests/copy_view/test_indexing.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_subset_chained_single_block_row",
+        "Updated": "test_subset_chained_single_block_row",
+        "Location": "pandas/tests/copy_view/test_indexing.py",
+        "Original Line": 729,
+        "Updated Line": 693,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_subset_chained_single_block_row from the module pandas/tests/copy_view/test_indexing.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_subset_column_slice",
+        "Updated": "test_subset_column_slice",
+        "Location": "pandas/tests/copy_view/test_indexing.py",
+        "Original Line": 143,
+        "Updated Line": 143,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_subset_column_slice from the module pandas/tests/copy_view/test_indexing.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_subset_iloc_rows_columns",
+        "Updated": "test_subset_iloc_rows_columns",
+        "Location": "pandas/tests/copy_view/test_indexing.py",
+        "Original Line": 263,
+        "Updated Line": 251,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_subset_iloc_rows_columns from the module pandas/tests/copy_view/test_indexing.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_subset_loc_rows_columns",
+        "Updated": "test_subset_loc_rows_columns",
+        "Location": "pandas/tests/copy_view/test_indexing.py",
+        "Original Line": 199,
+        "Updated Line": 195,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_subset_loc_rows_columns from the module pandas/tests/copy_view/test_indexing.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_subset_set_column_with_loc",
+        "Updated": "test_subset_set_column_with_loc",
+        "Location": "pandas/tests/copy_view/test_indexing.py",
+        "Original Line": 424,
+        "Updated Line": 404,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_subset_set_column_with_loc from the module pandas/tests/copy_view/test_indexing.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_subset_set_column_with_loc2",
+        "Updated": "test_subset_set_column_with_loc2",
+        "Location": "pandas/tests/copy_view/test_indexing.py",
+        "Original Line": 464,
+        "Updated Line": 441,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_subset_set_column_with_loc2 from the module pandas/tests/copy_view/test_indexing.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_methods_copy_keyword",
+        "Updated": "test_methods_copy_keyword",
+        "Location": "pandas/tests/copy_view/test_methods.py",
+        "Original Line": 122,
+        "Updated Line": 122,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_methods_copy_keyword from the module pandas/tests/copy_view/test_methods.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_transpose",
+        "Updated": "test_transpose",
+        "Location": "pandas/tests/copy_view/test_methods.py",
+        "Original Line": 1887,
+        "Updated Line": 1879,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_transpose from the module pandas/tests/copy_view/test_methods.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_transpose_copy_keyword",
+        "Updated": "test_transpose_copy_keyword",
+        "Location": "pandas/tests/copy_view/test_methods.py",
+        "Original Line": 230,
+        "Updated Line": 228,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_transpose_copy_keyword from the module pandas/tests/copy_view/test_methods.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_xs",
+        "Updated": "test_xs",
+        "Location": "pandas/tests/copy_view/test_methods.py",
+        "Original Line": 1721,
+        "Updated Line": 1718,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_xs from the module pandas/tests/copy_view/test_methods.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_xs_multiindex",
+        "Updated": "test_xs_multiindex",
+        "Location": "pandas/tests/copy_view/test_methods.py",
+        "Original Line": 1756,
+        "Updated Line": 1750,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_xs_multiindex from the module pandas/tests/copy_view/test_methods.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_replace_coerce_single_column",
+        "Updated": "test_replace_coerce_single_column",
+        "Location": "pandas/tests/copy_view/test_replace.py",
+        "Original Line": 121,
+        "Updated Line": 121,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_replace_coerce_single_column from the module pandas/tests/copy_view/test_replace.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_getitem_setitem_float_labels",
+        "Updated": "test_getitem_setitem_float_labels",
+        "Location": "pandas/tests/frame/indexing/test_indexing.py/TestDataFrameIndexing",
+        "Original Line": 742,
+        "Updated Line": 742,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_getitem_setitem_float_labels from the module pandas/tests/frame/indexing/test_indexing.py in class TestDataFrameIndexing is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_iloc_col_slice_view",
+        "Updated": "test_iloc_col_slice_view",
+        "Location": "pandas/tests/frame/indexing/test_indexing.py/TestDataFrameIndexing",
+        "Original Line": 1113,
+        "Updated Line": 1113,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_iloc_col_slice_view from the module pandas/tests/frame/indexing/test_indexing.py in class TestDataFrameIndexing is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_object_casting_indexing_wraps_datetimelike",
+        "Updated": "test_object_casting_indexing_wraps_datetimelike",
+        "Location": "pandas/tests/frame/indexing/test_indexing.py",
+        "Original Line": 1620,
+        "Updated Line": 1618,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_object_casting_indexing_wraps_datetimelike from the module pandas/tests/frame/indexing/test_indexing.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_insert_item_cache",
+        "Updated": "test_insert_item_cache",
+        "Location": "pandas/tests/frame/indexing/test_insert.py/TestDataFrameInsert",
+        "Original Line": 74,
+        "Updated Line": 74,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_insert_item_cache from the module pandas/tests/frame/indexing/test_insert.py in class TestDataFrameInsert is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_setitem_partial_column_inplace",
+        "Updated": "test_setitem_partial_column_inplace",
+        "Location": "pandas/tests/frame/indexing/test_setitem.py/TestDataFrameSetitemCopyViewSemantics",
+        "Original Line": 1211,
+        "Updated Line": 1211,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_setitem_partial_column_inplace from the module pandas/tests/frame/indexing/test_setitem.py in class TestDataFrameSetitemCopyViewSemantics is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_setitem_same_dtype_not_inplace",
+        "Updated": "test_setitem_same_dtype_not_inplace",
+        "Location": "pandas/tests/frame/indexing/test_setitem.py/TestDataFrameSetitemCopyViewSemantics",
+        "Original Line": 1257,
+        "Updated Line": 1254,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_setitem_same_dtype_not_inplace from the module pandas/tests/frame/indexing/test_setitem.py in class TestDataFrameSetitemCopyViewSemantics is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_xs_view",
+        "Updated": "test_xs_view",
+        "Location": "pandas/tests/frame/indexing/test_xs.py/TestXS",
+        "Original Line": 125,
+        "Updated Line": 125,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_xs_view from the module pandas/tests/frame/indexing/test_xs.py in class TestXS is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_xs_droplevel_false_view",
+        "Updated": "test_xs_droplevel_false_view",
+        "Location": "pandas/tests/frame/indexing/test_xs.py/TestXSWithMultiIndex",
+        "Original Line": 403,
+        "Updated Line": 394,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_xs_droplevel_false_view from the module pandas/tests/frame/indexing/test_xs.py in class TestXSWithMultiIndex is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_equals_different_blocks",
+        "Updated": "test_equals_different_blocks",
+        "Location": "pandas/tests/frame/methods/test_equals.py/TestEquals",
+        "Original Line": 17,
+        "Updated Line": 17,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_equals_different_blocks from the module pandas/tests/frame/methods/test_equals.py in class TestEquals is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_interp_fillna_methods",
+        "Updated": "test_interp_fillna_methods",
+        "Location": "pandas/tests/frame/methods/test_interpolate.py/TestDataFrameInterpolate",
+        "Original Line": 477,
+        "Updated Line": 473,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_interp_fillna_methods from the module pandas/tests/frame/methods/test_interpolate.py in class TestDataFrameInterpolate is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_interpolate_inplace",
+        "Updated": "test_interpolate_inplace",
+        "Location": "pandas/tests/frame/methods/test_interpolate.py/TestDataFrameInterpolate",
+        "Original Line": 55,
+        "Updated Line": 55,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_interpolate_inplace from the module pandas/tests/frame/methods/test_interpolate.py in class TestDataFrameInterpolate is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_axis",
+        "Updated": "test_axis",
+        "Location": "pandas/tests/frame/methods/test_quantile.py/TestDataFrameQuantile",
+        "Original Line": 113,
+        "Updated Line": 99,
+        "Description": [
+            "The parameters [ request using_array_manager ] of the method test_axis from the module pandas/tests/frame/methods/test_quantile.py in class TestDataFrameQuantile is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_axis_numeric_only_true",
+        "Updated": "test_axis_numeric_only_true",
+        "Location": "pandas/tests/frame/methods/test_quantile.py/TestDataFrameQuantile",
+        "Original Line": 137,
+        "Updated Line": 121,
+        "Description": [
+            "The parameters [ request using_array_manager ] of the method test_axis_numeric_only_true from the module pandas/tests/frame/methods/test_quantile.py in class TestDataFrameQuantile is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_non_numeric_exclusion",
+        "Updated": "test_non_numeric_exclusion",
+        "Location": "pandas/tests/frame/methods/test_quantile.py/TestDataFrameQuantile",
+        "Original Line": 100,
+        "Updated Line": 88,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_non_numeric_exclusion from the module pandas/tests/frame/methods/test_quantile.py in class TestDataFrameQuantile is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_quantile",
+        "Updated": "test_quantile",
+        "Location": "pandas/tests/frame/methods/test_quantile.py/TestDataFrameQuantile",
+        "Original Line": 48,
+        "Updated Line": 48,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_quantile from the module pandas/tests/frame/methods/test_quantile.py in class TestDataFrameQuantile is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_quantile_axis_mixed",
+        "Updated": "test_quantile_axis_mixed",
+        "Location": "pandas/tests/frame/methods/test_quantile.py/TestDataFrameQuantile",
+        "Original Line": 171,
+        "Updated Line": 151,
+        "Description": [
+            "The parameters [ request using_array_manager ] of the method test_quantile_axis_mixed from the module pandas/tests/frame/methods/test_quantile.py in class TestDataFrameQuantile is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_quantile_axis_parameter",
+        "Updated": "test_quantile_axis_parameter",
+        "Location": "pandas/tests/frame/methods/test_quantile.py/TestDataFrameQuantile",
+        "Original Line": 197,
+        "Updated Line": 175,
+        "Description": [
+            "The parameters [ request using_array_manager ] of the method test_quantile_axis_parameter from the module pandas/tests/frame/methods/test_quantile.py in class TestDataFrameQuantile is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_quantile_box",
+        "Updated": "test_quantile_box",
+        "Location": "pandas/tests/frame/methods/test_quantile.py/TestDataFrameQuantile",
+        "Original Line": 446,
+        "Updated Line": 418,
+        "Description": [
+            "The parameters [ request using_array_manager ] of the method test_quantile_box from the module pandas/tests/frame/methods/test_quantile.py in class TestDataFrameQuantile is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_quantile_date_range",
+        "Updated": "test_quantile_date_range",
+        "Location": "pandas/tests/frame/methods/test_quantile.py/TestDataFrameQuantile",
+        "Original Line": 153,
+        "Updated Line": 135,
+        "Description": [
+            "The parameters [ request using_array_manager ] of the method test_quantile_date_range from the module pandas/tests/frame/methods/test_quantile.py in class TestDataFrameQuantile is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_quantile_item_cache",
+        "Updated": "test_quantile_item_cache",
+        "Location": "pandas/tests/frame/methods/test_quantile.py/TestDataFrameQuantile",
+        "Original Line": 760,
+        "Updated Line": 726,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_quantile_item_cache from the module pandas/tests/frame/methods/test_quantile.py in class TestDataFrameQuantile is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_quantile_multi",
+        "Updated": "test_quantile_multi",
+        "Location": "pandas/tests/frame/methods/test_quantile.py/TestDataFrameQuantile",
+        "Original Line": 315,
+        "Updated Line": 291,
+        "Description": [
+            "The parameters [ request using_array_manager ] of the method test_quantile_multi from the module pandas/tests/frame/methods/test_quantile.py in class TestDataFrameQuantile is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_quantile_multi_axis_1",
+        "Updated": "test_quantile_multi_axis_1",
+        "Location": "pandas/tests/frame/methods/test_quantile.py/TestDataFrameQuantile",
+        "Original Line": 330,
+        "Updated Line": 304,
+        "Description": [
+            "The parameters [ request using_array_manager ] of the method test_quantile_multi_axis_1 from the module pandas/tests/frame/methods/test_quantile.py in class TestDataFrameQuantile is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_quantile_nan",
+        "Updated": "test_quantile_nan",
+        "Location": "pandas/tests/frame/methods/test_quantile.py/TestDataFrameQuantile",
+        "Original Line": 577,
+        "Updated Line": 547,
+        "Description": [
+            "The parameters [ request using_array_manager ] of the method test_quantile_nan from the module pandas/tests/frame/methods/test_quantile.py in class TestDataFrameQuantile is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_quantile_nat",
+        "Updated": "test_quantile_nat",
+        "Location": "pandas/tests/frame/methods/test_quantile.py/TestDataFrameQuantile",
+        "Original Line": 624,
+        "Updated Line": 592,
+        "Description": [
+            "The parameters [ request using_array_manager ] of the method test_quantile_nat from the module pandas/tests/frame/methods/test_quantile.py in class TestDataFrameQuantile is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_shift_axis1_multiple_blocks",
+        "Updated": "test_shift_axis1_multiple_blocks",
+        "Location": "pandas/tests/frame/methods/test_shift.py/TestDataFrameShift",
+        "Original Line": 426,
+        "Updated Line": 426,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_shift_axis1_multiple_blocks from the module pandas/tests/frame/methods/test_shift.py in class TestDataFrameShift is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_sort_values_item_cache",
+        "Updated": "test_sort_values_item_cache",
+        "Location": "pandas/tests/frame/methods/test_sort_values.py/TestDataFrameSortValues",
+        "Original Line": 601,
+        "Updated Line": 601,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_sort_values_item_cache from the module pandas/tests/frame/methods/test_sort_values.py in class TestDataFrameSortValues is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_df_arith_2d_array_collike_broadcasts",
+        "Updated": "test_df_arith_2d_array_collike_broadcasts",
+        "Location": "pandas/tests/frame/test_arithmetic.py/TestFrameArithmetic",
+        "Original Line": 923,
+        "Updated Line": 917,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_df_arith_2d_array_collike_broadcasts from the module pandas/tests/frame/test_arithmetic.py in class TestFrameArithmetic is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_df_arith_2d_array_rowlike_broadcasts",
+        "Updated": "test_df_arith_2d_array_rowlike_broadcasts",
+        "Location": "pandas/tests/frame/test_arithmetic.py/TestFrameArithmetic",
+        "Original Line": 896,
+        "Updated Line": 894,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_df_arith_2d_array_rowlike_broadcasts from the module pandas/tests/frame/test_arithmetic.py in class TestFrameArithmetic is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_check_dtype_empty_string_column",
+        "Updated": "test_check_dtype_empty_string_column",
+        "Location": "pandas/tests/frame/test_constructors.py/TestDataFrameConstructors",
+        "Original Line": 2331,
+        "Updated Line": 2314,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_check_dtype_empty_string_column from the module pandas/tests/frame/test_constructors.py in class TestDataFrameConstructors is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_constructor_dtype_nocast_view_2d_array",
+        "Updated": "test_constructor_dtype_nocast_view_2d_array",
+        "Location": "pandas/tests/frame/test_constructors.py/TestDataFrameConstructors",
+        "Original Line": 312,
+        "Updated Line": 311,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_constructor_dtype_nocast_view_2d_array from the module pandas/tests/frame/test_constructors.py in class TestDataFrameConstructors is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_constructor_from_2d_datetimearray",
+        "Updated": "test_constructor_from_2d_datetimearray",
+        "Location": "pandas/tests/frame/test_constructors.py/TestDataFrameConstructors",
+        "Original Line": 87,
+        "Updated Line": 87,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_constructor_from_2d_datetimearray from the module pandas/tests/frame/test_constructors.py in class TestDataFrameConstructors is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_dict_nocopy",
+        "Updated": "test_dict_nocopy",
+        "Location": "pandas/tests/frame/test_constructors.py/TestDataFrameConstructors",
+        "Original Line": 2512,
+        "Updated Line": 2490,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_dict_nocopy from the module pandas/tests/frame/test_constructors.py in class TestDataFrameConstructors is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_dups_across_blocks",
+        "Updated": "test_dups_across_blocks",
+        "Location": "pandas/tests/frame/test_nonunique_indexes.py/TestDataFrameNonuniqueIndexes",
+        "Original Line": 287,
+        "Updated Line": 287,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_dups_across_blocks from the module pandas/tests/frame/test_nonunique_indexes.py in class TestDataFrameNonuniqueIndexes is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_std_datetime64_with_nat",
+        "Updated": "test_std_datetime64_with_nat",
+        "Location": "pandas/tests/frame/test_reductions.py/TestDataFrameAnalytics",
+        "Original Line": 820,
+        "Updated Line": 820,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_std_datetime64_with_nat from the module pandas/tests/frame/test_reductions.py in class TestDataFrameAnalytics is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_sum_timedelta64_skipna_false",
+        "Updated": "test_sum_timedelta64_skipna_false",
+        "Location": "pandas/tests/frame/test_reductions.py",
+        "Original Line": 1929,
+        "Updated Line": 1920,
+        "Description": [
+            "The parameters [ using_array_manager request ] of the method test_sum_timedelta64_skipna_false from the module pandas/tests/frame/test_reductions.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_unstack_nan_index3",
+        "Updated": "test_unstack_nan_index3",
+        "Location": "pandas/tests/frame/test_stack_unstack.py/TestDataFrameReshape",
+        "Original Line": 972,
+        "Updated Line": 971,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_unstack_nan_index3 from the module pandas/tests/frame/test_stack_unstack.py in class TestDataFrameReshape is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_unstack_not_consolidated",
+        "Updated": "test_unstack_not_consolidated",
+        "Location": "pandas/tests/frame/test_stack_unstack.py/TestDataFrameReshape",
+        "Original Line": 75,
+        "Updated Line": 75,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_unstack_not_consolidated from the module pandas/tests/frame/test_stack_unstack.py in class TestDataFrameReshape is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_unstack_with_missing_int_cast_to_float",
+        "Updated": "test_unstack_with_missing_int_cast_to_float",
+        "Location": "pandas/tests/frame/test_stack_unstack.py/TestStackUnstackMultiLevel",
+        "Original Line": 2357,
+        "Updated Line": 2351,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_unstack_with_missing_int_cast_to_float from the module pandas/tests/frame/test_stack_unstack.py in class TestStackUnstackMultiLevel is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_unstack_non_slice_like_blocks",
+        "Updated": "test_unstack_non_slice_like_blocks",
+        "Location": "pandas/tests/frame/test_stack_unstack.py",
+        "Original Line": 1501,
+        "Updated Line": 1496,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_unstack_non_slice_like_blocks from the module pandas/tests/frame/test_stack_unstack.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_empty_groupby",
+        "Updated": "test_empty_groupby",
+        "Location": "pandas/tests/groupby/test_groupby.py",
+        "Original Line": 2053,
+        "Updated Line": 2053,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_empty_groupby from the module pandas/tests/groupby/test_groupby.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_max_min_object_multiple_columns",
+        "Updated": "test_max_min_object_multiple_columns",
+        "Location": "pandas/tests/groupby/test_reductions.py",
+        "Original Line": 365,
+        "Updated Line": 365,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_max_min_object_multiple_columns from the module pandas/tests/groupby/test_reductions.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_detect_chained_assignment_changing_dtype",
+        "Updated": "test_detect_chained_assignment_changing_dtype",
+        "Location": "pandas/tests/indexing/test_chaining_and_caching.py/TestChaining",
+        "Original Line": 455,
+        "Updated Line": 442,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_detect_chained_assignment_changing_dtype from the module pandas/tests/indexing/test_chaining_and_caching.py in class TestChaining is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_detect_chained_assignment_object_dtype",
+        "Updated": "test_detect_chained_assignment_object_dtype",
+        "Location": "pandas/tests/indexing/test_chaining_and_caching.py/TestChaining",
+        "Original Line": 299,
+        "Updated Line": 291,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_detect_chained_assignment_object_dtype from the module pandas/tests/indexing/test_chaining_and_caching.py in class TestChaining is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_detect_chained_assignment_raises",
+        "Updated": "test_detect_chained_assignment_raises",
+        "Location": "pandas/tests/indexing/test_chaining_and_caching.py/TestChaining",
+        "Original Line": 215,
+        "Updated Line": 215,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_detect_chained_assignment_raises from the module pandas/tests/indexing/test_chaining_and_caching.py in class TestChaining is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_iloc_getitem_doc_issue",
+        "Updated": "test_iloc_getitem_doc_issue",
+        "Location": "pandas/tests/indexing/test_iloc.py/TestiLocBaseIndependent",
+        "Original Line": 635,
+        "Updated Line": 629,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_iloc_getitem_doc_issue from the module pandas/tests/indexing/test_iloc.py in class TestiLocBaseIndependent is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_iloc_setitem_frame_duplicate_columns_multiple_blocks",
+        "Updated": "test_iloc_setitem_frame_duplicate_columns_multiple_blocks",
+        "Location": "pandas/tests/indexing/test_iloc.py/TestiLocBaseIndependent",
+        "Original Line": 523,
+        "Updated Line": 521,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_iloc_setitem_frame_duplicate_columns_multiple_blocks from the module pandas/tests/indexing/test_iloc.py in class TestiLocBaseIndependent is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_iloc_setitem_fullcol_categorical",
+        "Updated": "test_iloc_setitem_fullcol_categorical",
+        "Location": "pandas/tests/indexing/test_iloc.py/TestiLocBaseIndependent",
+        "Original Line": 75,
+        "Updated Line": 75,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_iloc_setitem_fullcol_categorical from the module pandas/tests/indexing/test_iloc.py in class TestiLocBaseIndependent is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_getitem_ndarray_3d",
+        "Updated": "test_getitem_ndarray_3d",
+        "Location": "pandas/tests/indexing/test_indexing.py/TestFancy",
+        "Original Line": 80,
+        "Updated Line": 80,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_getitem_ndarray_3d from the module pandas/tests/indexing/test_indexing.py in class TestFancy is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_loc_setitem_time_key",
+        "Updated": "test_loc_setitem_time_key",
+        "Location": "pandas/tests/indexing/test_loc.py/TestLocBaseIndependent",
+        "Original Line": 1493,
+        "Updated Line": 1493,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_loc_setitem_time_key from the module pandas/tests/indexing/test_loc.py in class TestLocBaseIndependent is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_partial_setting_frame",
+        "Updated": "test_partial_setting_frame",
+        "Location": "pandas/tests/indexing/test_partial.py/TestPartialSetting",
+        "Original Line": 282,
+        "Updated Line": 282,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_partial_setting_frame from the module pandas/tests/indexing/test_partial.py in class TestPartialSetting is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_read_parquet_manager",
+        "Updated": "test_read_parquet_manager",
+        "Location": "pandas/tests/io/test_parquet.py/TestParquetPyArrow",
+        "Original Line": 1006,
+        "Updated Line": 1006,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_read_parquet_manager from the module pandas/tests/io/test_parquet.py in class TestParquetPyArrow is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_append_empty_frame_with_timedelta64ns_nat",
+        "Updated": "test_append_empty_frame_with_timedelta64ns_nat",
+        "Location": "pandas/tests/reshape/concat/test_append.py/TestAppend",
+        "Original Line": 359,
+        "Updated Line": 356,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_append_empty_frame_with_timedelta64ns_nat from the module pandas/tests/reshape/concat/test_append.py in class TestAppend is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_append_empty_tz_frame_with_datetime64ns",
+        "Updated": "test_append_empty_tz_frame_with_datetime64ns",
+        "Location": "pandas/tests/reshape/concat/test_append.py/TestAppend",
+        "Original Line": 331,
+        "Updated Line": 331,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_append_empty_tz_frame_with_datetime64ns from the module pandas/tests/reshape/concat/test_append.py in class TestAppend is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_concat_copy",
+        "Updated": "test_concat_copy",
+        "Location": "pandas/tests/reshape/concat/test_concat.py/TestConcatenate",
+        "Original Line": 47,
+        "Updated Line": 47,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_concat_copy from the module pandas/tests/reshape/concat/test_concat.py in class TestConcatenate is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_concat_NaT_dataframes_all_NaT_axis_0",
+        "Updated": "test_concat_NaT_dataframes_all_NaT_axis_0",
+        "Location": "pandas/tests/reshape/concat/test_datetimes.py/TestDatetimeConcat",
+        "Original Line": 217,
+        "Updated Line": 217,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_concat_NaT_dataframes_all_NaT_axis_0 from the module pandas/tests/reshape/concat/test_datetimes.py in class TestDatetimeConcat is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_concat_float_datetime64",
+        "Updated": "test_concat_float_datetime64",
+        "Location": "pandas/tests/reshape/concat/test_datetimes.py",
+        "Original Line": 570,
+        "Updated Line": 568,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_concat_float_datetime64 from the module pandas/tests/reshape/concat/test_datetimes.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_join_append_timedeltas",
+        "Updated": "test_join_append_timedeltas",
+        "Location": "pandas/tests/reshape/merge/test_merge.py/TestMerge",
+        "Original Line": 705,
+        "Updated Line": 705,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_join_append_timedeltas from the module pandas/tests/reshape/merge/test_merge.py in class TestMerge is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_merge_nocopy",
+        "Updated": "test_merge_nocopy",
+        "Location": "pandas/tests/reshape/merge/test_merge.py/TestMerge",
+        "Original Line": 319,
+        "Updated Line": 319,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_merge_nocopy from the module pandas/tests/reshape/merge/test_merge.py in class TestMerge is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_crosstab_with_empties",
+        "Updated": "test_crosstab_with_empties",
+        "Location": "pandas/tests/reshape/test_crosstab.py/TestCrosstab",
+        "Original Line": 462,
+        "Updated Line": 462,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_crosstab_with_empties from the module pandas/tests/reshape/test_crosstab.py in class TestCrosstab is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_pivot_table_with_mixed_nested_tuples",
+        "Updated": "test_pivot_table_with_mixed_nested_tuples",
+        "Location": "pandas/tests/reshape/test_pivot.py/TestPivotTable",
+        "Original Line": 2373,
+        "Updated Line": 2370,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_pivot_table_with_mixed_nested_tuples from the module pandas/tests/reshape/test_pivot.py in class TestPivotTable is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_pivot_timegrouper",
+        "Updated": "test_pivot_timegrouper",
+        "Location": "pandas/tests/reshape/test_pivot.py/TestPivotTable",
+        "Original Line": 1280,
+        "Updated Line": 1280,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_pivot_timegrouper from the module pandas/tests/reshape/test_pivot.py in class TestPivotTable is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_pivot_multiindexed_rows_and_cols",
+        "Updated": "test_pivot_multiindexed_rows_and_cols",
+        "Location": "pandas/tests/reshape/test_pivot_multilevel.py",
+        "Original Line": 200,
+        "Updated Line": 200,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_pivot_multiindexed_rows_and_cols from the module pandas/tests/reshape/test_pivot_multilevel.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_reindex_fill_value_datetimelike_upcast",
+        "Updated": "test_reindex_fill_value_datetimelike_upcast",
+        "Location": "pandas/tests/series/methods/test_reindex.py",
+        "Original Line": 321,
+        "Updated Line": 321,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_reindex_fill_value_datetimelike_upcast from the module pandas/tests/series/methods/test_reindex.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_constructor_no_pandas_array",
+        "Updated": "test_constructor_no_pandas_array",
+        "Location": "pandas/tests/series/test_constructors.py/TestSeriesConstructorInternals",
+        "Original Line": 2190,
+        "Updated Line": 2190,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_constructor_no_pandas_array from the module pandas/tests/series/test_constructors.py in class TestSeriesConstructorInternals is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_mean_dont_convert_j_to_complex",
+        "Updated": "test_mean_dont_convert_j_to_complex",
+        "Location": "pandas/tests/series/test_reductions.py",
+        "Original Line": 186,
+        "Updated Line": 185,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_mean_dont_convert_j_to_complex from the module pandas/tests/series/test_reductions.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_mean_with_convertible_string_raises",
+        "Updated": "test_mean_with_convertible_string_raises",
+        "Location": "pandas/tests/series/test_reductions.py",
+        "Original Line": 166,
+        "Updated Line": 166,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_mean_with_convertible_string_raises from the module pandas/tests/series/test_reductions.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_median_with_convertible_string_raises",
+        "Updated": "test_median_with_convertible_string_raises",
+        "Location": "pandas/tests/series/test_reductions.py",
+        "Original Line": 207,
+        "Updated Line": 203,
+        "Description": [
+            "The parameters [ using_array_manager ] of the method test_median_with_convertible_string_raises from the module pandas/tests/series/test_reductions.py is/are removed"
+        ],
+        "Commit": "f1de9c74bf49249e4890d768569729d157f5ae11"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter",
+            "Change Return Type"
+        ],
+        "Original": "_try_convert_data",
+        "Updated": "_try_convert_data",
+        "Location": "pandas/io/json/_json.py/Parser",
+        "Original Line": 1201,
+        "Updated Line": 1211,
+        "Description": [
+            "The parameters [ is_axis ] are added to the method _try_convert_data from the module pandas/io/json/_json.py in class Parser",
+            "The return type of method _try_convert_data from the module pandas/io/json/_json.py in class Parser is updated"
+        ],
+        "Commit": "f56e1410c870ff1b76a417e4e375a97d77e2c678"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "_try_convert_to_date",
+        "Updated": "_try_convert_to_date",
+        "Location": "pandas/io/json/_json.py/Parser",
+        "Original Line": 1288,
+        "Updated Line": 1300,
+        "Description": [
+            "The return type of method _try_convert_to_date from the module pandas/io/json/_json.py in class Parser is updated"
+        ],
+        "Commit": "f56e1410c870ff1b76a417e4e375a97d77e2c678"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "_calculate_deltas",
+        "Updated": "_calculate_deltas",
+        "Location": "pandas/core/window/ewm.py",
+        "Original Line": 101,
+        "Updated Line": 104,
+        "Description": [
+            "The return type of method _calculate_deltas from the module pandas/core/window/ewm.py is updated"
+        ],
+        "Commit": "f7c73a5f1aaf0724598e60c0cc5732604ec842a8"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_merge_asof_non_numerical_dtype",
+        "Updated": "test_merge_asof_non_numerical_dtype",
+        "Location": "pandas/tests/reshape/merge/test_merge_asof.py",
+        "Original Line": 3382,
+        "Updated Line": 3386,
+        "Description": [
+            "The parameters [ infer_string ] are added to the method test_merge_asof_non_numerical_dtype from the module pandas/tests/reshape/merge/test_merge_asof.py"
+        ],
+        "Commit": "fbd4fcddcdc0bd5e83d6d135111003fa6d2681a0"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "test_constructor",
+        "Updated": "test_period_range_length",
+        "Location": "pandas/tests/indexes/period/test_constructors.py/TestPeriodIndex",
+        "Original Line": 496,
+        "Updated Line": 501,
+        "Description": [
+            "The method test_constructor from the module pandas/tests/indexes/period/test_constructors.py in class TestPeriodIndex is renamed to test_period_range_length"
+        ],
+        "Commit": "feacb6faccb6e1ce016b61e091b46c11ebbe86c9"
+    }
+]
