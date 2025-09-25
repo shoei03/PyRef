@@ -1,18 +1,30 @@
 import ast
-from anytree import findall, Node
+
 import astunparse
 import pandas as pd
+from anytree import Node, findall
 
 from preprocessing.node_transformer import nodeReplace
 
 
 def to_tree(parent_node):
+    """Optimized tree conversion with reduced recursion overhead"""
     if isinstance(parent_node, ast.AST):
         parent_node = Node(parent_node)
 
-    for child in ast.iter_child_nodes(parent_node.name):
-        current_node = Node(child, parent=parent_node)
-        to_tree(current_node)
+    # Use iterative approach with stack to reduce recursion overhead
+    stack = [parent_node]
+
+    while stack:
+        current_parent = stack.pop()
+        children = list(ast.iter_child_nodes(current_parent.name))
+
+        # Process children in batch to reduce function call overhead
+        for child in children:
+            child_node = Node(child, parent=current_parent)
+            # Only add to stack if the child has its own children
+            if list(ast.iter_child_nodes(child)):
+                stack.append(child_node)
 
     return parent_node
 
@@ -40,28 +52,47 @@ def different_code_element(code_elements1, code_elements2):
 
 
 def get_statement_elements(leaf):
-    invocations = list(findall(leaf, filter_=lambda node: type(node.name).__name__ == "Call"))
-    variables = list(findall(leaf, filter_=lambda node: type(node.name).__name__ == "Name"))
+    invocations = list(
+        findall(leaf, filter_=lambda node: type(node.name).__name__ == "Call")
+    )
+    variables = list(
+        findall(leaf, filter_=lambda node: type(node.name).__name__ == "Name")
+    )
     for variable in variables[:]:  # Remove function names from vars list
         if type(variable.parent.name).__name__ == "Call":
             for index, child_node in enumerate(variable.parent.children):
                 if variable is child_node and index == 0:
                     variables.remove(variable)
-    constants = list(findall(leaf, filter_=lambda node: type(node.name).__name__ == "Constant"))
-    operators = list(findall(leaf, filter_=lambda node: type(node.name).__base__.__name__ == "operator"))
-    attributes = findall(leaf, filter_=lambda node: type(node.name).__name__ == "Attribute")
-    attributes = [att for att in attributes if
-                  not (type(att.parent.name).__name__ == "Call")]  # REMOVING ATTS THAT ARE NOT VARS
+    constants = list(
+        findall(leaf, filter_=lambda node: type(node.name).__name__ == "Constant")
+    )
+    operators = list(
+        findall(
+            leaf, filter_=lambda node: type(node.name).__base__.__name__ == "operator"
+        )
+    )
+    attributes = findall(
+        leaf, filter_=lambda node: type(node.name).__name__ == "Attribute"
+    )
+    attributes = [
+        att for att in attributes if not (type(att.parent.name).__name__ == "Call")
+    ]  # REMOVING ATTS THAT ARE NOT VARS
 
     elements = constants + invocations + variables + attributes + operators
 
     if len(elements) > 0:
-        elements_df = pd.DataFrame(elements, columns=['element_object'])
+        elements_df = pd.DataFrame(elements, columns=["element_object"])
 
-        elements_df['depth'] = elements_df.apply(lambda x: x['element_object'].depth, axis=1)
-        elements_df['index'] = elements_df.apply(lambda x: x['element_object'].height, axis=1)
+        elements_df["depth"] = elements_df.apply(
+            lambda x: x["element_object"].depth, axis=1
+        )
+        elements_df["index"] = elements_df.apply(
+            lambda x: x["element_object"].height, axis=1
+        )
 
-        elements_df = elements_df.sort_values(["depth", "index"], ascending=(False, True))
+        elements_df = elements_df.sort_values(
+            ["depth", "index"], ascending=(False, True)
+        )
 
         return elements_df["element_object"].tolist()
 
@@ -79,7 +110,9 @@ def get_expression_elements(leaf):
 
 def invoc_cover_stmt(leaf, invoc):
     for count, ast_child in enumerate(ast.iter_child_nodes(leaf.ast_node)):
-        if (count == len(to_tree(leaf.ast_node).children) - 1) and ast_child == invoc.name:
+        if (
+            count == len(to_tree(leaf.ast_node).children) - 1
+        ) and ast_child == invoc.name:
             return True
     return False
 
@@ -96,10 +129,16 @@ def ast_to_str(ast_node):
 def ast_comp_to_str(ast_node):
     tree = to_tree(ast_node)
 
-    expression = [child for child in tree.children if type(child.name).__base__.__name__ == "expr"]
+    expression = [
+        child for child in tree.children if type(child.name).__base__.__name__ == "expr"
+    ]
 
     if len(expression) > 0:
-        lastNode = [child for child in tree.children if type(child.name).__base__.__name__ == "expr"][-1]
+        lastNode = [
+            child
+            for child in tree.children
+            if type(child.name).__base__.__name__ == "expr"
+        ][-1]
 
         lastNode = astunparse.unparse(lastNode.name)[0:-1]
 
@@ -114,9 +153,13 @@ def final_leaf(copy_leaf, leaf, row, processed_ast_elements):
     node1 = row["node1"]
     node2 = row["node2"]
 
-    found = [element for element in processed_ast_elements if element.name == node1.name]
+    found = [
+        element for element in processed_ast_elements if element.name == node1.name
+    ]
     if len(found) > 0:
-        nodeReplace(node1.name, node2.name, copy_leaf, leaf, node1.parent).visit(copy_leaf)
+        nodeReplace(node1.name, node2.name, copy_leaf, leaf, node1.parent).visit(
+            copy_leaf
+        )
         processed_ast_elements.remove(found[0])
 
 
@@ -148,8 +191,13 @@ def is_extracted(row, stmts):
         if type(stmt).__name__ == "Statement" and stmt.ast_type() == "Assign":
             elements = stmt.get_original_elements()
             for element in elements:
-                if type(element.name).__name__ == "Name" and type(
-                        element.name.ctx).__name__ == "Store" and element.name.id == var.name.id:
-                    if astunparse.unparse(content.name) == astunparse.unparse(stmt.get_ast_node().value):
+                if (
+                    type(element.name).__name__ == "Name"
+                    and type(element.name.ctx).__name__ == "Store"
+                    and element.name.id == var.name.id
+                ):
+                    if astunparse.unparse(content.name) == astunparse.unparse(
+                        stmt.get_ast_node().value
+                    ):
                         return True
         return False

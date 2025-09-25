@@ -1,9 +1,11 @@
+import hashlib
 import json
 import os
 import signal
 import threading
 import time
 from ast import *
+from concurrent.futures import ThreadPoolExecutor
 from os import path
 
 import pandas as pd
@@ -200,45 +202,68 @@ def build_diff_lists(
                 csv_files_with_size.append((name, size))
             csv_files_with_size.sort(key=lambda x: x[1])  # Sort by size
 
-            pbar = tqdm(csv_files_with_size, desc="Extracting Refs", unit="file")
-            for ind, (name, file_size) in enumerate(pbar):
-                start_time_commit = time.time()
-                commit_hash = name.split(".")[0][:8]
-                file_size_mb = file_size / (1024 * 1024)
-                pbar.set_description(f"Processing {commit_hash} ({file_size_mb:.1f}MB)")
+            # Choose parallel or sequential processing
+            use_parallel = (
+                len(csv_files_with_size) > 2
+            )  # Use parallel for more than 2 files
 
-                df = pd.read_csv(changes_path + "/" + name)
-                if directory is not None:
-                    df = df[df["Path"].isin(directory)]
-
-                pbar.set_postfix(files=len(df), refresh=True)
-
-                rev_a = Rev()
-                rev_b = Rev()
-                df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
-                if skip_time is not None:
-                    signal.signal(signal.SIGALRM, timeout_handler)
-                    signal.alarm(int(float(skip_time) * 60))
-                rt = RepeatedTimer(480, execution_reminder)
-                try:
-                    rev_difference = rev_a.revision_difference(rev_b)
-                    refs = rev_difference.get_refactorings()
-                    for ref in refs:
-                        refactorings.append((ref, name.split(".")[0]))
-                        print(">>>", str(ref))
-                except Exception as e:
-                    print(f"Failed to process commit {commit_hash}.", e)
-                except TimeoutError:
-                    print(
-                        f"Commit {commit_hash} skipped due to the long processing time"
+            if use_parallel:
+                print(
+                    f"Using parallel processing for {len(csv_files_with_size)} commits..."
+                )
+                commit_refactorings = process_commits_parallel(
+                    csv_files_with_size,
+                    changes_path,
+                    directory,
+                    skip_time,
+                    max_workers=4,
+                )
+                refactorings.extend(commit_refactorings)
+            else:
+                # Original sequential processing for small number of files
+                pbar = tqdm(csv_files_with_size, desc="Extracting Refs", unit="file")
+                for ind, (name, file_size) in enumerate(pbar):
+                    start_time_commit = time.time()
+                    commit_hash = name.split(".")[0][:8]
+                    file_size_mb = file_size / (1024 * 1024)
+                    pbar.set_description(
+                        f"Processing {commit_hash} ({file_size_mb:.1f}MB)"
                     )
-                finally:
-                    rt.stop()
-                    if skip_time is not None:
-                        signal.alarm(0)
 
-                elapsed = time.time() - start_time_commit
-                pbar.set_postfix(files=len(df), time=f"{elapsed:.1f}s", refresh=True)
+                    df = pd.read_csv(changes_path + "/" + name)
+                    if directory is not None:
+                        df = df[df["Path"].isin(directory)]
+
+                    pbar.set_postfix(files=len(df), refresh=True)
+
+                    rev_a = Rev()
+                    rev_b = Rev()
+                    df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
+                    if skip_time is not None:
+                        signal.signal(signal.SIGALRM, timeout_handler)
+                        signal.alarm(int(float(skip_time) * 60))
+                    rt = RepeatedTimer(480, execution_reminder)
+                    try:
+                        rev_difference = rev_a.revision_difference(rev_b)
+                        refs = rev_difference.get_refactorings()
+                        for ref in refs:
+                            refactorings.append((ref, name.split(".")[0]))
+                            print(">>>", str(ref))
+                    except Exception as e:
+                        print(f"Failed to process commit {commit_hash}.", e)
+                    except TimeoutError:
+                        print(
+                            f"Commit {commit_hash} skipped due to the long processing time"
+                        )
+                    finally:
+                        rt.stop()
+                        if skip_time is not None:
+                            signal.alarm(0)
+
+                    elapsed = time.time() - start_time_commit
+                    pbar.set_postfix(
+                        files=len(df), time=f"{elapsed:.1f}s", refresh=True
+                    )
 
     # Apply method filtering if specified
     if method_name:
@@ -409,12 +434,191 @@ def validate(args):
         build_diff_lists(changes_path, validation["commit"])
 
 
+# Global cache for AST parsing and tree conversion
+_ast_cache = {}
+_tree_cache = {}
+
+
+def get_content_hash(content):
+    """Generate hash for content to use as cache key"""
+    return hashlib.md5(content.encode("utf-8")).hexdigest()
+
+
+def cached_eval_and_tree(file_content):
+    """Cache AST evaluation and tree conversion"""
+    content_hash = get_content_hash(file_content)
+
+    if content_hash in _tree_cache:
+        return _tree_cache[content_hash]
+
+    try:
+        # Parse AST only once per unique content
+        if content_hash in _ast_cache:
+            ast_node = _ast_cache[content_hash]
+        else:
+            ast_node = eval(file_content)
+            _ast_cache[content_hash] = ast_node
+
+        # Convert to tree only once per unique content
+        tree = to_tree(ast_node)
+        _tree_cache[content_hash] = tree
+        return tree
+    except Exception:
+        # Return None for invalid content
+        return None
+
+
 def populate(row, rev_a, rev_b):
     path = row["Path"]
-    rav_a_tree = to_tree(eval(row["oldFileContent"]))
-    rev_b_tree = to_tree(eval(row["currentFileContent"]))
-    rev_a.extract_code_elements(rav_a_tree, path)
-    rev_b.extract_code_elements(rev_b_tree, path)
+
+    # Early exit for identical content
+    old_content = row["oldFileContent"]
+    new_content = row["currentFileContent"]
+
+    if old_content == new_content:
+        return  # No changes, skip processing
+
+    # Use cached parsing
+    old_tree = cached_eval_and_tree(old_content)
+    new_tree = cached_eval_and_tree(new_content)
+
+    if old_tree is None or new_tree is None:
+        return  # Skip invalid files
+
+    rev_a.extract_code_elements(old_tree, path)
+    rev_b.extract_code_elements(new_tree, path)
+
+
+def process_commit_file(args):
+    """Process a single commit file - designed for parallel execution"""
+    name, file_size, changes_path, directory, skip_time = args
+
+    start_time_commit = time.time()
+    commit_hash = name.split(".")[0][:8]
+
+    try:
+        df = pd.read_csv(os.path.join(changes_path, name))
+        if directory is not None:
+            df = df[df["Path"].isin(directory)]
+
+        rev_a = Rev()
+        rev_b = Rev()
+
+        # Process each row (file change) in the commit
+        for _, row in df.iterrows():
+            populate(row, rev_a, rev_b)
+
+        if skip_time is not None:
+            signal.signal(signal.SIGALRM, timeout_handler)
+            signal.alarm(int(float(skip_time) * 60))
+
+        try:
+            rev_difference = rev_a.revision_difference(rev_b)
+            refs = rev_difference.get_refactorings()
+
+            # Return results instead of printing directly
+            results = []
+            for ref in refs:
+                results.append((ref, name.split(".")[0]))
+
+            elapsed = time.time() - start_time_commit
+            return {
+                "success": True,
+                "commit_hash": commit_hash,
+                "refactorings": results,
+                "files_processed": len(df),
+                "elapsed_time": elapsed,
+            }
+
+        except Exception as e:
+            return {
+                "success": False,
+                "commit_hash": commit_hash,
+                "error": str(e),
+                "elapsed_time": time.time() - start_time_commit,
+            }
+        except TimeoutError:
+            return {
+                "success": False,
+                "commit_hash": commit_hash,
+                "error": "Timeout",
+                "elapsed_time": time.time() - start_time_commit,
+            }
+        finally:
+            if skip_time is not None:
+                signal.alarm(0)
+
+    except Exception as e:
+        return {
+            "success": False,
+            "commit_hash": commit_hash,
+            "error": f"File read error: {str(e)}",
+            "elapsed_time": time.time() - start_time_commit,
+        }
+
+
+def process_commits_parallel(
+    csv_files_with_size, changes_path, directory, skip_time, max_workers=None
+):
+    """Process commits in parallel using ThreadPoolExecutor"""
+    if max_workers is None:
+        max_workers = min(4, len(csv_files_with_size))  # Conservative default
+
+    # Prepare arguments for parallel processing
+    args_list = [
+        (name, file_size, changes_path, directory, skip_time)
+        for name, file_size in csv_files_with_size
+    ]
+
+    refactorings = []
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # Use tqdm to show progress
+        pbar = tqdm(
+            desc="Extracting Refs (Parallel)", unit="file", total=len(args_list)
+        )
+
+        # Submit all tasks
+        future_to_commit = {
+            executor.submit(process_commit_file, args): args[0] for args in args_list
+        }
+
+        # Process completed tasks
+        for future in future_to_commit:
+            result = future.result()
+            pbar.update(1)
+
+            if result["success"]:
+                refactorings.extend(result["refactorings"])
+                # Print refactorings as they complete
+                for ref, commit in result["refactorings"]:
+                    print(">>>", str(ref))
+
+                pbar.set_postfix(
+                    commit=result["commit_hash"][:8],
+                    files=result["files_processed"],
+                    time=f"{result['elapsed_time']:.1f}s",
+                    refresh=True,
+                )
+            else:
+                print(
+                    f"Failed to process commit {result['commit_hash']}: {result['error']}"
+                )
+
+        pbar.close()
+
+    return refactorings
+    path = row["Path"]
+
+    # Use cached parsing
+    old_tree = cached_eval_and_tree(row["oldFileContent"])
+    new_tree = cached_eval_and_tree(row["currentFileContent"])
+
+    if old_tree is None or new_tree is None:
+        return  # Skip invalid files
+
+    rev_a.extract_code_elements(old_tree, path)
+    rev_b.extract_code_elements(new_tree, path)
 
 
 def build_diff_lists_args(args):
