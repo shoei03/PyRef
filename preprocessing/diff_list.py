@@ -171,6 +171,7 @@ def build_diff_lists(
     skip_time=None,
     method_name=None,
     match_mode="exact",
+    continue_on_error=False,
 ):
     refactorings = []
     t0 = time.time()
@@ -178,18 +179,24 @@ def build_diff_lists(
         print(commit)
         name = commit + ".csv"
 
-        df = pd.read_csv(changes_path + "/" + name)
-        if directory is not None:
-            df = df[df["Path"].isin(directory)]
-        rev_a = Rev()
-        rev_b = Rev()
-        df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
-        # try:
-        rev_difference = rev_a.revision_difference(rev_b)
-        refs = rev_difference.get_refactorings()
-        for ref in refs:
-            refactorings.append((ref, name.split(".")[0]))
-            print(">>>", str(ref))
+        try:
+            df = pd.read_csv(changes_path + "/" + name)
+            if directory is not None:
+                df = df[df["Path"].isin(directory)]
+            rev_a = Rev()
+            rev_b = Rev()
+            df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
+            # try:
+            rev_difference = rev_a.revision_difference(rev_b)
+            refs = rev_difference.get_refactorings()
+            for ref in refs:
+                refactorings.append((ref, name.split(".")[0]))
+                print(">>>", str(ref))
+        except Exception as e:
+            print(f"Error processing commit {commit}: {e}")
+            if not continue_on_error:
+                raise
+            print("Continuing despite error due to continue-on-error flag")
     else:
         for root, dirs, files in os.walk(changes_path):
             csv_files = [name for name in files if name.endswith(".csv")]
@@ -217,6 +224,7 @@ def build_diff_lists(
                     directory,
                     skip_time,
                     max_workers=4,
+                    continue_on_error=continue_on_error,
                 )
                 refactorings.extend(commit_refactorings)
             else:
@@ -230,40 +238,51 @@ def build_diff_lists(
                         f"Processing {commit_hash} ({file_size_mb:.1f}MB)"
                     )
 
-                    df = pd.read_csv(changes_path + "/" + name)
-                    if directory is not None:
-                        df = df[df["Path"].isin(directory)]
-
-                    pbar.set_postfix(files=len(df), refresh=True)
-
-                    rev_a = Rev()
-                    rev_b = Rev()
-                    df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
-                    if skip_time is not None:
-                        signal.signal(signal.SIGALRM, timeout_handler)
-                        signal.alarm(int(float(skip_time) * 60))
-                    rt = RepeatedTimer(480, execution_reminder)
                     try:
-                        rev_difference = rev_a.revision_difference(rev_b)
-                        refs = rev_difference.get_refactorings()
-                        for ref in refs:
-                            refactorings.append((ref, name.split(".")[0]))
-                            print(">>>", str(ref))
-                    except Exception as e:
-                        print(f"Failed to process commit {commit_hash}.", e)
-                    except TimeoutError:
-                        print(
-                            f"Commit {commit_hash} skipped due to the long processing time"
-                        )
-                    finally:
-                        rt.stop()
-                        if skip_time is not None:
-                            signal.alarm(0)
+                        df = pd.read_csv(changes_path + "/" + name)
+                        if directory is not None:
+                            df = df[df["Path"].isin(directory)]
 
-                    elapsed = time.time() - start_time_commit
-                    pbar.set_postfix(
-                        files=len(df), time=f"{elapsed:.1f}s", refresh=True
-                    )
+                        pbar.set_postfix(files=len(df), refresh=True)
+
+                        rev_a = Rev()
+                        rev_b = Rev()
+                        df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
+                        if skip_time is not None:
+                            signal.signal(signal.SIGALRM, timeout_handler)
+                            signal.alarm(int(float(skip_time) * 60))
+                        rt = RepeatedTimer(480, execution_reminder)
+                        try:
+                            rev_difference = rev_a.revision_difference(rev_b)
+                            refs = rev_difference.get_refactorings()
+                            for ref in refs:
+                                refactorings.append((ref, name.split(".")[0]))
+                                print(">>>", str(ref))
+                        except Exception as e:
+                            print(f"Failed to process commit {commit_hash}: {e}")
+                            if not continue_on_error:
+                                raise
+                        except TimeoutError:
+                            print(
+                                f"Commit {commit_hash} skipped due to the long processing time"
+                            )
+                        finally:
+                            rt.stop()
+                            if skip_time is not None:
+                                signal.alarm(0)
+
+                        elapsed = time.time() - start_time_commit
+                        pbar.set_postfix(
+                            files=len(df), time=f"{elapsed:.1f}s", refresh=True
+                        )
+
+                    except Exception as e:
+                        print(f"Error processing commit {commit_hash}: {e}")
+                        if continue_on_error:
+                            print(f"Skipping commit {commit_hash} and continuing...")
+                            continue
+                        else:
+                            raise
 
     # Apply method filtering if specified
     if method_name:
@@ -334,6 +353,8 @@ def extract_refs(args):
     from repomanager import repo_changes
 
     repo_path = args.repopath
+    continue_on_error = getattr(args, "continue_on_error", False)
+
     if args.skip is not None:
         skip_time = args.skip
         print(
@@ -351,43 +372,70 @@ def extract_refs(args):
     if method_name:
         print(f"\nFiltering by method: '{method_name}' (match mode: {match_mode})")
 
-    if args.commit is not None:
-        repo_changes.all_commits(repo_path, [args.commit])
-        print("\nExtracting Refs...")
-        build_diff_lists(
-            repo_path + "/changes/",
-            args.commit,
-            args.directory,
-            skip_time,
-            method_name,
-            match_mode,
+    if continue_on_error:
+        print(
+            "\nContinue-on-error mode enabled: will attempt to process all commits despite errors"
         )
-    else:
-        print("\nExtracting commit history...")
-        # Prepare iter_commits options
-        iter_commits_kwargs = {}
-        if hasattr(args, "max_count") and args.max_count:
-            iter_commits_kwargs["max_count"] = args.max_count
-        if hasattr(args, "skip_commits") and args.skip_commits:
-            iter_commits_kwargs["skip"] = args.skip_commits
-        if hasattr(args, "since") and args.since:
-            iter_commits_kwargs["since"] = args.since
-        if hasattr(args, "until") and args.until:
-            iter_commits_kwargs["until"] = args.until
-        if hasattr(args, "rev") and args.rev:
-            iter_commits_kwargs["rev"] = args.rev
-        if hasattr(args, "paths") and args.paths:
-            iter_commits_kwargs["paths"] = args.paths
 
-        repo_changes.all_commits(repo_path, **iter_commits_kwargs)
-        print("\nExtracting Refs...")
-        build_diff_lists(
-            repo_path + "/changes/",
-            directory=args.directory,
-            skip_time=skip_time,
-            method_name=method_name,
-            match_mode=match_mode,
-        )
+    try:
+        if args.commit is not None:
+            try:
+                repo_changes.all_commits(repo_path, [args.commit])
+                print("\nExtracting Refs...")
+                build_diff_lists(
+                    repo_path + "/changes/",
+                    args.commit,
+                    args.directory,
+                    skip_time,
+                    method_name,
+                    match_mode,
+                    continue_on_error,
+                )
+            except Exception as e:
+                print(f"Error processing specific commit {args.commit}: {e}")
+                if not continue_on_error:
+                    raise
+        else:
+            try:
+                print("\nExtracting commit history...")
+                # Prepare iter_commits options
+                iter_commits_kwargs = {}
+                if hasattr(args, "max_count") and args.max_count:
+                    iter_commits_kwargs["max_count"] = args.max_count
+                if hasattr(args, "skip_commits") and args.skip_commits:
+                    iter_commits_kwargs["skip"] = args.skip_commits
+                if hasattr(args, "since") and args.since:
+                    iter_commits_kwargs["since"] = args.since
+                if hasattr(args, "until") and args.until:
+                    iter_commits_kwargs["until"] = args.until
+                if hasattr(args, "rev") and args.rev:
+                    iter_commits_kwargs["rev"] = args.rev
+                if hasattr(args, "paths") and args.paths:
+                    iter_commits_kwargs["paths"] = args.paths
+
+                repo_changes.all_commits(repo_path, **iter_commits_kwargs)
+                print("\nExtracting Refs...")
+                build_diff_lists(
+                    repo_path + "/changes/",
+                    directory=args.directory,
+                    skip_time=skip_time,
+                    method_name=method_name,
+                    match_mode=match_mode,
+                    continue_on_error=continue_on_error,
+                )
+            except Exception as e:
+                print(f"Error during commit history extraction: {e}")
+                if not continue_on_error:
+                    raise
+
+    except KeyboardInterrupt:
+        print("\nProcess interrupted by user (Ctrl+C)")
+        raise
+    except Exception as e:
+        print(f"Critical error in extract_refs: {e}")
+        if not continue_on_error:
+            raise
+        print("Continuing despite error due to continue-on-error flag")
 
 
 def validate(args):
@@ -558,7 +606,12 @@ def process_commit_file(args):
 
 
 def process_commits_parallel(
-    csv_files_with_size, changes_path, directory, skip_time, max_workers=None
+    csv_files_with_size,
+    changes_path,
+    directory,
+    skip_time,
+    max_workers=None,
+    continue_on_error=False,
 ):
     """Process commits in parallel using ThreadPoolExecutor"""
     if max_workers is None:
@@ -585,25 +638,35 @@ def process_commits_parallel(
 
         # Process completed tasks
         for future in future_to_commit:
-            result = future.result()
-            pbar.update(1)
+            try:
+                result = future.result()
+                pbar.update(1)
 
-            if result["success"]:
-                refactorings.extend(result["refactorings"])
-                # Print refactorings as they complete
-                for ref, commit in result["refactorings"]:
-                    print(">>>", str(ref))
+                if result["success"]:
+                    refactorings.extend(result["refactorings"])
+                    # Print refactorings as they complete
+                    for ref, commit in result["refactorings"]:
+                        print(">>>", str(ref))
 
-                pbar.set_postfix(
-                    commit=result["commit_hash"][:8],
-                    files=result["files_processed"],
-                    time=f"{result['elapsed_time']:.1f}s",
-                    refresh=True,
-                )
-            else:
-                print(
-                    f"Failed to process commit {result['commit_hash']}: {result['error']}"
-                )
+                    pbar.set_postfix(
+                        commit=result["commit_hash"][:8],
+                        files=result["files_processed"],
+                        time=f"{result['elapsed_time']:.1f}s",
+                        refresh=True,
+                    )
+                else:
+                    print(
+                        f"Failed to process commit {result['commit_hash']}: {result['error']}"
+                    )
+            except Exception as e:
+                commit_name = future_to_commit[future]
+                print(f"Unexpected error processing commit {commit_name}: {e}")
+                if not continue_on_error:
+                    # Cancel remaining tasks and re-raise
+                    for f in future_to_commit:
+                        if not f.done():
+                            f.cancel()
+                    raise
 
         pbar.close()
 

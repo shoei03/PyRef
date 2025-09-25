@@ -89,6 +89,20 @@ docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -m "calc" --match-m
 docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -m "get.*" --match-mode regex
 ```
 
+### Error Handling Options
+
+```sh
+# Continue processing even if errors occur (recommended for large repositories)
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" --continue-on-error
+
+# Combine with other options for robust analysis
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" \
+  --since "2023-01-01" \
+  --until "2023-12-31" \
+  --continue-on-error \
+  -s 10
+```
+
 ## Advanced Usage Examples
 
 ### Performance Optimization
@@ -133,6 +147,10 @@ docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" \
   --until "2023-12-31" \
   -m "init" \
   --match-mode exact
+
+# Continue processing even if errors occur
+docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" \
+  --continue-on-error
 ```
 
 ## Development Environment

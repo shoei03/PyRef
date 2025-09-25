@@ -117,6 +117,11 @@ extract_ref.add_argument(
 extract_ref.add_argument(
     "--paths", nargs="+", help="only commits that modified these file paths"
 )
+extract_ref.add_argument(
+    "--continue-on-error",
+    action="store_true",
+    help="continue processing even if errors occur",
+)
 extract_ref.set_defaults(func=extract_refs)
 
 
@@ -125,7 +130,20 @@ def main():
         sys.argv.append("--help")
 
     options = parser.parse_args()
-    options.func(options)
+    try:
+        options.func(options)
+    except KeyboardInterrupt:
+        print("\n\nProcess interrupted by user (Ctrl+C)")
+        sys.exit(130)  # Standard exit code for SIGINT
+    except Exception as e:
+        print(f"\nUnexpected error occurred: {e}")
+        if hasattr(options, "continue_on_error") and options.continue_on_error:
+            print("Continuing due to --continue-on-error flag...")
+        else:
+            print(
+                "Use --continue-on-error flag to ignore errors and continue processing"
+            )
+            sys.exit(1)
 
 
 if __name__ == "__main__":
