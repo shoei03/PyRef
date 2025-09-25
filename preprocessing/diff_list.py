@@ -6,6 +6,9 @@ import time
 from ast import *
 from os import path
 
+import pandas as pd
+from tqdm import tqdm
+
 from preprocessing.conditions_match import *
 from preprocessing.revision import Rev
 from preprocessing.utils import to_tree
@@ -172,7 +175,6 @@ def build_diff_lists(
     if commit is not None:
         print(commit)
         name = commit + ".csv"
-        import pandas as pd
 
         df = pd.read_csv(changes_path + "/" + name)
         if directory is not None:
@@ -188,35 +190,55 @@ def build_diff_lists(
             print(">>>", str(ref))
     else:
         for root, dirs, files in os.walk(changes_path):
-            for ind, name in enumerate(files):
-                if name.endswith(".csv"):
-                    print(ind, "/", len(files), " --- ", name[:-4])
-                    import pandas as pd
+            csv_files = [name for name in files if name.endswith(".csv")]
 
-                    df = pd.read_csv(changes_path + "/" + name)
-                    if directory is not None:
-                        df = df[df["Path"].isin(directory)]
-                    rev_a = Rev()
-                    rev_b = Rev()
-                    df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
+            # Sort files by size to show progress better
+            csv_files_with_size = []
+            for name in csv_files:
+                file_path = os.path.join(changes_path, name)
+                size = os.path.getsize(file_path)
+                csv_files_with_size.append((name, size))
+            csv_files_with_size.sort(key=lambda x: x[1])  # Sort by size
+
+            pbar = tqdm(csv_files_with_size, desc="Extracting Refs", unit="file")
+            for ind, (name, file_size) in enumerate(pbar):
+                start_time_commit = time.time()
+                commit_hash = name.split(".")[0][:8]
+                file_size_mb = file_size / (1024 * 1024)
+                pbar.set_description(f"Processing {commit_hash} ({file_size_mb:.1f}MB)")
+
+                df = pd.read_csv(changes_path + "/" + name)
+                if directory is not None:
+                    df = df[df["Path"].isin(directory)]
+
+                pbar.set_postfix(files=len(df), refresh=True)
+
+                rev_a = Rev()
+                rev_b = Rev()
+                df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
+                if skip_time is not None:
+                    signal.signal(signal.SIGALRM, timeout_handler)
+                    signal.alarm(int(float(skip_time) * 60))
+                rt = RepeatedTimer(480, execution_reminder)
+                try:
+                    rev_difference = rev_a.revision_difference(rev_b)
+                    refs = rev_difference.get_refactorings()
+                    for ref in refs:
+                        refactorings.append((ref, name.split(".")[0]))
+                        print(">>>", str(ref))
+                except Exception as e:
+                    print(f"Failed to process commit {commit_hash}.", e)
+                except TimeoutError:
+                    print(
+                        f"Commit {commit_hash} skipped due to the long processing time"
+                    )
+                finally:
+                    rt.stop()
                     if skip_time is not None:
-                        signal.signal(signal.SIGALRM, timeout_handler)
-                        signal.alarm(int(float(skip_time) * 60))
-                    rt = RepeatedTimer(480, execution_reminder)
-                    try:
-                        rev_difference = rev_a.revision_difference(rev_b)
-                        refs = rev_difference.get_refactorings()
-                        for ref in refs:
-                            refactorings.append((ref, name.split(".")[0]))
-                            print(">>>", str(ref))
-                    except Exception as e:
-                        print("Failed to process commit.", e)
-                    except TimeoutError:
-                        print("Commit skipped due to the long processing time")
-                    finally:
-                        rt.stop()
-                        if skip_time is not None:
-                            signal.alarm(0)
+                        signal.alarm(0)
+
+                elapsed = time.time() - start_time_commit
+                pbar.set_postfix(files=len(df), time=f"{elapsed:.1f}s", refresh=True)
 
     # Apply method filtering if specified
     if method_name:

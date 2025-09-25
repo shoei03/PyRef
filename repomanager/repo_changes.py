@@ -3,6 +3,7 @@ import os
 
 import pandas as pd
 from git import Repo
+from tqdm import tqdm
 
 
 # get the the changes in the latest commits and store them in a dataframe
@@ -63,11 +64,19 @@ def all_commits(repo_path, specific_commits=None, **iter_commits_kwargs):
             commits.append(commit)
 
     print(f"Processing {len(commits)} commits...")
-    for count, commit in enumerate(commits):
+
+    for count, commit in enumerate(
+        tqdm(commits, desc="Processing commits", unit="commit")
+    ):
         modified_files = []
         if len(commit.parents) == 0 or len(commit.parents) > 1:
             continue
-        for item in commit.diff(commit.parents[0]).iter_change_type("M"):
+
+        # Get modified files for this commit
+        modified_items = list(commit.diff(commit.parents[0]).iter_change_type("M"))
+        python_files = [item for item in modified_items if item.a_path.endswith(".py")]
+
+        for item in python_files:
             path = item.a_path
             if path.endswith(".py"):
                 try:
