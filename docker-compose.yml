@@ -27,6 +27,6 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
     # Keep container running for interactive use
-    command: ["tail", "-f", "/dev/null"]
+    entrypoint: ["tail", "-f", "/dev/null"]
     stdin_open: true
     tty: true
