@@ -1,31 +1,71 @@
 import ast
-import os
+import multiprocessing
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
 
 import pandas as pd
 from git import Repo
 from tqdm import tqdm
 
 
+def process_file_change(repo_path, commit_hexsha, parent_hexsha, file_path):
+    """Process a single file change to extract AST content."""
+    try:
+        repo = Repo(repo_path)
+        old_file_content = ast.dump(
+            ast.parse(repo.git.show(f"{parent_hexsha}:{file_path}")),
+            include_attributes=True,
+        )
+        current_file_content = ast.dump(
+            ast.parse(repo.git.show(f"{commit_hexsha}:{file_path}")),
+            include_attributes=True,
+        )
+        return {
+            "Path": file_path,
+            "oldFileContent": old_file_content,
+            "currentFileContent": current_file_content,
+        }
+    except Exception:
+        return None
+
+
 # get the the changes in the latest commits and store them in a dataframe
 def last_commit_changes(repo_path):
-    modified_files = []
     repo = Repo(repo_path)
-    for item in repo.head.commit.diff("HEAD~1").iter_change_type(
-        "M"
-    ):  # TODO: for now only modified files
-        path = item.a_path
-        if path.endswith(".py"):
-            old_file_content = ast.dump(ast.parse(repo.git.show(f"HEAD~1:{path}")))
-            current_file_content = ast.dump(ast.parse(repo.git.show(f"HEAD:{path}")))
-            modified_files.append(
-                {
-                    "Path": path,
-                    "oldFileContent": old_file_content,
-                    "currentFileContent": current_file_content,
-                }
-            )
+    modified_items = list(repo.head.commit.diff("HEAD~1").iter_change_type("M"))
+    python_files = [
+        item.a_path for item in modified_items if item.a_path.endswith(".py")
+    ]
+
+    if not python_files:
+        return pd.DataFrame()
+
+    # Use parallel processing for file changes
+    max_workers = min(multiprocessing.cpu_count(), len(python_files))
+    modified_files = []
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {
+            executor.submit(
+                process_file_change,
+                repo_path,
+                repo.head.commit.hexsha,
+                repo.head.commit.parents[0].hexsha
+                if repo.head.commit.parents
+                else None,
+                file_path,
+            ): file_path
+            for file_path in python_files
+        }
+
+        for future in as_completed(futures):
+            result = future.result()
+            if result is not None:
+                modified_files.append(result)
+
     df = pd.DataFrame(modified_files)
-    df.to_csv("changes.csv", index=False)
+    output_file = Path(repo_path) / "changes.csv"
+    df.to_csv(output_file, index=False)
     return df
 
 
@@ -46,66 +86,72 @@ def all_commits(repo_path, specific_commits=None, **iter_commits_kwargs):
                                - rev: Revision or branch to start from (default: HEAD)
     """
     repo = Repo(repo_path)
+    path_to_create = Path(repo_path) / "changes"
+    path_to_create.mkdir(exist_ok=True)
 
-    path_to_create = repo_path + "/changes/"
+    # Filter commits more efficiently
+    if specific_commits is not None:
+        specific_commits_set = set(specific_commits)
+        commits = [
+            commit
+            for commit in repo.iter_commits(**iter_commits_kwargs)
+            if str(commit) in specific_commits_set
+        ]
+    else:
+        commits = list(repo.iter_commits(**iter_commits_kwargs))
 
-    try:
-        os.mkdir(path_to_create)
-    except OSError:
-        print("Commit history already extracted, updating data.")
+    # Filter out merge commits and initial commits upfront
+    valid_commits = [commit for commit in commits if len(commit.parents) == 1]
 
-    commits = []
-    # Apply iter_commits options
-    for commit in repo.iter_commits(**iter_commits_kwargs):
-        if specific_commits is not None:
-            if str(commit) in specific_commits:
-                commits.append(commit)
-        else:
-            commits.append(commit)
+    print(f"Processing {len(valid_commits)} valid commits...")
 
-    print(f"Processing {len(commits)} commits...")
+    # Process commits in batches for better memory usage
+    batch_size = min(10, multiprocessing.cpu_count())
+    max_workers = min(
+        4, multiprocessing.cpu_count()
+    )  # Limit workers to avoid Git conflicts
 
-    for count, commit in enumerate(
-        tqdm(commits, desc="Processing commits", unit="commit")
+    for i in tqdm(
+        range(0, len(valid_commits), batch_size),
+        desc="Processing commit batches",
+        unit="batch",
     ):
-        modified_files = []
-        if len(commit.parents) == 0 or len(commit.parents) > 1:
-            continue
+        batch_commits = valid_commits[i : i + batch_size]
 
-        # Get modified files for this commit
-        modified_items = list(commit.diff(commit.parents[0]).iter_change_type("M"))
-        python_files = [item for item in modified_items if item.a_path.endswith(".py")]
+        for commit in batch_commits:
+            # Get modified Python files for this commit
+            modified_items = list(commit.diff(commit.parents[0]).iter_change_type("M"))
+            python_files = [
+                item.a_path for item in modified_items if item.a_path.endswith(".py")
+            ]
 
-        for item in python_files:
-            path = item.a_path
-            if path.endswith(".py"):
-                try:
-                    old_file_content = ast.dump(
-                        ast.parse(
-                            repo.git.show(
-                                "%s:%s" % (commit.parents[0].hexsha, item.a_path)
-                            )
-                        ),
-                        include_attributes=True,
-                    )
-                    current_file_content = ast.dump(
-                        ast.parse(
-                            repo.git.show("%s:%s" % (commit.hexsha, item.a_path))
-                        ),
-                        include_attributes=True,
-                    )
-                except Exception:
-                    continue
-                modified_files.append(
-                    {
-                        "Path": path,
-                        "oldFileContent": old_file_content,
-                        "currentFileContent": current_file_content,
-                    }
-                )
+            if not python_files:
+                continue
 
+            # Process files in parallel
+            modified_files = []
+            with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                futures = {
+                    executor.submit(
+                        process_file_change,
+                        repo_path,
+                        commit.hexsha,
+                        commit.parents[0].hexsha,
+                        file_path,
+                    ): file_path
+                    for file_path in python_files
+                }
+
+                for future in as_completed(futures):
+                    result = future.result()
+                    if result is not None:
+                        modified_files.append(result)
+
+            # Save results if any files were processed successfully
+            if modified_files:
                 df = pd.DataFrame(modified_files)
-                df.to_csv(repo_path + "/changes/" + str(commit) + ".csv", index=False)
+                changes_file = path_to_create / f"{commit}.csv"
+                df.to_csv(changes_file, index=False)
 
 
 def repo_changes_args(args):
