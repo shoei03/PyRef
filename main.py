@@ -131,15 +131,6 @@ def setup_argument_parser():
         "-s", "--skip", required=False, help="Skip commit after n minutes"
     )
     extract_ref.add_argument(
-        "-m", "--method", required=False, help="Specific method name to track"
-    )
-    extract_ref.add_argument(
-        "--match-mode",
-        choices=["exact", "partial", "regex"],
-        default="exact",
-        help="Method name matching mode",
-    )
-    extract_ref.add_argument(
         "--max-count", type=int, help="Maximum number of commits to retrieve"
     )
     extract_ref.add_argument(

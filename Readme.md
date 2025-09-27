@@ -71,22 +71,6 @@ docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -c "[COMMIT_HASH]"
 
 # Analyze specific directory
 docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -d "[DIRECTORY_PATH]"
-
-# Track specific method
-docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -m "[METHOD_NAME]"
-```
-
-### Method Matching Options
-
-```sh
-# Exact match (default)
-docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -m "methodName" --match-mode exact
-
-# Partial match
-docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -m "calc" --match-mode partial
-
-# Regex match
-docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" -m "get.*" --match-mode regex
 ```
 
 ### Error Handling Options
@@ -134,19 +118,15 @@ docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" --paths "src/*.py" 
 ### Complex Analysis Scenarios
 
 ```sh
-# Latest 50 commits, specific directory, partial method matching
+# Latest 50 commits, specific directory
 docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" \
   --max-count 50 \
-  --paths "src/core/*.py" \
-  -m "calculate" \
-  --match-mode partial
+  --paths "src/core/*.py"
 
-# Date range analysis with method tracking
+# Date range analysis
 docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" \
   --since "2023-01-01" \
-  --until "2023-12-31" \
-  -m "init" \
-  --match-mode exact
+  --until "2023-12-31"
 
 # Continue processing even if errors occur
 docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" \
@@ -199,7 +179,6 @@ python3 main.py [COMMAND] [ARGS]
 Results are saved as JSON files with the following naming convention:
 
 - Basic analysis: `[project_name]_data.json`
-- Method tracking: `[project_name]_[method_name]_[match_mode]_data.json`
 
 Example output structure:
 

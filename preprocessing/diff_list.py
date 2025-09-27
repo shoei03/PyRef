@@ -54,123 +54,11 @@ def execution_reminder():
     print("Please wait, the process is still running. ", time.ctime())
 
 
-def filter_refactorings_by_method(refactorings, method_name, match_mode="exact"):
-    """
-    Filter refactorings by method name based on different matching modes.
-
-    Args:
-        refactorings: List of (refactoring_object, commit_hash) tuples
-        method_name: Target method name to filter by
-        match_mode: 'exact', 'partial', or 'regex'
-
-    Returns:
-        Filtered list of refactorings related to the specified method
-    """
-    if not method_name:
-        return refactorings
-
-    filtered_refactorings = []
-
-    for ref, commit in refactorings:
-        if is_method_related_refactoring(ref, method_name, match_mode):
-            filtered_refactorings.append((ref, commit))
-
-    return filtered_refactorings
-
-
-def is_method_related_refactoring(refactoring, method_name, match_mode):
-    """
-    Check if a refactoring is related to the specified method.
-
-    Args:
-        refactoring: Refactoring object (RenameRef, ExtractInlineRef, MoveRef, etc.)
-        method_name: Target method name
-        match_mode: 'exact', 'partial', or 'regex'
-
-    Returns:
-        Boolean indicating if the refactoring is related to the method
-    """
-    # Get method names involved in the refactoring
-    involved_methods = get_involved_method_names(refactoring)
-
-    # Check if any involved method matches the target
-    for method in involved_methods:
-        if matches_method_name(method, method_name, match_mode):
-            return True
-
-    return False
-
-
-def get_involved_method_names(refactoring):
-    """
-    Extract all method names involved in a refactoring.
-
-    Args:
-        refactoring: Refactoring object
-
-    Returns:
-        List of method names involved in the refactoring
-    """
-    method_names = []
-
-    # All refactoring types have _from and _to attributes
-    if hasattr(refactoring, "_from") and refactoring._from:
-        method_names.append(refactoring._from)
-
-    if hasattr(refactoring, "_to") and refactoring._to:
-        method_names.append(refactoring._to)
-
-    # For some refactorings, we might want to include class context
-    if hasattr(refactoring, "_removed_m") and refactoring._removed_m:
-        if hasattr(refactoring._removed_m, "name"):
-            method_names.append(refactoring._removed_m.name)
-
-    if hasattr(refactoring, "_added_m") and refactoring._added_m:
-        if hasattr(refactoring._added_m, "name"):
-            method_names.append(refactoring._added_m.name)
-
-    # Remove duplicates while preserving order
-    return list(dict.fromkeys(method_names))
-
-
-def matches_method_name(method, target_method, match_mode):
-    """
-    Check if a method name matches the target based on the matching mode.
-
-    Args:
-        method: Method name to check
-        target_method: Target method name
-        match_mode: 'exact', 'partial', or 'regex'
-
-    Returns:
-        Boolean indicating if there's a match
-    """
-    if not method or not target_method:
-        return False
-
-    if match_mode == "exact":
-        return method == target_method
-    elif match_mode == "partial":
-        return target_method in method or method in target_method
-    elif match_mode == "regex":
-        try:
-            import re
-
-            return bool(re.search(target_method, method))
-        except re.error:
-            # If regex is invalid, fall back to exact match
-            return method == target_method
-
-    return False
-
-
 def build_diff_lists(
     changes_path,
     commit=None,
     directory=None,
     skip_time=None,
-    method_name=None,
-    match_mode="exact",
     continue_on_error=False,
 ):
     refactorings = []
@@ -285,16 +173,6 @@ def build_diff_lists(
                             raise
 
     # Apply method filtering if specified
-    if method_name:
-        original_count = len(refactorings)
-        refactorings = filter_refactorings_by_method(
-            refactorings, method_name, match_mode
-        )
-        filtered_count = len(refactorings)
-        print(
-            f"Filtered refactorings by method '{method_name}' ({match_mode} match): {filtered_count}/{original_count}"
-        )
-
     t1 = time.time()
     total = t1 - t0
     print(
@@ -313,33 +191,10 @@ def build_diff_lists(
     changes_path = changes_path.replace("//", "/")
     repo_name = changes_path.split("/")[-3]
 
-    # Create output filename based on filtering
-    if method_name:
-        output_filename = f"{repo_name}_{method_name}_{match_mode}_data.json"
-        # Create enhanced output format for method tracking
-        enhanced_output = {
-            "target_method": method_name,
-            "match_mode": match_mode,
-            "refactoring_history": json_outputs,
-            "summary": {
-                "total_refactorings": len(json_outputs),
-                "refactoring_types": {},
-            },
-        }
-
-        # Count refactoring types
-        for ref_data in json_outputs:
-            ref_type = ref_data.get("Refactoring Type", "Unknown")
-            enhanced_output["summary"]["refactoring_types"][ref_type] = (
-                enhanced_output["summary"]["refactoring_types"].get(ref_type, 0) + 1
-            )
-
-        with open(output_filename, "w") as outfile:
-            outfile.write(json.dumps(enhanced_output, indent=4))
-    else:
-        output_filename = f"{repo_name}_data.json"
-        with open(output_filename, "w") as outfile:
-            outfile.write(json.dumps(json_outputs, indent=4))
+    # Create output filename
+    output_filename = f"{repo_name}_data.json"
+    with open(output_filename, "w") as outfile:
+        outfile.write(json.dumps(json_outputs, indent=4))
 
     print(f"Results saved to: {output_filename}")
 
@@ -365,13 +220,6 @@ def extract_refs(args):
     else:
         skip_time = None
 
-    # Get method filtering parameters
-    method_name = getattr(args, "method", None)
-    match_mode = getattr(args, "match_mode", "exact")
-
-    if method_name:
-        print(f"\nFiltering by method: '{method_name}' (match mode: {match_mode})")
-
     if continue_on_error:
         print(
             "\nContinue-on-error mode enabled: will attempt to process all commits despite errors"
@@ -387,8 +235,6 @@ def extract_refs(args):
                     args.commit,
                     args.directory,
                     skip_time,
-                    method_name,
-                    match_mode,
                     continue_on_error,
                 )
             except Exception as e:
@@ -419,8 +265,6 @@ def extract_refs(args):
                     repo_path + "/changes/",
                     directory=args.directory,
                     skip_time=skip_time,
-                    method_name=method_name,
-                    match_mode=match_mode,
                     continue_on_error=continue_on_error,
                 )
             except Exception as e:
@@ -671,17 +515,6 @@ def process_commits_parallel(
         pbar.close()
 
     return refactorings
-    path = row["Path"]
-
-    # Use cached parsing
-    old_tree = cached_eval_and_tree(row["oldFileContent"])
-    new_tree = cached_eval_and_tree(row["currentFileContent"])
-
-    if old_tree is None or new_tree is None:
-        return  # Skip invalid files
-
-    rev_a.extract_code_elements(old_tree, path)
-    rev_b.extract_code_elements(new_tree, path)
 
 
 def build_diff_lists_args(args):
