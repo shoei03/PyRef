@@ -61,7 +61,7 @@ def build_diff_lists(
     continue_on_error=False,
 ):
     refactorings = []
-    t0 = time.time()
+    t0 = time.perf_counter()
     if commit is not None:
         print(commit)
         name = commit + ".csv"
@@ -117,7 +117,7 @@ def build_diff_lists(
             # Original sequential processing for small number of files
             pbar = tqdm(csv_files_with_size, desc="Extracting Refs", unit="file")
             for ind, (name, file_size) in enumerate(pbar):
-                start_time_commit = time.time()
+                start_time_commit = time.perf_counter()
                 commit_hash = name.split(".")[0][:8]
                 file_size_mb = file_size / (1024 * 1024)
                 pbar.set_description(f"Processing {commit_hash} ({file_size_mb:.1f}MB)")
@@ -154,7 +154,7 @@ def build_diff_lists(
                         if skip_time is not None:
                             signal.alarm(0)
 
-                    elapsed = time.time() - start_time_commit
+                    elapsed = time.perf_counter() - start_time_commit
                     pbar.set_postfix(
                         files=len(df), time=f"{elapsed:.1f}s", refresh=True
                     )
@@ -167,7 +167,7 @@ def build_diff_lists(
                     else:
                         raise
 
-    t1 = time.time()
+    t1 = time.perf_counter()
     total = t1 - t0
     print(
         "-----------------------------------------------------------------------------------------------------------"
@@ -177,7 +177,7 @@ def build_diff_lists(
     refactorings.sort(key=lambda x: x[1])
     json_outputs = []
     for ref in refactorings:
-        print(f"commit: {ref[1]:>3s} - {str(ref[0]).strip()}")
+        # print(f"commit: {ref[1]:>3s} - {str(ref[0]).strip()}")
         data = ref[0].to_json_format()
         data["Commit"] = ref[1]
         json_outputs.append(data)
@@ -381,7 +381,7 @@ def process_commit_file(args):
     """Process a single commit file - designed for parallel execution"""
     name, file_size, changes_path, directory, skip_time = args
 
-    start_time_commit = time.time()
+    start_time_commit = time.perf_counter()
     commit_hash = name.split(".")[0][:8]
 
     try:
@@ -409,7 +409,7 @@ def process_commit_file(args):
             for ref in refs:
                 results.append((ref, name.split(".")[0]))
 
-            elapsed = time.time() - start_time_commit
+            elapsed = time.perf_counter() - start_time_commit
             return {
                 "success": True,
                 "commit_hash": commit_hash,
@@ -423,14 +423,14 @@ def process_commit_file(args):
                 "success": False,
                 "commit_hash": commit_hash,
                 "error": str(e),
-                "elapsed_time": time.time() - start_time_commit,
+                "elapsed_time": time.perf_counter() - start_time_commit,
             }
         except TimeoutError:
             return {
                 "success": False,
                 "commit_hash": commit_hash,
                 "error": "Timeout",
-                "elapsed_time": time.time() - start_time_commit,
+                "elapsed_time": time.perf_counter() - start_time_commit,
             }
         finally:
             if skip_time is not None:
@@ -441,7 +441,7 @@ def process_commit_file(args):
             "success": False,
             "commit_hash": commit_hash,
             "error": f"File read error: {str(e)}",
-            "elapsed_time": time.time() - start_time_commit,
+            "elapsed_time": time.perf_counter() - start_time_commit,
         }
 
 
