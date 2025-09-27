@@ -39,7 +39,10 @@ def parse_file_content(content: str) -> Optional[str]:
 def get_file_content(repo: Repo, commit_hexsha: str, file_path: str) -> Optional[str]:
     """Get file content from a specific commit with error handling."""
     try:
-        return repo.git.show(f"{commit_hexsha}:{file_path}")
+        # Use git cat-file for fastest access - faster than git show
+        return repo.git.execute(
+            ["git", "cat-file", "-p", f"{commit_hexsha}:{file_path}"]
+        )
     except Exception:
         return None
 
