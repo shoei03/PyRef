@@ -579,4 +579,5 @@ def process_commits_parallel(
 
 
 def build_diff_lists_args(args):
-    build_diff_lists(args.path, args.commit)
+    """Handle command line arguments for build_diff_lists"""
+    build_diff_lists(changes_path=args.path, commit=getattr(args, "commit", None))
