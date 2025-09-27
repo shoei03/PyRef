@@ -177,7 +177,7 @@ def build_diff_lists(
     refactorings.sort(key=lambda x: x[1])
     json_outputs = []
     for ref in refactorings:
-        print("commit: %3s - %s" % (ref[1], str(ref[0]).strip()))
+        print(f"commit: {ref[1]:>3s} - {str(ref[0]).strip()}")
         data = ref[0].to_json_format()
         data["Commit"] = ref[1]
         json_outputs.append(data)
@@ -302,7 +302,7 @@ def validate(args):
         print(
             "-----------------------------------------------------------------------------------------------------------"
         )
-        print("Cloning %s/%s" % (repo[0], repo[1]))
+        print(f"Cloning {repo[0]}/{repo[1]}")
         repo_utils.clone_repo(repo[0], repo[1])
 
         while not Path(f"./Repos/{repo[1]}").exists():
@@ -316,7 +316,7 @@ def validate(args):
         ).exists():
             time.sleep(1)
 
-        print("Validation of %s: %s" % (validation["type"], validation["correct"]))
+        print(f"Validation of {validation['type']}: {validation['correct']}")
 
         changes_path = str(Path("./Repos") / repo[1] / "changes")
         build_diff_lists(changes_path, validation["commit"])
