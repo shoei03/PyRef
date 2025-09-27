@@ -1,12 +1,11 @@
 import hashlib
 import json
-import os
 import signal
 import threading
 import time
 from ast import *
 from concurrent.futures import ThreadPoolExecutor
-from os import path
+from pathlib import Path
 
 import pandas as pd
 from tqdm import tqdm
@@ -68,7 +67,7 @@ def build_diff_lists(
         name = commit + ".csv"
 
         try:
-            df = pd.read_csv(changes_path + "/" + name)
+            df = pd.read_csv(Path(changes_path) / name)
             if directory is not None:
                 df = df[df["Path"].isin(directory)]
             rev_a = Rev()
@@ -79,100 +78,95 @@ def build_diff_lists(
             refs = rev_difference.get_refactorings()
             for ref in refs:
                 refactorings.append((ref, name.split(".")[0]))
-                print(">>>", str(ref))
         except Exception as e:
             print(f"Error processing commit {commit}: {e}")
             if not continue_on_error:
                 raise
             print("Continuing despite error due to continue-on-error flag")
     else:
-        for root, dirs, files in os.walk(changes_path):
-            csv_files = [name for name in files if name.endswith(".csv")]
+        changes_dir = Path(changes_path)
+        csv_files = [f.name for f in changes_dir.iterdir() if f.suffix == ".csv"]
 
-            # Sort files by size to show progress better
-            csv_files_with_size = []
-            for name in csv_files:
-                file_path = os.path.join(changes_path, name)
-                size = os.path.getsize(file_path)
-                csv_files_with_size.append((name, size))
-            csv_files_with_size.sort(key=lambda x: x[1])  # Sort by size
+        # Sort files by size to show progress better
+        csv_files_with_size = []
+        for name in csv_files:
+            file_path = changes_dir / name
+            size = file_path.stat().st_size
+            csv_files_with_size.append((name, size))
+        csv_files_with_size.sort(key=lambda x: x[1])  # Sort by size
 
-            # Choose parallel or sequential processing
-            use_parallel = (
-                len(csv_files_with_size) > 2
-            )  # Use parallel for more than 2 files
+        # Choose parallel or sequential processing
+        use_parallel = (
+            len(csv_files_with_size) > 2
+        )  # Use parallel for more than 2 files
 
-            if use_parallel:
-                print(
-                    f"Using parallel processing for {len(csv_files_with_size)} commits..."
-                )
-                commit_refactorings = process_commits_parallel(
-                    csv_files_with_size,
-                    changes_path,
-                    directory,
-                    skip_time,
-                    max_workers=4,
-                    continue_on_error=continue_on_error,
-                )
-                refactorings.extend(commit_refactorings)
-            else:
-                # Original sequential processing for small number of files
-                pbar = tqdm(csv_files_with_size, desc="Extracting Refs", unit="file")
-                for ind, (name, file_size) in enumerate(pbar):
-                    start_time_commit = time.time()
-                    commit_hash = name.split(".")[0][:8]
-                    file_size_mb = file_size / (1024 * 1024)
-                    pbar.set_description(
-                        f"Processing {commit_hash} ({file_size_mb:.1f}MB)"
+        if use_parallel:
+            print(
+                f"Using parallel processing for {len(csv_files_with_size)} commits..."
+            )
+            commit_refactorings = process_commits_parallel(
+                csv_files_with_size,
+                changes_path,
+                directory,
+                skip_time,
+                max_workers=4,
+                continue_on_error=continue_on_error,
+            )
+            refactorings.extend(commit_refactorings)
+        else:
+            # Original sequential processing for small number of files
+            pbar = tqdm(csv_files_with_size, desc="Extracting Refs", unit="file")
+            for ind, (name, file_size) in enumerate(pbar):
+                start_time_commit = time.time()
+                commit_hash = name.split(".")[0][:8]
+                file_size_mb = file_size / (1024 * 1024)
+                pbar.set_description(f"Processing {commit_hash} ({file_size_mb:.1f}MB)")
+
+                try:
+                    df = pd.read_csv(Path(changes_path) / name)
+                    if directory is not None:
+                        df = df[df["Path"].isin(directory)]
+
+                    pbar.set_postfix(files=len(df), refresh=True)
+
+                    rev_a = Rev()
+                    rev_b = Rev()
+                    df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
+                    if skip_time is not None:
+                        signal.signal(signal.SIGALRM, timeout_handler)
+                        signal.alarm(int(float(skip_time) * 60))
+                    rt = RepeatedTimer(480, execution_reminder)
+                    try:
+                        rev_difference = rev_a.revision_difference(rev_b)
+                        refs = rev_difference.get_refactorings()
+                        for ref in refs:
+                            refactorings.append((ref, name.split(".")[0]))
+                    except Exception as e:
+                        print(f"Failed to process commit {commit_hash}: {e}")
+                        if not continue_on_error:
+                            raise
+                    except TimeoutError:
+                        print(
+                            f"Commit {commit_hash} skipped due to the long processing time"
+                        )
+                    finally:
+                        rt.stop()
+                        if skip_time is not None:
+                            signal.alarm(0)
+
+                    elapsed = time.time() - start_time_commit
+                    pbar.set_postfix(
+                        files=len(df), time=f"{elapsed:.1f}s", refresh=True
                     )
 
-                    try:
-                        df = pd.read_csv(changes_path + "/" + name)
-                        if directory is not None:
-                            df = df[df["Path"].isin(directory)]
+                except Exception as e:
+                    print(f"Error processing commit {commit_hash}: {e}")
+                    if continue_on_error:
+                        print(f"Skipping commit {commit_hash} and continuing...")
+                        continue
+                    else:
+                        raise
 
-                        pbar.set_postfix(files=len(df), refresh=True)
-
-                        rev_a = Rev()
-                        rev_b = Rev()
-                        df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
-                        if skip_time is not None:
-                            signal.signal(signal.SIGALRM, timeout_handler)
-                            signal.alarm(int(float(skip_time) * 60))
-                        rt = RepeatedTimer(480, execution_reminder)
-                        try:
-                            rev_difference = rev_a.revision_difference(rev_b)
-                            refs = rev_difference.get_refactorings()
-                            for ref in refs:
-                                refactorings.append((ref, name.split(".")[0]))
-                                print(">>>", str(ref))
-                        except Exception as e:
-                            print(f"Failed to process commit {commit_hash}: {e}")
-                            if not continue_on_error:
-                                raise
-                        except TimeoutError:
-                            print(
-                                f"Commit {commit_hash} skipped due to the long processing time"
-                            )
-                        finally:
-                            rt.stop()
-                            if skip_time is not None:
-                                signal.alarm(0)
-
-                        elapsed = time.time() - start_time_commit
-                        pbar.set_postfix(
-                            files=len(df), time=f"{elapsed:.1f}s", refresh=True
-                        )
-
-                    except Exception as e:
-                        print(f"Error processing commit {commit_hash}: {e}")
-                        if continue_on_error:
-                            print(f"Skipping commit {commit_hash} and continuing...")
-                            continue
-                        else:
-                            raise
-
-    # Apply method filtering if specified
     t1 = time.time()
     total = t1 - t0
     print(
@@ -188,8 +182,10 @@ def build_diff_lists(
         data["Commit"] = ref[1]
         json_outputs.append(data)
         # ref[0].to_graph()
-    changes_path = changes_path.replace("//", "/")
-    repo_name = changes_path.split("/")[-3]
+    changes_path = Path(changes_path).resolve()
+    repo_name = changes_path.parts[
+        -2
+    ]  # Get the repository name (DummyRef, pandas, etc.)
 
     # Create output filename
     output_filename = f"{repo_name}_data.json"
@@ -231,7 +227,7 @@ def extract_refs(args):
                 repo_changes.all_commits(repo_path, [args.commit])
                 print("\nExtracting Refs...")
                 build_diff_lists(
-                    repo_path + "/changes/",
+                    str(Path(repo_path) / "changes"),
                     args.commit,
                     args.directory,
                     skip_time,
@@ -262,7 +258,7 @@ def extract_refs(args):
                 repo_changes.all_commits(repo_path, **iter_commits_kwargs)
                 print("\nExtracting Refs...")
                 build_diff_lists(
-                    repo_path + "/changes/",
+                    str(Path(repo_path) / "changes"),
                     directory=args.directory,
                     skip_time=skip_time,
                     continue_on_error=continue_on_error,
@@ -309,20 +305,20 @@ def validate(args):
         print("Cloning %s/%s" % (repo[0], repo[1]))
         repo_utils.clone_repo(repo[0], repo[1])
 
-        while not path.exists("./Repos/" + repo[1]):
+        while not Path(f"./Repos/{repo[1]}").exists():
             time.sleep(1)
 
-        path_to_repo = "./Repos/" + repo[1]
+        path_to_repo = str(Path("./Repos") / repo[1])
         repo_changes.all_commits(path_to_repo, [validation["commit"]])
 
-        while not path.exists(
-            "./Repos/" + repo[1] + "/changes/" + validation["commit"] + ".csv"
-        ):
+        while not Path(
+            f"./Repos/{repo[1]}/changes/{validation['commit']}.csv"
+        ).exists():
             time.sleep(1)
 
         print("Validation of %s: %s" % (validation["type"], validation["correct"]))
 
-        changes_path = "./Repos/" + repo[1] + "/changes/"
+        changes_path = str(Path("./Repos") / repo[1] / "changes")
         build_diff_lists(changes_path, validation["commit"])
 
 
@@ -389,7 +385,7 @@ def process_commit_file(args):
     commit_hash = name.split(".")[0][:8]
 
     try:
-        df = pd.read_csv(os.path.join(changes_path, name))
+        df = pd.read_csv(Path(changes_path) / name)
         if directory is not None:
             df = df[df["Path"].isin(directory)]
 
