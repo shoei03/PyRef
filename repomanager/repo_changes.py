@@ -1,6 +1,7 @@
 import ast
 import multiprocessing
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime
 from functools import lru_cache
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
@@ -134,7 +135,10 @@ def last_commit_changes(repo_path: str) -> pd.DataFrame:
         return pd.DataFrame()
 
     df = pd.DataFrame(modified_files)
-    output_file = Path(repo_path) / "changes.csv"
+    timestamp = datetime.fromtimestamp(repo.head.commit.committed_date).strftime(
+        "%Y%m%d_%H%M%S"
+    )
+    output_file = Path(repo_path) / f"{timestamp}_{repo.head.commit.hexsha}.csv"
     df.to_csv(output_file, index=False)
     return df
 
@@ -194,7 +198,10 @@ def process_commit_batch(
         # Save results if any files were processed successfully
         if modified_files:
             df = pd.DataFrame(modified_files)
-            changes_file = path_to_create / f"{commit}.csv"
+            timestamp = datetime.fromtimestamp(commit.committed_date).strftime(
+                "%Y%m%d_%H%M%S"
+            )
+            changes_file = path_to_create / f"{timestamp}_{commit}.csv"
             df.to_csv(changes_file, index=False)
 
 

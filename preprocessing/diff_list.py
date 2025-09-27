@@ -19,6 +19,46 @@ from preprocessing.revision import Rev
 from preprocessing.utils import to_tree
 
 
+def extract_commit_info_from_filename(filename: str) -> dict:
+    """
+    Extract commit information from filename supporting both old and new formats.
+
+    Args:
+        filename: CSV filename (with or without .csv extension)
+
+    Returns:
+        Dict containing:
+        - 'commit_hash': Full commit hash
+        - 'commit_hash_short': First 8 characters of commit hash
+        - 'timestamp': Timestamp string (YYYYMMDD_HHMMSS) or None for old format
+        - 'full_info': Combined timestamp and commit hash for new format, or just commit hash for old format
+
+    Examples:
+        Old format: "abc123def456.csv" ->
+            {'commit_hash': 'abc123def456', 'commit_hash_short': 'abc123de', 'timestamp': None, 'full_info': 'abc123def456'}
+        New format: "20240927_143052_abc123def456.csv" ->
+            {'commit_hash': 'abc123def456', 'commit_hash_short': 'abc123de', 'timestamp': '20240927_143052', 'full_info': '20240927_143052_abc123def456'}
+    """
+    name_without_ext = filename.replace(".csv", "")
+    parts = name_without_ext.split("_")
+
+    if len(parts) >= 3:  # New format: timestamp_time_commithash
+        commit_hash = parts[-1]
+        timestamp = "_".join(parts[:-1])  # Join all parts except the last one
+        full_info = name_without_ext  # Include timestamp in full info
+    else:  # Old format: commithash only
+        commit_hash = name_without_ext
+        timestamp = None
+        full_info = commit_hash
+
+    return {
+        "commit_hash": commit_hash,
+        "commit_hash_short": commit_hash[:8],
+        "timestamp": timestamp,
+        "full_info": full_info,
+    }
+
+
 @dataclass
 class CommitResult:
     """結果を構造化するためのデータクラス"""
@@ -96,8 +136,10 @@ def build_diff_lists(
             # try:
             rev_difference = rev_a.revision_difference(rev_b)
             refs = rev_difference.get_refactorings()
+
+            commit_info = extract_commit_info_from_filename(name)
             for ref in refs:
-                refactorings.append((ref, name.split(".")[0]))
+                refactorings.append((ref, commit_info["full_info"]))
         except Exception as e:
             print(f"Error processing commit {commit}: {e}")
             if not continue_on_error:
@@ -142,9 +184,11 @@ def build_diff_lists(
             pbar = tqdm(csv_files_with_size, desc="Extracting Refs", unit="file")
             for ind, (name, file_size) in enumerate(pbar):
                 start_time_commit = time.perf_counter()
-                commit_hash = name.split(".")[0][:8]
+                commit_info = extract_commit_info_from_filename(name)
                 file_size_mb = file_size / (1024 * 1024)
-                pbar.set_description(f"Processing {commit_hash} ({file_size_mb:.1f}MB)")
+                pbar.set_description(
+                    f"Processing {commit_info['commit_hash_short']} ({file_size_mb:.1f}MB)"
+                )
 
                 try:
                     df = pd.read_csv(Path(changes_path) / name)
@@ -163,15 +207,18 @@ def build_diff_lists(
                     try:
                         rev_difference = rev_a.revision_difference(rev_b)
                         refs = rev_difference.get_refactorings()
+
                         for ref in refs:
-                            refactorings.append((ref, name.split(".")[0]))
+                            refactorings.append((ref, commit_info["full_info"]))
                     except Exception as e:
-                        print(f"Failed to process commit {commit_hash}: {e}")
+                        print(
+                            f"Failed to process commit {commit_info['commit_hash_short']}: {e}"
+                        )
                         if not continue_on_error:
                             raise
                     except TimeoutError:
                         print(
-                            f"Commit {commit_hash} skipped due to the long processing time"
+                            f"Commit {commit_info['commit_hash_short']} skipped due to the long processing time"
                         )
                     finally:
                         rt.stop()
@@ -184,9 +231,13 @@ def build_diff_lists(
                     )
 
                 except Exception as e:
-                    print(f"Error processing commit {commit_hash}: {e}")
+                    print(
+                        f"Error processing commit {commit_info['commit_hash_short']}: {e}"
+                    )
                     if continue_on_error:
-                        print(f"Skipping commit {commit_hash} and continuing...")
+                        print(
+                            f"Skipping commit {commit_info['commit_hash_short']} and continuing..."
+                        )
                         continue
                     else:
                         raise
@@ -203,7 +254,15 @@ def build_diff_lists(
     for ref in refactorings:
         # print(f"commit: {ref[1]:>3s} - {str(ref[0]).strip()}")
         data = ref[0].to_json_format()
-        data["Commit"] = ref[1]
+
+        # Parse the full_info to separate timestamp and commit hash
+        full_info = ref[1]
+        commit_info = extract_commit_info_from_filename(f"{full_info}.csv")
+
+        # Add separate Commit and Timestamp fields
+        data["Commit"] = commit_info["commit_hash"]
+        data["Timestamp"] = commit_info["timestamp"]
+
         json_outputs.append(data)
         # ref[0].to_graph()
     changes_path = Path(changes_path).resolve()
@@ -406,7 +465,7 @@ def process_commit_file(args: tuple[str, int, str, Any, float]) -> CommitResult:
     name, file_size, changes_path, directory, skip_time = args
 
     start_time_commit = time.perf_counter()
-    commit_hash = name.split(".")[0][:8]
+    commit_info = extract_commit_info_from_filename(name)
 
     try:
         df = pd.read_csv(Path(changes_path) / name)
@@ -428,13 +487,13 @@ def process_commit_file(args: tuple[str, int, str, Any, float]) -> CommitResult:
             rev_difference = rev_a.revision_difference(rev_b)
             refs = rev_difference.get_refactorings()
 
-            # Return results as structured data
-            results = [(ref, name.split(".")[0]) for ref in refs]
+            # Return results as structured data with full info (timestamp + commit hash)
+            results = [(ref, commit_info["full_info"]) for ref in refs]
             elapsed = time.perf_counter() - start_time_commit
 
             return CommitResult(
                 success=True,
-                commit_hash=commit_hash,
+                commit_hash=commit_info["commit_hash_short"],
                 refactorings=results,
                 files_processed=len(df),
                 elapsed_time=elapsed,
@@ -443,14 +502,14 @@ def process_commit_file(args: tuple[str, int, str, Any, float]) -> CommitResult:
         except Exception as e:
             return CommitResult(
                 success=False,
-                commit_hash=commit_hash,
+                commit_hash=commit_info["commit_hash_short"],
                 error=str(e),
                 elapsed_time=time.perf_counter() - start_time_commit,
             )
         except TimeoutError:
             return CommitResult(
                 success=False,
-                commit_hash=commit_hash,
+                commit_hash=commit_info["commit_hash_short"],
                 error="Timeout",
                 elapsed_time=time.perf_counter() - start_time_commit,
             )
@@ -461,7 +520,7 @@ def process_commit_file(args: tuple[str, int, str, Any, float]) -> CommitResult:
     except Exception as e:
         return CommitResult(
             success=False,
-            commit_hash=commit_hash,
+            commit_hash=commit_info["commit_hash_short"],
             error=f"File read error: {str(e)}",
             elapsed_time=time.perf_counter() - start_time_commit,
         )

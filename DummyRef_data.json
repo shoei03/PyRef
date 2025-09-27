@@ -1,17 +1,39 @@
 [
     {
-        "Refactoring Type": [
-            "Remove Parameter"
+        "Refactoring Type": "Extract Method",
+        "Original": "methodA",
+        "Updated": "methodB",
+        "Location": "example.py/example",
+        "Original Method Line": "(2,2)",
+        "Extracted/Inlined Method Line": 5,
+        "Extracted/Inlined Lines": [
+            3.0,
+            4.0
         ],
+        "Description": " The method methodB from the module example.py in class example is extracted from method methodA from the module example.py in class example ",
+        "Commit": "87d6c845c46f393d8b23ae788efbe1ee55a856ac",
+        "Timestamp": "20210803_180059"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "C",
+        "Updated": "B",
+        "Location": "example.py",
+        "Description": " class C was renamed to class B ",
+        "Commit": "5d8a4ea3082b8bc4b80b57a2a727ec0f51c80184",
+        "Timestamp": "20210803_180642"
+    },
+    {
+        "Refactoring Type": "Push Down Method",
         "Original": "methodB",
         "Updated": "methodB",
-        "Location": "example.py/example_class",
-        "Original Line": 2,
-        "Updated Line": 2,
-        "Description": [
-            "The parameters [ par2 ] of the method methodB from the module example.py in class example_class is/are removed"
-        ],
-        "Commit": "0e6a02bb4208d5b6325a919273fd5cd2168fc85d"
+        "Old Location": "example.py/example_class",
+        "New Location": "example_1.py/example_class_child",
+        "Old Method Line": 6,
+        "New Method Line": 9,
+        "Description": " method methodB from the module example.py in class example_class was moved to class example_class_child of module example_1.py ",
+        "Commit": "4e4f1e859757c4ac7d2d956ae477f13cf8ece9eb",
+        "Timestamp": "20210803_185527"
     },
     {
         "Refactoring Type": [
@@ -25,53 +47,8 @@
         "Description": [
             "The method methodA from the module example.py in class example_class is renamed to methodB"
         ],
-        "Commit": "190e835416e782723d6b42d2787f7d926858c467"
-    },
-    {
-        "Refactoring Type": "Inline Method",
-        "Original": "methodB",
-        "Updated": "methodC",
-        "Location": "example.py/example_class",
-        "Original Method Line": "(2,2)",
-        "Extracted/Inlined Method Line": 5,
-        "Extracted/Inlined Lines": [
-            4.0
-        ],
-        "Description": " The method methodC from the module example.py in class example_class is inlined into method methodB from the module example.py in class example_class ",
-        "Commit": "4944c056b484c77ccddb902962c1b385d20507e0"
-    },
-    {
-        "Refactoring Type": "Push Down Method",
-        "Original": "methodB",
-        "Updated": "methodB",
-        "Old Location": "example.py/example_class",
-        "New Location": "example_1.py/example_class_child",
-        "Old Method Line": 6,
-        "New Method Line": 9,
-        "Description": " method methodB from the module example.py in class example_class was moved to class example_class_child of module example_1.py ",
-        "Commit": "4e4f1e859757c4ac7d2d956ae477f13cf8ece9eb"
-    },
-    {
-        "Refactoring Type": [
-            "Change/Rename Parameter"
-        ],
-        "Original": "methodB",
-        "Updated": "methodB",
-        "Location": "example.py/example_class",
-        "Original Line": 2,
-        "Updated Line": 2,
-        "Description": [
-            "The parameters [ par1 ] of the method methodB from the module example.py in class example_class are changed/renamed to [par2]"
-        ],
-        "Commit": "58ae1f7229ae4b278c642a170599c7629c8d7fa0"
-    },
-    {
-        "Refactoring Type": "Rename Class",
-        "Original": "C",
-        "Updated": "B",
-        "Location": "example.py",
-        "Description": " class C was renamed to class B ",
-        "Commit": "5d8a4ea3082b8bc4b80b57a2a727ec0f51c80184"
+        "Commit": "190e835416e782723d6b42d2787f7d926858c467",
+        "Timestamp": "20210803_185730"
     },
     {
         "Refactoring Type": [
@@ -85,7 +62,8 @@
         "Description": [
             "The method methodB from the module example.py in class example_class is renamed to methodC"
         ],
-        "Commit": "68c9cf8e43e62a3bbb1043028ce93da8f23eb2f2"
+        "Commit": "68c9cf8e43e62a3bbb1043028ce93da8f23eb2f2",
+        "Timestamp": "20210803_185857"
     },
     {
         "Refactoring Type": "Extract Method",
@@ -98,21 +76,8 @@
             6.0
         ],
         "Description": " The method methodD from the module example.py in class example_class is extracted from method methodB from the module example.py in class example_class ",
-        "Commit": "68c9cf8e43e62a3bbb1043028ce93da8f23eb2f2"
-    },
-    {
-        "Refactoring Type": "Extract Method",
-        "Original": "methodA",
-        "Updated": "methodB",
-        "Location": "example.py/example",
-        "Original Method Line": "(2,2)",
-        "Extracted/Inlined Method Line": 5,
-        "Extracted/Inlined Lines": [
-            3.0,
-            4.0
-        ],
-        "Description": " The method methodB from the module example.py in class example is extracted from method methodA from the module example.py in class example ",
-        "Commit": "87d6c845c46f393d8b23ae788efbe1ee55a856ac"
+        "Commit": "68c9cf8e43e62a3bbb1043028ce93da8f23eb2f2",
+        "Timestamp": "20210803_185857"
     },
     {
         "Refactoring Type": [
@@ -126,7 +91,22 @@
         "Description": [
             "The method methodD from the module example.py in class example_class is renamed to methodB"
         ],
-        "Commit": "ade0df1fa981c81ccdc3d3048fd35675af91d77b"
+        "Commit": "ade0df1fa981c81ccdc3d3048fd35675af91d77b",
+        "Timestamp": "20210803_190119"
+    },
+    {
+        "Refactoring Type": "Inline Method",
+        "Original": "methodB",
+        "Updated": "methodC",
+        "Location": "example.py/example_class",
+        "Original Method Line": "(2,2)",
+        "Extracted/Inlined Method Line": 5,
+        "Extracted/Inlined Lines": [
+            4.0
+        ],
+        "Description": " The method methodC from the module example.py in class example_class is inlined into method methodB from the module example.py in class example_class ",
+        "Commit": "4944c056b484c77ccddb902962c1b385d20507e0",
+        "Timestamp": "20210803_190143"
     },
     {
         "Refactoring Type": [
@@ -140,7 +120,38 @@
         "Description": [
             "The parameters [ par1 ] are added to the method methodB from the module example.py in class example_class"
         ],
-        "Commit": "eb758a9af2ea623fa15b8bc6137c9ee65db42b33"
+        "Commit": "eb758a9af2ea623fa15b8bc6137c9ee65db42b33",
+        "Timestamp": "20210803_190529"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "methodB",
+        "Updated": "methodB",
+        "Location": "example.py/example_class",
+        "Original Line": 2,
+        "Updated Line": 2,
+        "Description": [
+            "The parameters [ par1 ] of the method methodB from the module example.py in class example_class are changed/renamed to [par2]"
+        ],
+        "Commit": "58ae1f7229ae4b278c642a170599c7629c8d7fa0",
+        "Timestamp": "20210803_190559"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "methodB",
+        "Updated": "methodB",
+        "Location": "example.py/example_class",
+        "Original Line": 2,
+        "Updated Line": 2,
+        "Description": [
+            "The parameters [ par2 ] of the method methodB from the module example.py in class example_class is/are removed"
+        ],
+        "Commit": "0e6a02bb4208d5b6325a919273fd5cd2168fc85d",
+        "Timestamp": "20210803_190710"
     },
     {
         "Refactoring Type": [
@@ -154,6 +165,7 @@
         "Description": [
             "The parameters [ par1 ] are added to the method methodB from the module example.py in class example_class"
         ],
-        "Commit": "f4070dbc6fa3dc05056863ca8d1522afceb4778e"
+        "Commit": "f4070dbc6fa3dc05056863ca8d1522afceb4778e",
+        "Timestamp": "20210803_190758"
     }
 ]
