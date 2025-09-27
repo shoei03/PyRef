@@ -52,9 +52,56 @@ Results are saved as JSON files in the project root (e.g., `DummyRef_data.json`)
 
 ### Repository Management
 
+#### Clone Repository
+
 ```sh
 # Clone a GitHub repository
 docker-compose run --rm pyref repoClone -u "username" -r "repository_name"
+```
+
+#### Analyze Repository Changes
+
+```sh
+# Analyze all commits in repository
+docker-compose run --rm pyref repoChanges -p "Repos/[REPO_NAME]" -al
+
+# Analyze changes between last commits only
+docker-compose run --rm pyref repoChanges -p "Repos/[REPO_NAME]" -l
+
+# Advanced options for repository changes analysis
+docker-compose run --rm pyref repoChanges -p "Repos/[REPO_NAME]" -al \
+  --max-count 100 \
+  --skip 10 \
+  --since "2023-01-01" \
+  --until "2023-12-31" \
+  --rev "main" \
+  --paths "src/*.py"
+```
+
+#### Build Diff Lists
+
+```sh
+# Build diff lists from changes CSV file
+docker-compose run --rm pyref reflist -p "/app/Repos/[REPO_NAME]/changes"
+
+# Build diff lists for specific commit
+docker-compose run --rm pyref reflist -p "/app/Repos/[REPO_NAME]/changes" -c "[COMMIT_HASH]"
+```
+
+### Repository Management
+
+```sh
+# Clone a GitHub repository
+docker-compose run --rm pyref repoClone -u "username" -r "repository_name"
+
+# Analyze changes in repository (all commits)
+docker-compose run --rm pyref repoChanges -p "Repos/[REPO_NAME]" -al
+
+# Analyze changes between last commits
+docker-compose run --rm pyref repoChanges -p "Repos/[REPO_NAME]" -l
+
+# Build diff lists from CSV file
+docker-compose run --rm pyref reflist -p "/app/Repos/[REPO_NAME]/changes"
 ```
 
 ### Refactoring Analysis
