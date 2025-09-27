@@ -88,22 +88,6 @@ docker-compose run --rm pyref reflist -p "/app/Repos/[REPO_NAME]/changes"
 docker-compose run --rm pyref reflist -p "/app/Repos/[REPO_NAME]/changes" -c "[COMMIT_HASH]"
 ```
 
-### Repository Management
-
-```sh
-# Clone a GitHub repository
-docker-compose run --rm pyref repoClone -u "username" -r "repository_name"
-
-# Analyze changes in repository (all commits)
-docker-compose run --rm pyref repoChanges -p "Repos/[REPO_NAME]" -al
-
-# Analyze changes between last commits
-docker-compose run --rm pyref repoChanges -p "Repos/[REPO_NAME]" -l
-
-# Build diff lists from CSV file
-docker-compose run --rm pyref reflist -p "/app/Repos/[REPO_NAME]/changes"
-```
-
 ### Refactoring Analysis
 
 ```sh
@@ -132,52 +116,6 @@ docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" \
   --until "2023-12-31" \
   --continue-on-error \
   -s 10
-```
-
-## Advanced Usage Examples
-
-### Performance Optimization
-
-```sh
-# Process only the latest 10 commits
-docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" --max-count 10
-
-# Skip the first 5 commits
-docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" --skip-commits 5
-
-# Process commits from the last week
-docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" --since "1 week ago"
-```
-
-### Targeted Analysis
-
-```sh
-# Analyze commits until a specific date
-docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" --until "2023-12-31"
-
-# Start from a specific branch or tag
-docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" --rev "develop"
-
-# Focus on specific file paths
-docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" --paths "src/*.py" "tests/*.py"
-```
-
-### Complex Analysis Scenarios
-
-```sh
-# Latest 50 commits, specific directory
-docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" \
-  --max-count 50 \
-  --paths "src/core/*.py"
-
-# Date range analysis
-docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" \
-  --since "2023-01-01" \
-  --until "2023-12-31"
-
-# Continue processing even if errors occur
-docker-compose run --rm pyref getrefs -r "Repos/[REPO_NAME]" \
-  --continue-on-error
 ```
 
 ## Development Environment
