@@ -1,11 +1,15 @@
+from __future__ import annotations
+
 import hashlib
 import json
 import signal
 import threading
 import time
 from ast import *
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
+from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 import pandas as pd
 from tqdm import tqdm
@@ -13,6 +17,22 @@ from tqdm import tqdm
 from preprocessing.conditions_match import *
 from preprocessing.revision import Rev
 from preprocessing.utils import to_tree
+
+
+@dataclass
+class CommitResult:
+    """結果を構造化するためのデータクラス"""
+
+    success: bool
+    commit_hash: str
+    refactorings: list[tuple] = None
+    files_processed: int = 0
+    elapsed_time: float = 0.0
+    error: str = None
+
+    def __post_init__(self):
+        if self.refactorings is None:
+            self.refactorings = []
 
 
 class RepeatedTimer(object):
@@ -104,6 +124,9 @@ def build_diff_lists(
             print(
                 f"Using parallel processing for {len(csv_files_with_size)} commits..."
             )
+            # CPUバウンドなタスクのためProcessPoolExecutorを試してみる
+            use_processes = len(csv_files_with_size) > 10  # 大きなデータセットの場合
+
             commit_refactorings = process_commits_parallel(
                 csv_files_with_size,
                 changes_path,
@@ -111,6 +134,7 @@ def build_diff_lists(
                 skip_time,
                 max_workers=4,
                 continue_on_error=continue_on_error,
+                use_processes=use_processes,
             )
             refactorings.extend(commit_refactorings)
         else:
@@ -377,7 +401,7 @@ def populate(row, rev_a, rev_b):
     rev_b.extract_code_elements(new_tree, path)
 
 
-def process_commit_file(args):
+def process_commit_file(args: tuple[str, int, str, Any, float]) -> CommitResult:
     """Process a single commit file - designed for parallel execution"""
     name, file_size, changes_path, directory, skip_time = args
 
@@ -404,111 +428,152 @@ def process_commit_file(args):
             rev_difference = rev_a.revision_difference(rev_b)
             refs = rev_difference.get_refactorings()
 
-            # Return results instead of printing directly
-            results = []
-            for ref in refs:
-                results.append((ref, name.split(".")[0]))
-
+            # Return results as structured data
+            results = [(ref, name.split(".")[0]) for ref in refs]
             elapsed = time.perf_counter() - start_time_commit
-            return {
-                "success": True,
-                "commit_hash": commit_hash,
-                "refactorings": results,
-                "files_processed": len(df),
-                "elapsed_time": elapsed,
-            }
+
+            return CommitResult(
+                success=True,
+                commit_hash=commit_hash,
+                refactorings=results,
+                files_processed=len(df),
+                elapsed_time=elapsed,
+            )
 
         except Exception as e:
-            return {
-                "success": False,
-                "commit_hash": commit_hash,
-                "error": str(e),
-                "elapsed_time": time.perf_counter() - start_time_commit,
-            }
+            return CommitResult(
+                success=False,
+                commit_hash=commit_hash,
+                error=str(e),
+                elapsed_time=time.perf_counter() - start_time_commit,
+            )
         except TimeoutError:
-            return {
-                "success": False,
-                "commit_hash": commit_hash,
-                "error": "Timeout",
-                "elapsed_time": time.perf_counter() - start_time_commit,
-            }
+            return CommitResult(
+                success=False,
+                commit_hash=commit_hash,
+                error="Timeout",
+                elapsed_time=time.perf_counter() - start_time_commit,
+            )
         finally:
             if skip_time is not None:
                 signal.alarm(0)
 
     except Exception as e:
-        return {
-            "success": False,
-            "commit_hash": commit_hash,
-            "error": f"File read error: {str(e)}",
-            "elapsed_time": time.perf_counter() - start_time_commit,
-        }
+        return CommitResult(
+            success=False,
+            commit_hash=commit_hash,
+            error=f"File read error: {str(e)}",
+            elapsed_time=time.perf_counter() - start_time_commit,
+        )
 
 
 def process_commits_parallel(
-    csv_files_with_size,
-    changes_path,
-    directory,
-    skip_time,
-    max_workers=None,
-    continue_on_error=False,
-):
-    """Process commits in parallel using ThreadPoolExecutor"""
-    if max_workers is None:
-        max_workers = min(4, len(csv_files_with_size))  # Conservative default
+    csv_files_with_size: list[tuple[str, int]],
+    changes_path: str,
+    directory: Any = None,
+    skip_time: float = None,
+    max_workers: int = None,
+    continue_on_error: bool = False,
+    use_processes: bool = False,
+) -> list[tuple]:
+    """
+    Process commits in parallel using ThreadPoolExecutor or ProcessPoolExecutor
 
-    # Prepare arguments for parallel processing
+    Args:
+        csv_files_with_size: List of (filename, size) tuples
+        changes_path: Path to changes directory
+        directory: Directory filter (optional)
+        skip_time: Timeout in minutes (optional)
+        max_workers: Maximum number of workers (optional)
+        continue_on_error: Continue processing on errors
+        use_processes: Use ProcessPoolExecutor instead of ThreadPoolExecutor
+
+    Returns:
+        List of refactoring tuples
+    """
+    if max_workers is None:
+        # より賢いワーカー数の決定
+        import os
+
+        cpu_count = os.cpu_count() or 4
+        max_workers = min(cpu_count, len(csv_files_with_size), 8)  # 最大8まで
+
+    # 引数準備の最適化
     args_list = [
         (name, file_size, changes_path, directory, skip_time)
         for name, file_size in csv_files_with_size
     ]
 
     refactorings = []
+    failed_commits = []
 
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        # Use tqdm to show progress
-        pbar = tqdm(
-            desc="Extracting Refs (Parallel)", unit="file", total=len(args_list)
-        )
+    # ExecutorContextManagerの選択
+    ExecutorClass = ProcessPoolExecutor if use_processes else ThreadPoolExecutor
 
-        # Submit all tasks
-        future_to_commit = {
-            executor.submit(process_commit_file, args): args[0] for args in args_list
-        }
+    with ExecutorClass(max_workers=max_workers) as executor:
+        # プログレスバーの改善
+        with tqdm(
+            desc=f"Extracting Refs ({'Processes' if use_processes else 'Threads'})",
+            unit="commit",
+            total=len(args_list),
+            smoothing=0.1,
+        ) as pbar:
+            # as_completedを使用してより効率的な処理
+            future_to_args = {
+                executor.submit(process_commit_file, args): args for args in args_list
+            }
 
-        # Process completed tasks
-        for future in future_to_commit:
-            try:
-                result = future.result()
-                pbar.update(1)
+            # 完了したタスクを順次処理
+            for future in as_completed(future_to_args):
+                args = future_to_args[future]
+                commit_name = args[0]
 
-                if result["success"]:
-                    refactorings.extend(result["refactorings"])
-                    # Print refactorings as they complete
-                    for ref, commit in result["refactorings"]:
-                        print(">>>", str(ref))
+                try:
+                    result: CommitResult = future.result()
+                    pbar.update(1)
 
-                    pbar.set_postfix(
-                        commit=result["commit_hash"][:8],
-                        files=result["files_processed"],
-                        time=f"{result['elapsed_time']:.1f}s",
-                        refresh=True,
-                    )
-                else:
-                    print(
-                        f"Failed to process commit {result['commit_hash']}: {result['error']}"
-                    )
-            except Exception as e:
-                commit_name = future_to_commit[future]
-                print(f"Unexpected error processing commit {commit_name}: {e}")
-                if not continue_on_error:
-                    # Cancel remaining tasks and re-raise
-                    for f in future_to_commit:
-                        if not f.done():
-                            f.cancel()
-                    raise
+                    if result.success:
+                        refactorings.extend(result.refactorings)
 
-        pbar.close()
+                        # バッチでリファクタリングを出力（パフォーマンス向上）
+                        if result.refactorings:
+                            refs_summary = (
+                                f"Found {len(result.refactorings)} refactorings"
+                            )
+                        else:
+                            refs_summary = "No refactorings"
+
+                        pbar.set_postfix(
+                            commit=result.commit_hash,
+                            files=result.files_processed,
+                            time=f"{result.elapsed_time:.1f}s",
+                            refs=refs_summary,
+                            refresh=False,
+                        )
+
+                    else:
+                        failed_commits.append((result.commit_hash, result.error))
+                        pbar.write(f"❌ Failed: {result.commit_hash} - {result.error}")
+
+                        if not continue_on_error:
+                            # 残りのタスクをキャンセル
+                            for remaining_future in future_to_args:
+                                if not remaining_future.done():
+                                    remaining_future.cancel()
+                            raise Exception(
+                                f"Processing failed for commit {result.commit_hash}: {result.error}"
+                            )
+
+                except Exception as e:
+                    failed_commits.append((commit_name, str(e)))
+                    pbar.write(f"❌ Unexpected error processing {commit_name}: {e}")
+
+                    if not continue_on_error:
+                        # 残りのタスクをキャンセル
+                        for remaining_future in future_to_args:
+                            if not remaining_future.done():
+                                remaining_future.cancel()
+                        raise
 
     return refactorings
 
