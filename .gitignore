@@ -2,3 +2,11 @@
 .venv
 uv.lock
 __pycache__/
+
+# Ignore all files under Repos/ but keep changes directories  
+Repos/*
+!Repos/*/
+!Repos/*/changes/
+Repos/*/*
+!Repos/*/changes/
+
