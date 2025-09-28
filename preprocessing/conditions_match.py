@@ -1,10 +1,11 @@
-from ast import *
 import ast
+from ast import *
+
 import astunparse
 import editdistance
-from preprocessing.node_transformer import nodeReplace, replaceProt
 import pandas as pd
 
+from preprocessing.node_transformer import nodeReplace, replaceProt
 from preprocessing.refactorings_info import RefInfo
 from preprocessing.utils import get_node_index
 
@@ -21,89 +22,218 @@ def body_mapper(methods1, method2, heuristic_info):
         method3 = methods1[0]
         argsToParams = get_args_to_params(method3, method2)
 
-    matched_statements = pd.DataFrame(
-        columns=['stmt1', 's1Index', 'stmt2', 's2Index', 'type', 'distance', 'depth_diff', 'index_diff',
-                 "replacements"])
+    # Use list collection instead of DataFrame for better performance
+    matched_statements_list = []
 
     i = 0
 
-    matched_statements = statements_match(method1.get_all_stmts(), method2.get_all_stmts(), matched_statements, i)
+    matched_statements_list = statements_match_optimized(
+        method1.get_all_stmts(), method2.get_all_stmts(), matched_statements_list, i
+    )
 
-    matched_statements = matched_statements[~(matched_statements.type.str.contains("inner"))]
+    # Convert to DataFrame only once at the end
+    if matched_statements_list:
+        matched_statements = pd.DataFrame(matched_statements_list)
+        matched_statements = matched_statements[
+            ~(matched_statements.type.str.contains("inner"))
+        ]
+    else:
+        matched_statements = pd.DataFrame(
+            columns=[
+                "stmt1",
+                "s1Index",
+                "stmt2",
+                "s2Index",
+                "type",
+                "distance",
+                "depth_diff",
+                "index_diff",
+                "replacements",
+            ]
+        )
 
     if len(matched_statements.index) > 0:
-        gp = matched_statements.groupby(['stmt1', 's1Index'])
+        gp = matched_statements.groupby(["stmt1", "s1Index"])
 
         toKeep = []
 
         for name, group in gp:
             toKeep.append(
-                group.sort_values(['distance', 'depth_diff', 'index_diff'], ascending=[True, True, True]).iloc[0])
+                group.sort_values(
+                    ["distance", "depth_diff", "index_diff"],
+                    ascending=[True, True, True],
+                ).iloc[0]
+            )
 
         matched_statements = pd.DataFrame(toKeep)  # FURTHER CHECK
 
         toKeep = []
 
-        gp = matched_statements.groupby(['stmt2', 's2Index'])
+        gp = matched_statements.groupby(["stmt2", "s2Index"])
 
         for name, group in gp:
             toKeep.append(
-                group.sort_values(['distance', 'depth_diff', 'index_diff'], ascending=[True, True, True]).iloc[0])
+                group.sort_values(
+                    ["distance", "depth_diff", "index_diff"],
+                    ascending=[True, True, True],
+                ).iloc[0]
+            )
         return pd.DataFrame(toKeep)
 
     return matched_statements
 
 
+def statements_match_optimized(
+    statements1, statements2, matched_statements_list, i, _type=""
+):
+    """Optimized version using list collection instead of DataFrame.append()"""
+    for statement1 in statements1:
+        for statement2 in statements2:
+            if (
+                type(statement1).__name__ == "Statement"
+                and type(statement2).__name__ == "Statement"
+            ):
+                identical, reps = process_leaf(statement1, statement2)
+                if identical:
+                    if reps is not None:
+                        reps = reps.to_dict()
+                    matched_statements_list.append(
+                        {
+                            "stmt1": str(statement1),
+                            "s1Index": statement1.index,
+                            "s1Lineno": statement1.ast_node.lineno,
+                            "stmt2": str(statement2),
+                            "s2Index": statement2.index,
+                            "type": _type + "leaf",
+                            "distance": editdistance.eval(
+                                str(statement1), str(statement2)
+                            ),
+                            "depth_diff": abs(statement1.depth - statement2.depth),
+                            "index_diff": abs(statement1.index - statement2.index),
+                            "replacements": reps,
+                        }
+                    )
+
+            elif (
+                type(statement1).__name__ == "CompositeStatement"
+                and type(statement2).__name__ == "CompositeStatement"
+            ):
+                compo_matched_statements_list = []
+                compo_matched_statements_list = statements_match_optimized(
+                    statement1.get_all_stmts(),
+                    statement2.get_all_stmts(),
+                    compo_matched_statements_list,
+                    i,
+                    "inner",
+                )
+
+                if compo_matched_statements_list:  # Check if list is not empty
+                    identical, reps = process_leaf(statement1, statement2)
+                    if identical:
+                        if reps is not None:
+                            reps = reps.to_dict()
+                        matched_statements_list.append(
+                            {
+                                "stmt1": str(statement1),
+                                "s1Index": statement1.index,
+                                "s1Lineno": statement1.ast_node.lineno,
+                                "stmt2": str(statement2),
+                                "s2Index": statement2.index,
+                                "type": _type + "compo",
+                                "distance": editdistance.eval(
+                                    str(statement1), str(statement2)
+                                ),
+                                "depth_diff": abs(statement1.depth - statement2.depth),
+                                "index_diff": abs(statement1.index - statement2.index),
+                                "replacements": reps,
+                            }
+                        )
+                        # Extend the main list with composite matches
+                        matched_statements_list.extend(compo_matched_statements_list)
+
+    return matched_statements_list
+
+
 def statements_match(statements1, statements2, matched_statements, i, _type=""):
     for statement1 in statements1:
         for statement2 in statements2:
-            if type(statement1).__name__ == "Statement" and type(statement2).__name__ == "Statement":
+            if (
+                type(statement1).__name__ == "Statement"
+                and type(statement2).__name__ == "Statement"
+            ):
                 identical, reps = process_leaf(statement1, statement2)
                 if identical:
                     if reps is not None:
                         reps = reps.to_dict()
                     matched_statements = matched_statements.append(
-                        {"stmt1": str(statement1), 's1Index': statement1.index, "s1Lineno": statement1.ast_node.lineno, "stmt2": str(statement2),
-                         's2Index': statement2.index,
-                         "type": _type + "leaf",
-                         "distance": editdistance.eval(str(statement1),
-                                                       str(statement2)),
-                         "depth_diff": abs(
-                             statement1.depth - statement2.depth),
-                         "index_diff": abs(
-                             statement1.index - statement2.index),
-                         "replacements": reps
-                         },
-                        ignore_index=True)
+                        {
+                            "stmt1": str(statement1),
+                            "s1Index": statement1.index,
+                            "s1Lineno": statement1.ast_node.lineno,
+                            "stmt2": str(statement2),
+                            "s2Index": statement2.index,
+                            "type": _type + "leaf",
+                            "distance": editdistance.eval(
+                                str(statement1), str(statement2)
+                            ),
+                            "depth_diff": abs(statement1.depth - statement2.depth),
+                            "index_diff": abs(statement1.index - statement2.index),
+                            "replacements": reps,
+                        },
+                        ignore_index=True,
+                    )
 
-            elif type(statement1).__name__ == "CompositeStatement" and type(
-                    statement2).__name__ == "CompositeStatement":
+            elif (
+                type(statement1).__name__ == "CompositeStatement"
+                and type(statement2).__name__ == "CompositeStatement"
+            ):
                 compo_matched_statements = pd.DataFrame(
-                    columns=['stmt1', 's1Index', 's1Lineno', 'stmt2', 's2Index', 'type', 'distance', 'depth_diff', 'index_diff',
-                             "replacements"])
+                    columns=[
+                        "stmt1",
+                        "s1Index",
+                        "s1Lineno",
+                        "stmt2",
+                        "s2Index",
+                        "type",
+                        "distance",
+                        "depth_diff",
+                        "index_diff",
+                        "replacements",
+                    ]
+                )
                 # matched_statements = {}
-                compo_matched_statements = statements_match(statement1.get_all_stmts(),
-                                                            statement2.get_all_stmts(), compo_matched_statements, i,
-                                                            "inner")
+                compo_matched_statements = statements_match(
+                    statement1.get_all_stmts(),
+                    statement2.get_all_stmts(),
+                    compo_matched_statements,
+                    i,
+                    "inner",
+                )
                 if len(compo_matched_statements.index) > 0:
                     identical, reps = process_leaf(statement1, statement2)
                     if identical:
                         if reps is not None:
                             reps = reps.to_dict()
                         matched_statements = matched_statements.append(
-                            {"stmt1": str(statement1), 's1Index': statement1.index, "s1Lineno": statement1.ast_node.lineno, "stmt2": str(statement2),
-                             's2Index': statement2.index,
-                             "type": _type + "compo",
-                             "distance": editdistance.eval(str(statement1),
-                                                           str(statement2)),
-                             "depth_diff": abs(
-                                 statement1.depth - statement2.depth),
-                             "index_diff": abs(
-                                 statement1.index - statement2.index),
-                             "replacements": reps
-                             },
-                            ignore_index=True)
-                        matched_statements = matched_statements.append(compo_matched_statements, ignore_index=True)
+                            {
+                                "stmt1": str(statement1),
+                                "s1Index": statement1.index,
+                                "s1Lineno": statement1.ast_node.lineno,
+                                "stmt2": str(statement2),
+                                "s2Index": statement2.index,
+                                "type": _type + "compo",
+                                "distance": editdistance.eval(
+                                    str(statement1), str(statement2)
+                                ),
+                                "depth_diff": abs(statement1.depth - statement2.depth),
+                                "index_diff": abs(statement1.index - statement2.index),
+                                "replacements": reps,
+                            },
+                            ignore_index=True,
+                        )
+                        matched_statements = matched_statements.append(
+                            compo_matched_statements, ignore_index=True
+                        )
 
     return matched_statements
 
@@ -119,7 +249,10 @@ def process_leaf(leaf1, leaf2):
             leaf1_ast = ast.Expr(ast.Constant("", kind=""))
         else:
             leaf1_ast = ast.Expr(list(ast.iter_child_nodes(leaf1_ast))[0])
-        if leaf2.ast_type() not in abstract_node and 'value' in leaf2_ast.__dict__.keys():
+        if (
+            leaf2.ast_type() not in abstract_node
+            and "value" in leaf2_ast.__dict__.keys()
+        ):
             leaf2_ast = ast.Expr(leaf2_ast.value)
 
     if leaf2.ast_type() in abstract_node:
@@ -128,7 +261,10 @@ def process_leaf(leaf1, leaf2):
             leaf2_ast = ast.Expr(ast.Constant("", kind=""))
         else:
             leaf2_ast = ast.Expr(list(ast.iter_child_nodes(leaf2_ast))[0])
-        if leaf1.ast_type() not in abstract_node and 'value' in leaf1_ast.__dict__.keys():
+        if (
+            leaf1.ast_type() not in abstract_node
+            and "value" in leaf1_ast.__dict__.keys()
+        ):
             leaf1_ast = ast.Expr(leaf1_ast.value)
 
     # print("processed leaf1 from: ", str(old_str_leaf1), " to ", str(leaf1).replace('\n', ''))
@@ -197,7 +333,10 @@ def get_args_to_params(adjacent_m, added_m):
         for statement in adjacent_m.get_all_stmts():
             for element in ast.walk(statement.get_ast_node()):
                 if type(element).__name__ == "Call":
-                    if added_m.name == astunparse.unparse(element.func)[0:-1].split(".")[-1]:
+                    if (
+                        added_m.name
+                        == astunparse.unparse(element.func)[0:-1].split(".")[-1]
+                    ):
                         invocations.append(element)
 
         args = invocations[0].args  # TODO: check others invocs
@@ -236,13 +375,12 @@ def condition3(leaf1, leaf2):
 
     common_elements = get_common_element(leaf1_elements, leaf2_elements)
 
-    replacements = match_elements(leaf1_elements, leaf2_elements, leaf1,
-                                  leaf2)
+    replacements = match_elements(leaf1_elements, leaf2_elements, leaf1, leaf2)
 
     if len(replacements.index) == 0:
         return False, None
 
-    replacements.sort_values(by=['distance'], inplace=True, ascending=True)
+    replacements.sort_values(by=["distance"], inplace=True, ascending=True)
 
     distance = leaf1.replace_and_distance(leaf2, df_replacements=replacements)
 
@@ -254,8 +392,8 @@ def condition3(leaf1, leaf2):
 
 
 def display(row):
-    print(astunparse.unparse(row['node1'].name).replace('\n', ''), row['node1'].name)
-    print(astunparse.unparse(row['node2'].name).replace('\n', ''), row['node1'].name)
+    print(astunparse.unparse(row["node1"].name).replace("\n", ""), row["node1"].name)
+    print(astunparse.unparse(row["node2"].name).replace("\n", ""), row["node1"].name)
 
 
 def compare(element1, element2):
@@ -271,8 +409,10 @@ def compare(element1, element2):
         return astunparse.unparse(element1.name) == astunparse.unparse(element2.name)
     elif type1 == "Attribute" and type2 == "Attribute":
         return element1.name.attr == element2.name.attr
-    elif type(element1.name).__base__.__name__ == "operator" and type(
-            element2.name).__base__.__name__ == "operator":
+    elif (
+        type(element1.name).__base__.__name__ == "operator"
+        and type(element2.name).__base__.__name__ == "operator"
+    ):
         return ast.dump(element1.name) == ast.dump(element2.name)
     return False
 
@@ -282,7 +422,9 @@ def get_common_element(elements1, elements2):
 
     for element1 in elements1:
         for element2 in elements2:
-            if compare(element1, element2) and get_node_index(element1) == get_node_index(element2):
+            if compare(element1, element2) and get_node_index(
+                element1
+            ) == get_node_index(element2):
                 common_elements.append((element1, element2))
 
     for common_element in common_elements:
@@ -315,8 +457,10 @@ def is_replaceable(element1, element2):
             return True
     elif type1 in replaceable and type2 in replaceable:
         return True
-    elif type(element1.name).__base__.__name__ == "operator" and type(
-            element2.name).__base__.__name__ == "operator":
+    elif (
+        type(element1.name).__base__.__name__ == "operator"
+        and type(element2.name).__base__.__name__ == "operator"
+    ):
         return True
     return False
 
@@ -334,16 +478,30 @@ def match_elements(elements1, elements2, leaf1, leaf2):
                 replace_distance = nr.replace(element1, element2, leaf1, leaf2)
                 # replace_distance = leaf1.replace_and_distance(leaf2, element1, element2)
                 if replace_distance <= originalDistance:
-                    if type(element1.name).__name__ == "Call" and type(element2.name).__name__ == "Call":
+                    if (
+                        type(element1.name).__name__ == "Call"
+                        and type(element2.name).__name__ == "Call"
+                    ):
                         compatible = compatible_invocs_subexpression(element1, element2)
                         if compatible:
-                            replacements[i] = {"node1": element1, "node2": element2, "distance": replace_distance,
-                                               'type': type(element1.name).__name__ + "To" + type(
-                                                   element2.name).__name__}
+                            replacements[i] = {
+                                "node1": element1,
+                                "node2": element2,
+                                "distance": replace_distance,
+                                "type": type(element1.name).__name__
+                                + "To"
+                                + type(element2.name).__name__,
+                            }
                             i = i + 1
                     else:
-                        replacements[i] = {"node1": element1, "node2": element2, "distance": replace_distance,
-                                           'type': type(element1.name).__name__ + "To" + type(element2.name).__name__}
+                        replacements[i] = {
+                            "node1": element1,
+                            "node2": element2,
+                            "distance": replace_distance,
+                            "type": type(element1.name).__name__
+                            + "To"
+                            + type(element2.name).__name__,
+                        }
                         i = i + 1
         distances = []
         for key in replacements.keys():
@@ -357,20 +515,32 @@ def match_elements(elements1, elements2, leaf1, leaf2):
     if len(replacements.index) > 0:
         for element1 in elements1:
             min_dist = replacements[replacements.node1 == element1].distance.min()
-            replacements = replacements.drop(replacements[(replacements.distance > min_dist)
-                                                          & (replacements.node1 == element1)].index)
+            replacements = replacements.drop(
+                replacements[
+                    (replacements.distance > min_dist)
+                    & (replacements.node1 == element1)
+                ].index
+            )
         for element2 in elements2:
             min_dist = replacements[replacements.node2 == element2].distance.min()
-            replacements = replacements.drop(replacements[(replacements.distance > min_dist)
-                                                          & (replacements.node2 == element2)].index)
+            replacements = replacements.drop(
+                replacements[
+                    (replacements.distance > min_dist)
+                    & (replacements.node2 == element2)
+                ].index
+            )
     return replacements
 
 
 def compatible_invocs_subexpression(invoc1, invoc2):
-    if is_invoc_cover_stmt(invoc1) and is_invoc_cover_stmt(invoc2):  # strict checking on invoc cover stmt
-        if not (astunparse.unparse(invoc1.name).split(".")[-1].split("(")[0] ==
-                astunparse.unparse(invoc2.name).split(".")[-1].split("(")[0] or
-                invoc1.name.args == invoc2.name.args):
+    if is_invoc_cover_stmt(invoc1) and is_invoc_cover_stmt(
+        invoc2
+    ):  # strict checking on invoc cover stmt
+        if not (
+            astunparse.unparse(invoc1.name).split(".")[-1].split("(")[0]
+            == astunparse.unparse(invoc2.name).split(".")[-1].split("(")[0]
+            or invoc1.name.args == invoc2.name.args
+        ):
             return False
     subexp1 = astunparse.unparse(invoc1.name).split(".")[0:-1]
     subexp2 = astunparse.unparse(invoc2.name).split(".")[0:-1]

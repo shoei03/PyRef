@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import gc
 import hashlib
 import json
 import signal
@@ -451,9 +452,19 @@ def validate(args):
         build_diff_lists(changes_path, validation["commit"])
 
 
-# Global cache for AST parsing and tree conversion
+# Global cache for AST parsing and tree conversion with size limits
+# Size-limited caches to prevent memory issues
 _ast_cache = {}
 _tree_cache = {}
+MAX_CACHE_SIZE = 1000  # Limit cache size to prevent memory bloat
+
+
+def clear_caches():
+    """Clear caches to free memory"""
+    global _ast_cache, _tree_cache
+    _ast_cache.clear()
+    _tree_cache.clear()
+    gc.collect()
 
 
 def get_content_hash(content):
@@ -462,11 +473,22 @@ def get_content_hash(content):
 
 
 def cached_eval_and_tree(file_content):
-    """Cache AST evaluation and tree conversion"""
+    """Cache AST evaluation and tree conversion with size limits"""
+    global _ast_cache, _tree_cache
+
     content_hash = get_content_hash(file_content)
 
     if content_hash in _tree_cache:
         return _tree_cache[content_hash]
+
+    # Clear cache if it gets too large
+    if len(_tree_cache) > MAX_CACHE_SIZE:
+        # Remove oldest 20% of entries
+        items_to_remove = len(_tree_cache) // 5
+        keys_to_remove = list(_tree_cache.keys())[:items_to_remove]
+        for key in keys_to_remove:
+            _tree_cache.pop(key, None)
+            _ast_cache.pop(key, None)
 
     try:
         # Parse AST only once per unique content
@@ -671,6 +693,11 @@ def process_commits_parallel(
                             )
                             last_save_time = current_time
                             files_processed_since_last_save = 0
+
+                        # Periodic garbage collection and cache cleanup
+                        if files_processed_since_last_save % 100 == 0:
+                            clear_caches()
+                            gc.collect()
 
                         pbar.set_postfix(
                             commit=result.commit_hash,
