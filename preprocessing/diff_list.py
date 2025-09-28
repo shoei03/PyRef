@@ -18,6 +18,52 @@ from preprocessing.conditions_match import *
 from preprocessing.revision import Rev
 from preprocessing.utils import to_tree
 
+# 中間結果保存のための定数
+INTERMEDIATE_SAVE_FILE_COUNT = 500  # 500ファイル処理ごとに保存
+INTERMEDIATE_SAVE_TIME_MINUTES = 60  # 60分ごとに保存
+
+
+def save_intermediate_results(
+    refactorings: list, changes_path: Path, suffix: str = None
+):
+    """
+    中間結果をJSONファイルに保存する
+
+    Args:
+        refactorings: 現在までのリファクタリング結果
+        changes_path: 変更ファイルのパス
+        suffix: ファイル名のサフィックス（省略時は現在時刻）
+    """
+    try:
+        if not refactorings:
+            print("No refactorings to save")
+            return
+
+        if suffix is None:
+            suffix = time.strftime("%Y%m%d_%H%M%S")
+
+        repo_name = changes_path.parts[-2]
+        output_filename = f"{repo_name}_data_intermediate_{suffix}.json"
+
+        json_outputs = []
+        for ref in refactorings:
+            data = ref[0].to_json_format()
+            full_info = ref[1]
+            commit_info = extract_commit_info_from_filename(f"{full_info}.csv")
+            data["Commit"] = commit_info["commit_hash"]
+            data["Timestamp"] = commit_info["timestamp"]
+            json_outputs.append(data)
+
+        with open(output_filename, "w") as outfile:
+            outfile.write(json.dumps(json_outputs, indent=4))
+
+        print(
+            f"🔄 Intermediate results saved: {output_filename} ({len(refactorings)} refactorings)"
+        )
+
+    except Exception as e:
+        print(f"❌ Error saving intermediate results: {e}")
+
 
 def extract_commit_info_from_filename(filename: str) -> dict:
     """
@@ -537,6 +583,7 @@ def process_commits_parallel(
 ) -> list[tuple]:
     """
     Process commits in parallel using ThreadPoolExecutor or ProcessPoolExecutor
+    with intermediate result saving capabilities
 
     Args:
         csv_files_with_size: List of (filename, size) tuples
@@ -566,6 +613,10 @@ def process_commits_parallel(
     refactorings = []
     failed_commits = []
 
+    # 中間保存用の変数
+    files_processed_since_last_save = 0
+    last_save_time = time.perf_counter()
+
     # ExecutorContextManagerの選択
     ExecutorClass = ProcessPoolExecutor if use_processes else ThreadPoolExecutor
 
@@ -590,6 +641,7 @@ def process_commits_parallel(
                 try:
                     result: CommitResult = future.result()
                     pbar.update(1)
+                    files_processed_since_last_save += 1
 
                     if result.success:
                         refactorings.extend(result.refactorings)
@@ -602,11 +654,30 @@ def process_commits_parallel(
                         else:
                             refs_summary = "No refactorings"
 
+                        # 中間保存チェック
+                        current_time = time.perf_counter()
+                        should_save = (
+                            files_processed_since_last_save
+                            >= INTERMEDIATE_SAVE_FILE_COUNT
+                            or (current_time - last_save_time)
+                            >= (INTERMEDIATE_SAVE_TIME_MINUTES * 60)
+                        )
+
+                        if should_save and refactorings:
+                            save_intermediate_results(
+                                refactorings,
+                                Path(changes_path),
+                                f"parallel_files{files_processed_since_last_save}_time{int((current_time - last_save_time) / 60)}min",
+                            )
+                            last_save_time = current_time
+                            files_processed_since_last_save = 0
+
                         pbar.set_postfix(
                             commit=result.commit_hash,
                             files=result.files_processed,
                             time=f"{result.elapsed_time:.1f}s",
                             refs=refs_summary,
+                            saved=files_processed_since_last_save,
                             refresh=False,
                         )
 
