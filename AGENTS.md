@@ -1,1 +1,45 @@
-実行方法はdocker-composeを使用して。
+## 実行環境
+
+docker-compose 上で Python 3.9 を実行すること。
+
+## 実装ポリシー
+
+1. 計画と分割
+
+- 実装前に計画を立てること。
+
+- タスクは必ず分割し、小さい単位で実装すること。
+
+2. 逐次検証
+
+- 1つの機能を実装したらすぐに実行し、正常動作を確認すること。
+
+- 不具合があればその場で修正すること。
+
+3. 変更方針
+
+- コード変更は最小限にとどめること。
+
+- ユーザが明示的に指示していない機能は追加しない。
+
+- もし必要であれば、計画段階で必ず質問して確認すること。
+
+4. 実装品質
+
+- パフォーマンスを常に意識すること。
+
+- エラーハンドリングを必ず実装すること。
+
+## 基本的な実行方法
+
+### Build Diff Lists
+
+#### Build diff lists from changes CSV file
+```sh
+docker-compose run --rm pyref reflist -p "/app/Repos/[REPO_NAME]/changes"
+```
+
+#### Build diff lists for specific commit
+```sh
+docker-compose run --rm pyref reflist -p "/app/Repos/[REPO_NAME]/changes" -c "[COMMIT_HASH]"
+```
