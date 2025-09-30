@@ -625,9 +625,17 @@ def process_commits_parallel(
 
         cpu_count = os.cpu_count() or 4
 
-        # 最大ファイルサイズを取得（メモリ計算用）
-        max_file_size_mb = max(
-            (size / (1024 * 1024) for _, size in csv_files_with_size), default=1
+        # ファイルサイズ分析
+        file_sizes_mb = [size / (1024 * 1024) for _, size in csv_files_with_size]
+        max_file_size_mb = max(file_sizes_mb, default=1)
+        avg_file_size_mb = (
+            sum(file_sizes_mb) / len(file_sizes_mb) if file_sizes_mb else 1
+        )
+
+        # 大きなファイル（平均の2倍以上）の数をカウント
+        large_file_threshold = max(avg_file_size_mb * 2, 50)  # 最低50MB
+        large_files_count = sum(
+            1 for size in file_sizes_mb if size >= large_file_threshold
         )
 
         # プロセスあたりの推定メモリ使用量（MB）
@@ -640,12 +648,21 @@ def process_commits_parallel(
         # メモリ制約による最大ワーカー数
         max_workers_by_memory = max(1, int(available_memory_mb / process_memory_mb))
 
+        # 大きなファイルが多い場合はワーカー数を制限
+        if large_files_count >= 3:
+            # 大きなファイルが3個以上ある場合、安全のためワーカー数を削減
+            max_workers_by_memory = max(1, max_workers_by_memory // 2)
+            print(
+                f"⚠️  Large files detected ({large_files_count} files >= {large_file_threshold:.1f}MB), reducing workers for safety"
+            )
+
         # CPU数、ファイル数、メモリ制約の最小値を取る
         max_workers = min(cpu_count, len(csv_files_with_size), max_workers_by_memory, 6)
 
         print(
             f"Worker calculation: CPU={cpu_count}, Files={len(csv_files_with_size)}, "
-            f"Max file size={max_file_size_mb:.1f}MB, Memory limit={max_workers_by_memory}, "
+            f"Max file size={max_file_size_mb:.1f}MB, Avg size={avg_file_size_mb:.1f}MB, "
+            f"Large files={large_files_count}, Memory limit={max_workers_by_memory}, "
             f"Selected workers={max_workers}"
         )
 
@@ -654,6 +671,11 @@ def process_commits_parallel(
         (name, file_size, changes_path, directory, skip_time)
         for name, file_size in csv_files_with_size
     ]
+
+    # 大きなファイルの閾値を計算（再利用のため）
+    file_sizes_mb = [size / (1024 * 1024) for _, size in csv_files_with_size]
+    avg_file_size_mb = sum(file_sizes_mb) / len(file_sizes_mb) if file_sizes_mb else 1
+    large_file_threshold = max(avg_file_size_mb * 2, 50)  # 最低50MB
 
     refactorings = []
     failed_commits = []
@@ -679,14 +701,21 @@ def process_commits_parallel(
             }
 
             # 完了したタスクを順次処理
+            active_large_files = 0  # 現在処理中の大きなファイル数を追跡
+
             for future in as_completed(future_to_args):
                 args = future_to_args[future]
                 commit_name = args[0]
+                file_size_mb = args[1] / (1024 * 1024)
 
                 try:
                     result: CommitResult = future.result()
                     pbar.update(1)
                     files_processed_since_last_save += 1
+
+                    # 大きなファイルの処理完了を記録
+                    if file_size_mb >= large_file_threshold:
+                        active_large_files = max(0, active_large_files - 1)
 
                     if result.success:
                         refactorings.extend(result.refactorings)
@@ -698,6 +727,12 @@ def process_commits_parallel(
                             )
                         else:
                             refs_summary = "No refactorings"
+
+                        # メモリ使用量の警告表示
+                        if file_size_mb >= large_file_threshold:
+                            pbar.write(
+                                f"✅ Large file completed: {commit_name[:8]} ({file_size_mb:.1f}MB)"
+                            )
 
                         # 中間保存チェック
                         current_time = time.perf_counter()
