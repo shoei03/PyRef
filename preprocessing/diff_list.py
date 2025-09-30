@@ -221,7 +221,7 @@ def build_diff_lists(
                 changes_path,
                 directory,
                 skip_time,
-                max_workers=4,
+                max_workers=None,  # Use dynamic calculation based on memory constraints
                 continue_on_error=continue_on_error,
                 use_processes=use_processes,
             )
@@ -456,7 +456,7 @@ def validate(args):
 # Size-limited caches to prevent memory issues
 _ast_cache = {}
 _tree_cache = {}
-MAX_CACHE_SIZE = 1000  # Limit cache size to prevent memory bloat
+MAX_CACHE_SIZE = 200  # Optimized for 8GB Docker environment (prevents memory bloat)
 
 
 def clear_caches():
@@ -620,11 +620,34 @@ def process_commits_parallel(
         List of refactoring tuples
     """
     if max_workers is None:
-        # より賢いワーカー数の決定
+        # メモリ制約を考慮したワーカー数の決定
         import os
 
         cpu_count = os.cpu_count() or 4
-        max_workers = min(cpu_count, len(csv_files_with_size), 8)  # 最大8まで
+
+        # 最大ファイルサイズを取得（メモリ計算用）
+        max_file_size_mb = max(
+            (size / (1024 * 1024) for _, size in csv_files_with_size), default=1
+        )
+
+        # プロセスあたりの推定メモリ使用量（MB）
+        # 基本メモリ + pandas読み込み（ファイルサイズ × 3倍）
+        process_memory_mb = 200 + (max_file_size_mb * 3)
+
+        # 8GB環境の80%（6.4GB = 6553MB）を使用上限とする
+        available_memory_mb = 6553
+
+        # メモリ制約による最大ワーカー数
+        max_workers_by_memory = max(1, int(available_memory_mb / process_memory_mb))
+
+        # CPU数、ファイル数、メモリ制約の最小値を取る
+        max_workers = min(cpu_count, len(csv_files_with_size), max_workers_by_memory, 6)
+
+        print(
+            f"Worker calculation: CPU={cpu_count}, Files={len(csv_files_with_size)}, "
+            f"Max file size={max_file_size_mb:.1f}MB, Memory limit={max_workers_by_memory}, "
+            f"Selected workers={max_workers}"
+        )
 
     # 引数準備の最適化
     args_list = [
