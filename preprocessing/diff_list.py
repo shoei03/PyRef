@@ -19,9 +19,9 @@ from preprocessing.conditions_match import *
 from preprocessing.revision import Rev
 from preprocessing.utils import to_tree
 
-# 中間結果保存のための定数
-INTERMEDIATE_SAVE_FILE_COUNT = 500  # 500ファイル処理ごとに保存
-INTERMEDIATE_SAVE_TIME_MINUTES = 60  # 60分ごとに保存
+# 中間結果保存のための定数（8GB Docker環境向けに最適化）
+INTERMEDIATE_SAVE_FILE_COUNT = 200  # 200ファイル処理ごとに保存（メモリ安全性向上）
+INTERMEDIATE_SAVE_TIME_MINUTES = 30  # 30分ごとに保存（より頻繁な保存）
 
 
 def save_intermediate_results(
@@ -717,8 +717,15 @@ def process_commits_parallel(
                             last_save_time = current_time
                             files_processed_since_last_save = 0
 
-                        # Periodic garbage collection and cache cleanup
-                        if files_processed_since_last_save % 100 == 0:
+                            # 中間保存後にメモリとキャッシュをクリア
+                            clear_caches()
+                            gc.collect()
+                            print(
+                                "🧹 Memory and caches cleared after intermediate save"
+                            )
+
+                        # Periodic garbage collection and cache cleanup (more frequent for 8GB environment)
+                        if files_processed_since_last_save % 50 == 0:
                             clear_caches()
                             gc.collect()
 
