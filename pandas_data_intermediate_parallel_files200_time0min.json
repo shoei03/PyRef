@@ -1,0 +1,2568 @@
+[
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "setup",
+        "Updated": "setup",
+        "Location": "asv_bench/benchmarks/panel_methods.py/PanelMethods",
+        "Original Line": 7,
+        "Updated Line": 12,
+        "Description": [
+            "The parameters [ axis ] are added to the method setup from the module asv_bench/benchmarks/panel_methods.py in class PanelMethods"
+        ],
+        "Commit": "6164da24a7d3f9469fcad8b987c9c7fac1c8dd25",
+        "Timestamp": "20171222_142840"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method",
+            "Add Parameter"
+        ],
+        "Original": "time_pct_change_items",
+        "Updated": "time_pct_change",
+        "Location": "asv_bench/benchmarks/panel_methods.py/PanelMethods",
+        "Original Line": 11,
+        "Updated Line": 15,
+        "Description": [
+            "The method time_pct_change_items from the module asv_bench/benchmarks/panel_methods.py in class PanelMethods is renamed to time_pct_change",
+            "The parameters [ axis ] are added to the method time_pct_change_items from the module asv_bench/benchmarks/panel_methods.py in class PanelMethods"
+        ],
+        "Commit": "6164da24a7d3f9469fcad8b987c9c7fac1c8dd25",
+        "Timestamp": "20171222_142840"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method",
+            "Add Parameter"
+        ],
+        "Original": "time_shift_minor",
+        "Updated": "time_shift",
+        "Location": "asv_bench/benchmarks/panel_methods.py/PanelMethods",
+        "Original Line": 23,
+        "Updated Line": 18,
+        "Description": [
+            "The method time_shift_minor from the module asv_bench/benchmarks/panel_methods.py in class PanelMethods is renamed to time_shift",
+            "The parameters [ axis ] are added to the method time_shift_minor from the module asv_bench/benchmarks/panel_methods.py in class PanelMethods"
+        ],
+        "Commit": "6164da24a7d3f9469fcad8b987c9c7fac1c8dd25",
+        "Timestamp": "20171222_142840"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "test_validate_bool_args",
+        "Updated": "test_validate_bool_args",
+        "Location": "pandas/tests/series/test_validate.py/TestSeriesValidate",
+        "Original Line": 19,
+        "Updated Line": 12,
+        "Description": [
+            "The parameters [ series ] of the method test_validate_bool_args from the module pandas/tests/series/test_validate.py in class TestSeriesValidate are changed/renamed to [string_series]"
+        ],
+        "Commit": "183a41620c596bfc58edef5deb53d53e8bb4b798",
+        "Timestamp": "20180925_123033"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "time_dtindex_from_series2",
+        "Updated": "time_dtindex_from_index_with_series",
+        "Location": "asv_bench/benchmarks/ctors.py/Constructors",
+        "Original Line": 29,
+        "Updated Line": 33,
+        "Description": [
+            "The method time_dtindex_from_series2 from the module asv_bench/benchmarks/ctors.py in class Constructors is renamed to time_dtindex_from_index_with_series"
+        ],
+        "Commit": "5cd4cb23c92f69d5db2a5f6ad6f1a9db01d5073b",
+        "Timestamp": "20171125_143138"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "test_CategoricalAccessor_categorical_deprecation",
+        "Updated": "test_CategoricalAccessor_categorical_deprecation",
+        "Location": "pandas/tests/arrays/categorical/test_warnings.py/TestCategoricalWarnings",
+        "Original Line": 21,
+        "Updated Line": 21,
+        "Description": [
+            "The parameters [ object ] of the method test_CategoricalAccessor_categorical_deprecation from the module pandas/tests/arrays/categorical/test_warnings.py in class TestCategoricalWarnings are changed/renamed to [self]"
+        ],
+        "Commit": "872a23bca9f74816aaf525d1b00d790c3407cc08",
+        "Timestamp": "20190418_034822"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "test_CategoricalAccessor_index_deprecation",
+        "Updated": "test_CategoricalAccessor_index_deprecation",
+        "Location": "pandas/tests/arrays/categorical/test_warnings.py/TestCategoricalWarnings",
+        "Original Line": 29,
+        "Updated Line": 29,
+        "Description": [
+            "The parameters [ object ] of the method test_CategoricalAccessor_index_deprecation from the module pandas/tests/arrays/categorical/test_warnings.py in class TestCategoricalWarnings are changed/renamed to [self]"
+        ],
+        "Commit": "872a23bca9f74816aaf525d1b00d790c3407cc08",
+        "Timestamp": "20190418_034822"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "test_CategoricalAccessor_name_deprecation",
+        "Updated": "test_CategoricalAccessor_name_deprecation",
+        "Location": "pandas/tests/arrays/categorical/test_warnings.py/TestCategoricalWarnings",
+        "Original Line": 25,
+        "Updated Line": 25,
+        "Description": [
+            "The parameters [ object ] of the method test_CategoricalAccessor_name_deprecation from the module pandas/tests/arrays/categorical/test_warnings.py in class TestCategoricalWarnings are changed/renamed to [self]"
+        ],
+        "Commit": "872a23bca9f74816aaf525d1b00d790c3407cc08",
+        "Timestamp": "20190418_034822"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "Excel",
+        "Updated": "WriteExcel",
+        "Location": "asv_bench/benchmarks/io/excel.py",
+        "Description": " class Excel was renamed to class WriteExcel ",
+        "Commit": "2915223e8c6866149e78f5bdab184881fa39354c",
+        "Timestamp": "20190905_171053"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "main",
+        "Updated": "main",
+        "Location": "ci/print_skipped.py",
+        "Original Line": 39,
+        "Updated Line": 40,
+        "Description": [
+            "The parameters [ args ] of the method main from the module ci/print_skipped.py is/are removed"
+        ],
+        "Commit": "959e799396b0b9c2d99e69f03fddd925727c19f4",
+        "Timestamp": "20190610_154803"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "test_parsers_time",
+        "Updated": "test_arraylike",
+        "Location": "pandas/tests/tools/test_to_time.py/TestToTime",
+        "Original Line": 16,
+        "Updated Line": 43,
+        "Description": [
+            "The method test_parsers_time from the module pandas/tests/tools/test_to_time.py in class TestToTime is renamed to test_arraylike"
+        ],
+        "Commit": "193ca730d0b0b14ca99a5d28509b5278636dc4f6",
+        "Timestamp": "20211211_162013"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "to_numpy_dtype_inference",
+        "Updated": "to_numpy_dtype_inference",
+        "Location": "pandas/core/arrays/_utils.py",
+        "Original Line": 23,
+        "Updated Line": 24,
+        "Description": [
+            "The return type of method to_numpy_dtype_inference from the module pandas/core/arrays/_utils.py is updated"
+        ],
+        "Commit": "a58fb19548e3a6722885895cbaf8fce6fc3bcce7",
+        "Timestamp": "20250908_164118"
+    },
+    {
+        "Refactoring Type": "Inline Method",
+        "Original": "generate_numba_apply_func",
+        "Updated": "make_rolling_apply",
+        "Location": "pandas/core/window/numba_.py",
+        "Original Method Line": "(83,15)",
+        "Extracted/Inlined Method Line": 10,
+        "Extracted/Inlined Lines": [
+            49,
+            51,
+            53,
+            54,
+            56,
+            59,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            71,
+            72,
+            74
+        ],
+        "Description": " The method make_rolling_apply from the module pandas/core/window/numba_.py is inlined into method generate_numba_apply_func from the module pandas/core/window/numba_.py ",
+        "Commit": "cfbd7f657a758d26101b4c29724363b9f94bb547",
+        "Timestamp": "20200319_002325"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_dataframe_arrow_interface",
+        "Updated": "test_dataframe_arrow_interface",
+        "Location": "pandas/tests/frame/test_arrow_interface.py",
+        "Original Line": 16,
+        "Updated Line": 13,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_dataframe_arrow_interface from the module pandas/tests/frame/test_arrow_interface.py"
+        ],
+        "Commit": "db38017ba647b000a4f3dec9c6ace51cb7f6ab95",
+        "Timestamp": "20241108_165536"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_dataframe_to_arrow",
+        "Updated": "test_dataframe_to_arrow",
+        "Location": "pandas/tests/frame/test_arrow_interface.py",
+        "Original Line": 39,
+        "Updated Line": 36,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_dataframe_to_arrow from the module pandas/tests/frame/test_arrow_interface.py"
+        ],
+        "Commit": "db38017ba647b000a4f3dec9c6ace51cb7f6ab95",
+        "Timestamp": "20241108_165536"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_round_nat",
+        "Updated": "test_round_nat",
+        "Location": "pandas/tests/series/methods/test_round.py/TestSeriesRound",
+        "Original Line": 59,
+        "Updated Line": 59,
+        "Description": [
+            "The parameters [ unit ] are added to the method test_round_nat from the module pandas/tests/series/methods/test_round.py in class TestSeriesRound"
+        ],
+        "Commit": "f2c8715245f3b1a5b55f144116f24221535414c6",
+        "Timestamp": "20231126_042337"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "__init__",
+        "Updated": "__init__",
+        "Location": "pandas/util/depr_module.py/_DeprecatedModule",
+        "Original Line": 21,
+        "Updated Line": 19,
+        "Description": [
+            "The parameters [ alts ] of the method __init__ from the module pandas/util/depr_module.py in class _DeprecatedModule is/are removed"
+        ],
+        "Commit": "95541952c13d4e1c6175b74aa7dd256e8fcd0650",
+        "Timestamp": "20160914_083104"
+    },
+    {
+        "Refactoring Type": "Extract Method",
+        "Original": "__getattr__",
+        "Updated": "_import_deprmod",
+        "Location": "pandas/util/depr_module.py/_DeprecatedModule",
+        "Original Method Line": "(48,38)",
+        "Extracted/Inlined Method Line": 60,
+        "Extracted/Inlined Lines": [
+            53,
+            54,
+            55
+        ],
+        "Description": " The method _import_deprmod from the module pandas/util/depr_module.py in class _DeprecatedModule is extracted from method __getattr__ from the module pandas/util/depr_module.py in class _DeprecatedModule ",
+        "Commit": "95541952c13d4e1c6175b74aa7dd256e8fcd0650",
+        "Timestamp": "20160914_083104"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_dayofweek",
+        "Updated": "time_dayofweek",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampProperties",
+        "Original Line": 22,
+        "Updated Line": 22,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_dayofweek from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_dayofyear",
+        "Updated": "time_dayofyear",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampProperties",
+        "Original Line": 28,
+        "Updated Line": 28,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_dayofyear from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_days_in_month",
+        "Updated": "time_days_in_month",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampProperties",
+        "Original Line": 37,
+        "Updated Line": 37,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_days_in_month from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_freqstr",
+        "Updated": "time_freqstr",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampProperties",
+        "Original Line": 40,
+        "Updated Line": 40,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_freqstr from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_is_month_end",
+        "Updated": "time_is_month_end",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampProperties",
+        "Original Line": 46,
+        "Updated Line": 46,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_is_month_end from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_is_month_start",
+        "Updated": "time_is_month_start",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampProperties",
+        "Original Line": 43,
+        "Updated Line": 43,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_is_month_start from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method",
+            "Add Parameter"
+        ],
+        "Original": "time_is_leap_year",
+        "Updated": "time_is_quarter_end",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampProperties",
+        "Original Line": 61,
+        "Updated Line": 52,
+        "Description": [
+            "The method time_is_leap_year from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties is renamed to time_is_quarter_end",
+            "The parameters [ tz ] are added to the method time_is_leap_year from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_is_quarter_start",
+        "Updated": "time_is_quarter_start",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampProperties",
+        "Original Line": 49,
+        "Updated Line": 49,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_is_quarter_start from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_microsecond",
+        "Updated": "time_microsecond",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampProperties",
+        "Original Line": 64,
+        "Updated Line": 64,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_microsecond from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_offset",
+        "Updated": "time_offset",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampProperties",
+        "Original Line": 19,
+        "Updated Line": 19,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_offset from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_quarter",
+        "Updated": "time_quarter",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampProperties",
+        "Original Line": 34,
+        "Updated Line": 34,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_quarter from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_tz",
+        "Updated": "time_tz",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampProperties",
+        "Original Line": 16,
+        "Updated Line": 16,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_tz from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_week",
+        "Updated": "time_week",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampProperties",
+        "Original Line": 31,
+        "Updated Line": 31,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_week from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_weekday_name",
+        "Updated": "time_weekday_name",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampProperties",
+        "Original Line": 25,
+        "Updated Line": 25,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_weekday_name from the module asv_bench/benchmarks/timestamp.py in class TimestampProperties"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_replace_None",
+        "Updated": "time_replace_None",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampOps",
+        "Original Line": 80,
+        "Updated Line": 80,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_replace_None from the module asv_bench/benchmarks/timestamp.py in class TimestampOps"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_replace_tz",
+        "Updated": "time_replace_tz",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampOps",
+        "Original Line": 77,
+        "Updated Line": 77,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_replace_tz from the module asv_bench/benchmarks/timestamp.py in class TimestampOps"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_to_pydatetime",
+        "Updated": "time_to_pydatetime",
+        "Location": "asv_bench/benchmarks/timestamp.py/TimestampOps",
+        "Original Line": 83,
+        "Updated Line": 83,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_to_pydatetime from the module asv_bench/benchmarks/timestamp.py in class TimestampOps"
+        ],
+        "Commit": "29206ee4c51e158643f79fc270419799da64bfbc",
+        "Timestamp": "20171126_150819"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "f_copy",
+        "Updated": "f",
+        "Location": "pandas/tests/groupby/test_apply_mutate.py",
+        "Original Line": 41,
+        "Updated Line": 41,
+        "Description": [
+            "The method f_copy from the module pandas/tests/groupby/test_apply_mutate.py is renamed to f"
+        ],
+        "Commit": "37f4392d411896c88fab3c6702a8d16560213f27",
+        "Timestamp": "20241229_212922"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "setup",
+        "Updated": "setup",
+        "Location": "asv_bench/benchmarks/ctors.py/SeriesConstructors",
+        "Original Line": 57,
+        "Updated Line": 58,
+        "Description": [
+            "The parameters [ dtype ] are added to the method setup from the module asv_bench/benchmarks/ctors.py in class SeriesConstructors"
+        ],
+        "Commit": "48c3ce5b5b89fa53b3d4ac9c23d4c22da5e86493",
+        "Timestamp": "20190106_154842"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_series_constructor",
+        "Updated": "time_series_constructor",
+        "Location": "asv_bench/benchmarks/ctors.py/SeriesConstructors",
+        "Original Line": 63,
+        "Updated Line": 67,
+        "Description": [
+            "The parameters [ dtype ] are added to the method time_series_constructor from the module asv_bench/benchmarks/ctors.py in class SeriesConstructors"
+        ],
+        "Commit": "48c3ce5b5b89fa53b3d4ac9c23d4c22da5e86493",
+        "Timestamp": "20190106_154842"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "time_query_datetime_series",
+        "Updated": "time_query_datetime_column",
+        "Location": "asv_bench/benchmarks/eval.py/Query",
+        "Original Line": 64,
+        "Updated Line": 63,
+        "Description": [
+            "The method time_query_datetime_series from the module asv_bench/benchmarks/eval.py in class Query is renamed to time_query_datetime_column"
+        ],
+        "Commit": "c44a0630dbf2fe61e717b624bc8b12f7a50967ce",
+        "Timestamp": "20171126_150031"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "read_gbq",
+        "Updated": "read_gbq",
+        "Location": "pandas/io/gbq.py",
+        "Original Line": 21,
+        "Updated Line": 21,
+        "Description": [
+            "The parameters [ private_key verbose ] of the method read_gbq from the module pandas/io/gbq.py is/are removed"
+        ],
+        "Commit": "f34a56b4ddcf51a8a03a9d20f07ab039f64ff2e6",
+        "Timestamp": "20200924_013443"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "to_gbq",
+        "Updated": "to_gbq",
+        "Location": "pandas/io/gbq.py",
+        "Original Line": 199,
+        "Updated Line": 197,
+        "Description": [
+            "The parameters [ verbose private_key ] of the method to_gbq from the module pandas/io/gbq.py is/are removed"
+        ],
+        "Commit": "f34a56b4ddcf51a8a03a9d20f07ab039f64ff2e6",
+        "Timestamp": "20200924_013443"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_to_dict_of_blocks_item_cache",
+        "Updated": "test_to_dict_of_blocks_item_cache",
+        "Location": "pandas/tests/frame/methods/test_to_dict_of_blocks.py",
+        "Original Line": 38,
+        "Updated Line": 38,
+        "Description": [
+            "The parameters [ request ] of the method test_to_dict_of_blocks_item_cache from the module pandas/tests/frame/methods/test_to_dict_of_blocks.py is/are removed"
+        ],
+        "Commit": "400ae748367cf9a356b8433c1aa59f34033f02a4",
+        "Timestamp": "20231211_130559"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "import_optional_dependency",
+        "Updated": "import_optional_dependency",
+        "Location": "pandas/compat/_optional.py",
+        "Original Line": 51,
+        "Updated Line": 50,
+        "Description": [
+            "The return type of method import_optional_dependency from the module pandas/compat/_optional.py is updated"
+        ],
+        "Commit": "d66da6015558faa8a7f4516f72afd382e77ab9e7",
+        "Timestamp": "20190613_000010"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_series_groupby_value_counts",
+        "Updated": "test_series_groupby_value_counts",
+        "Location": "pandas/tests/groupby/test_value_counts.py",
+        "Original Line": 55,
+        "Updated Line": 60,
+        "Description": [
+            "The parameters [ isort normalize sort ascending dropna ] are added to the method test_series_groupby_value_counts from the module pandas/tests/groupby/test_value_counts.py"
+        ],
+        "Commit": "fdffc5058000c79fd77ae6c5362d7ca6e8fbd5c5",
+        "Timestamp": "20190920_142759"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "construct_array_type",
+        "Updated": "construct_array_type",
+        "Location": "pandas/core/dtypes/base.py/ExtensionDtype",
+        "Original Line": 187,
+        "Updated Line": 189,
+        "Description": [
+            "The return type of method construct_array_type from the module pandas/core/dtypes/base.py in class ExtensionDtype is updated"
+        ],
+        "Commit": "dd03c196d684d6ed594ee58451b0a36d7935a1ea",
+        "Timestamp": "20200212_155856"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "time_series_ctor_from_dict",
+        "Updated": "time_dict",
+        "Location": "asv_bench/benchmarks/frame_ctor.py/FromDicts",
+        "Original Line": 33,
+        "Updated Line": 34,
+        "Description": [
+            "The method time_series_ctor_from_dict from the module asv_bench/benchmarks/frame_ctor.py in class FromDicts is renamed to time_dict"
+        ],
+        "Commit": "1c1f5076173c590ed9b19992679305bc70c7956c",
+        "Timestamp": "20171210_162711"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "time_frame_ctor_list_of_dict",
+        "Updated": "time_list_of_dict",
+        "Location": "asv_bench/benchmarks/frame_ctor.py/FromDicts",
+        "Original Line": 27,
+        "Updated Line": 28,
+        "Description": [
+            "The method time_frame_ctor_list_of_dict from the module asv_bench/benchmarks/frame_ctor.py in class FromDicts is renamed to time_list_of_dict"
+        ],
+        "Commit": "1c1f5076173c590ed9b19992679305bc70c7956c",
+        "Timestamp": "20171210_162711"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "time_frame_ctor_nested_dict",
+        "Updated": "time_nested_dict",
+        "Location": "asv_bench/benchmarks/frame_ctor.py/FromDicts",
+        "Original Line": 30,
+        "Updated Line": 31,
+        "Description": [
+            "The method time_frame_ctor_nested_dict from the module asv_bench/benchmarks/frame_ctor.py in class FromDicts is renamed to time_nested_dict"
+        ],
+        "Commit": "1c1f5076173c590ed9b19992679305bc70c7956c",
+        "Timestamp": "20171210_162711"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "time_frame_ctor_nested_dict_int64",
+        "Updated": "time_nested_dict_int64",
+        "Location": "asv_bench/benchmarks/frame_ctor.py/FromDicts",
+        "Original Line": 36,
+        "Updated Line": 37,
+        "Description": [
+            "The method time_frame_ctor_nested_dict_int64 from the module asv_bench/benchmarks/frame_ctor.py in class FromDicts is renamed to time_nested_dict_int64"
+        ],
+        "Commit": "1c1f5076173c590ed9b19992679305bc70c7956c",
+        "Timestamp": "20171210_162711"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "time_frame_from_mi_series",
+        "Updated": "time_mi_series",
+        "Location": "asv_bench/benchmarks/frame_ctor.py/FromSeries",
+        "Original Line": 49,
+        "Updated Line": 50,
+        "Description": [
+            "The method time_frame_from_mi_series from the module asv_bench/benchmarks/frame_ctor.py in class FromSeries is renamed to time_mi_series"
+        ],
+        "Commit": "1c1f5076173c590ed9b19992679305bc70c7956c",
+        "Timestamp": "20171210_162711"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method",
+            "Add Parameter"
+        ],
+        "Original": "time_dt_accessor",
+        "Updated": "time_timedelta_days",
+        "Location": "asv_bench/benchmarks/timedelta.py/DatetimeAccessor",
+        "Original Line": 105,
+        "Updated Line": 119,
+        "Description": [
+            "The method time_dt_accessor from the module asv_bench/benchmarks/timedelta.py in class DatetimeAccessor is renamed to time_timedelta_days",
+            "The parameters [ series ] are added to the method time_dt_accessor from the module asv_bench/benchmarks/timedelta.py in class DatetimeAccessor"
+        ],
+        "Commit": "45a70121c5932b1e4300161114f691af517997e4",
+        "Timestamp": "20180109_125402"
+    },
+    {
+        "Refactoring Type": "Move Method",
+        "Original": "time_timedelta_seconds",
+        "Updated": "time_timedelta_seconds",
+        "Old Location": "asv_bench/benchmarks/timedelta.py/TimedeltaProperties",
+        "New Location": "asv_bench/benchmarks/timedelta.py/DatetimeAccessor",
+        "Old Method Line": 87,
+        "New Method Line": 122,
+        "Description": " method time_timedelta_seconds from the module asv_bench/benchmarks/timedelta.py in class TimedeltaProperties was moved to class DatetimeAccessor of module asv_bench/benchmarks/timedelta.py ",
+        "Commit": "45a70121c5932b1e4300161114f691af517997e4",
+        "Timestamp": "20180109_125402"
+    },
+    {
+        "Refactoring Type": "Move Method",
+        "Original": "time_timedelta_microseconds",
+        "Updated": "time_timedelta_microseconds",
+        "Old Location": "asv_bench/benchmarks/timedelta.py/TimedeltaProperties",
+        "New Location": "asv_bench/benchmarks/timedelta.py/DatetimeAccessor",
+        "Old Method Line": 90,
+        "New Method Line": 125,
+        "Description": " method time_timedelta_microseconds from the module asv_bench/benchmarks/timedelta.py in class TimedeltaProperties was moved to class DatetimeAccessor of module asv_bench/benchmarks/timedelta.py ",
+        "Commit": "45a70121c5932b1e4300161114f691af517997e4",
+        "Timestamp": "20180109_125402"
+    },
+    {
+        "Refactoring Type": "Move Method",
+        "Original": "time_timedelta_nanoseconds",
+        "Updated": "time_timedelta_nanoseconds",
+        "Old Location": "asv_bench/benchmarks/timedelta.py/TimedeltaProperties",
+        "New Location": "asv_bench/benchmarks/timedelta.py/DatetimeAccessor",
+        "Old Method Line": 93,
+        "New Method Line": 128,
+        "Description": " method time_timedelta_nanoseconds from the module asv_bench/benchmarks/timedelta.py in class TimedeltaProperties was moved to class DatetimeAccessor of module asv_bench/benchmarks/timedelta.py ",
+        "Commit": "45a70121c5932b1e4300161114f691af517997e4",
+        "Timestamp": "20180109_125402"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "write",
+        "Updated": "write",
+        "Location": "pandas/io/parquet.py/PyArrowImpl",
+        "Original Line": 63,
+        "Updated Line": 65,
+        "Description": [
+            "The parameters [ coerce_timestamps ] are added to the method write from the module pandas/io/parquet.py in class PyArrowImpl"
+        ],
+        "Commit": "84a39f99013f238a2e1df9ba63bdaa8a3fd00c08",
+        "Timestamp": "20170906_122306"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_spss_labelled_num",
+        "Updated": "test_spss_labelled_num",
+        "Location": "pandas/tests/io/test_spss.py",
+        "Original Line": 10,
+        "Updated Line": 13,
+        "Description": [
+            "The parameters [ path_klass ] are added to the method test_spss_labelled_num from the module pandas/tests/io/test_spss.py"
+        ],
+        "Commit": "69ff1795e547248d2bf5536ea1d64673b36e0177",
+        "Timestamp": "20200913_202941"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "setup",
+        "Updated": "setup",
+        "Location": "asv_bench/benchmarks/binary_ops.py/Timeseries",
+        "Original Line": 83,
+        "Updated Line": 90,
+        "Description": [
+            "The parameters [ tz ] are added to the method setup from the module asv_bench/benchmarks/binary_ops.py in class Timeseries"
+        ],
+        "Commit": "b71ecbd747c256368274ef2c14680dafffc7d388",
+        "Timestamp": "20171125_143752"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_series_timestamp_compare",
+        "Updated": "time_series_timestamp_compare",
+        "Location": "asv_bench/benchmarks/binary_ops.py/Timeseries",
+        "Original Line": 91,
+        "Updated Line": 100,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_series_timestamp_compare from the module asv_bench/benchmarks/binary_ops.py in class Timeseries"
+        ],
+        "Commit": "b71ecbd747c256368274ef2c14680dafffc7d388",
+        "Timestamp": "20171125_143752"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method",
+            "Add Parameter"
+        ],
+        "Original": "time_timestamp_ops_diff1",
+        "Updated": "time_timestamp_ops_diff",
+        "Location": "asv_bench/benchmarks/binary_ops.py/Timeseries",
+        "Original Line": 97,
+        "Updated Line": 106,
+        "Description": [
+            "The method time_timestamp_ops_diff1 from the module asv_bench/benchmarks/binary_ops.py in class Timeseries is renamed to time_timestamp_ops_diff",
+            "The parameters [ tz ] are added to the method time_timestamp_ops_diff1 from the module asv_bench/benchmarks/binary_ops.py in class Timeseries"
+        ],
+        "Commit": "b71ecbd747c256368274ef2c14680dafffc7d388",
+        "Timestamp": "20171125_143752"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method",
+            "Add Parameter"
+        ],
+        "Original": "time_timestamp_ops_diff2",
+        "Updated": "time_timestamp_ops_diff_with_shift",
+        "Location": "asv_bench/benchmarks/binary_ops.py/Timeseries",
+        "Original Line": 100,
+        "Updated Line": 109,
+        "Description": [
+            "The method time_timestamp_ops_diff2 from the module asv_bench/benchmarks/binary_ops.py in class Timeseries is renamed to time_timestamp_ops_diff_with_shift",
+            "The parameters [ tz ] are added to the method time_timestamp_ops_diff2 from the module asv_bench/benchmarks/binary_ops.py in class Timeseries"
+        ],
+        "Commit": "b71ecbd747c256368274ef2c14680dafffc7d388",
+        "Timestamp": "20171125_143752"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_timestamp_series_compare",
+        "Updated": "time_timestamp_series_compare",
+        "Location": "asv_bench/benchmarks/binary_ops.py/Timeseries",
+        "Original Line": 94,
+        "Updated Line": 103,
+        "Description": [
+            "The parameters [ tz ] are added to the method time_timestamp_series_compare from the module asv_bench/benchmarks/binary_ops.py in class Timeseries"
+        ],
+        "Commit": "b71ecbd747c256368274ef2c14680dafffc7d388",
+        "Timestamp": "20171125_143752"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_api",
+        "Updated": "test_api",
+        "Location": "pandas/tests/strings/test_api.py",
+        "Original Line": 13,
+        "Updated Line": 13,
+        "Description": [
+            "The parameters [ any_string_dtype ] are added to the method test_api from the module pandas/tests/strings/test_api.py"
+        ],
+        "Commit": "0c7b7284fef14cd32af38067c79f826b6f8447e6",
+        "Timestamp": "20210514_160733"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_api_for_categorical",
+        "Updated": "test_api_for_categorical",
+        "Location": "pandas/tests/strings/test_api.py",
+        "Original Line": 120,
+        "Updated Line": 128,
+        "Description": [
+            "The parameters [ any_string_dtype request ] are added to the method test_api_for_categorical from the module pandas/tests/strings/test_api.py"
+        ],
+        "Commit": "0c7b7284fef14cd32af38067c79f826b6f8447e6",
+        "Timestamp": "20210514_160733"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_methods_iloc_getitem_item_cache",
+        "Updated": "test_methods_iloc_getitem_item_cache",
+        "Location": "pandas/tests/copy_view/test_chained_assignment_deprecation.py",
+        "Original Line": 45,
+        "Updated Line": 45,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] of the method test_methods_iloc_getitem_item_cache from the module pandas/tests/copy_view/test_chained_assignment_deprecation.py is/are removed"
+        ],
+        "Commit": "68c1af5358561b4655861f99ac1dfb27ac5d4d56",
+        "Timestamp": "20231208_135530"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method",
+            "Change Return Type"
+        ],
+        "Original": "random_color",
+        "Updated": "_random_color",
+        "Location": "pandas/plotting/_matplotlib/style.py",
+        "Original Line": 49,
+        "Updated Line": 245,
+        "Description": [
+            "The method random_color from the module pandas/plotting/_matplotlib/style.py is renamed to _random_color",
+            "The return type of method random_color from the module pandas/plotting/_matplotlib/style.py is updated"
+        ],
+        "Commit": "36f026dba6a3e47568379e6463ecd9e00cc1568c",
+        "Timestamp": "20201104_021804"
+    },
+    {
+        "Refactoring Type": "Extract Method",
+        "Original": "get_standard_colors",
+        "Updated": "_derive_colors",
+        "Location": "pandas/plotting/_matplotlib/style.py",
+        "Original Method Line": "(13,29)",
+        "Extracted/Inlined Method Line": 80,
+        "Extracted/Inlined Lines": [
+            18,
+            25,
+            26,
+            27
+        ],
+        "Description": " The method _derive_colors from the module pandas/plotting/_matplotlib/style.py is extracted from method get_standard_colors from the module pandas/plotting/_matplotlib/style.py ",
+        "Commit": "36f026dba6a3e47568379e6463ecd9e00cc1568c",
+        "Timestamp": "20201104_021804"
+    },
+    {
+        "Refactoring Type": "Extract Method",
+        "Original": "get_standard_colors",
+        "Updated": "_cycle_colors",
+        "Location": "pandas/plotting/_matplotlib/style.py",
+        "Original Method Line": "(13,29)",
+        "Extracted/Inlined Method Line": 131,
+        "Extracted/Inlined Lines": [
+            66,
+            68,
+            71,
+            73,
+            74,
+            76
+        ],
+        "Description": " The method _cycle_colors from the module pandas/plotting/_matplotlib/style.py is extracted from method get_standard_colors from the module pandas/plotting/_matplotlib/style.py ",
+        "Commit": "36f026dba6a3e47568379e6463ecd9e00cc1568c",
+        "Timestamp": "20201104_021804"
+    },
+    {
+        "Refactoring Type": "Extract Method",
+        "Original": "_is_single_color",
+        "Updated": "_is_single_string_color",
+        "Location": "pandas/plotting/_matplotlib/style.py",
+        "Original Method Line": "(79,180)",
+        "Extracted/Inlined Method Line": 252,
+        "Extracted/Inlined Lines": [
+            80,
+            100,
+            101,
+            102
+        ],
+        "Description": " The method _is_single_string_color from the module pandas/plotting/_matplotlib/style.py is extracted from method _is_single_color from the module pandas/plotting/_matplotlib/style.py ",
+        "Commit": "36f026dba6a3e47568379e6463ecd9e00cc1568c",
+        "Timestamp": "20201104_021804"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "_validate_additional_dependencies",
+        "Updated": "_validate_additional_dependencies",
+        "Location": "scripts/sync_flake8_versions.py",
+        "Original Line": 69,
+        "Updated Line": 69,
+        "Description": [
+            "The parameters [ yesqa_additional_dependencies ] of the method _validate_additional_dependencies from the module scripts/sync_flake8_versions.py is/are removed"
+        ],
+        "Commit": "d8440f1677527b5e2aa33a89f206235d035477c2",
+        "Timestamp": "20211025_140454"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "get_sys_info",
+        "Updated": "get_sys_info",
+        "Location": "pandas/util/_print_versions.py",
+        "Original Line": 13,
+        "Updated Line": 14,
+        "Description": [
+            "The return type of method get_sys_info from the module pandas/util/_print_versions.py is updated"
+        ],
+        "Commit": "42a4fcd41dd372b2e5e2915bb5e1bab2bc1278c2",
+        "Timestamp": "20191127_144037"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "find_rst_files",
+        "Updated": "find_rst_files",
+        "Location": "scripts/validate_rst_title_capitalization.py",
+        "Original Line": 187,
+        "Updated Line": 187,
+        "Description": [
+            "The return type of method find_rst_files from the module scripts/validate_rst_title_capitalization.py is updated"
+        ],
+        "Commit": "265b8420121a66ed18329c7a90d5381aeda5454f",
+        "Timestamp": "20200404_213534"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "find_titles",
+        "Updated": "find_titles",
+        "Location": "scripts/validate_rst_title_capitalization.py",
+        "Original Line": 151,
+        "Updated Line": 151,
+        "Description": [
+            "The return type of method find_titles from the module scripts/validate_rst_title_capitalization.py is updated"
+        ],
+        "Commit": "265b8420121a66ed18329c7a90d5381aeda5454f",
+        "Timestamp": "20200404_213534"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "setup",
+        "Updated": "setup",
+        "Location": "asv_bench/benchmarks/period.py/PeriodProperties",
+        "Original Line": 9,
+        "Updated Line": 13,
+        "Description": [
+            "The parameters [ attr ] are added to the method setup from the module asv_bench/benchmarks/period.py in class PeriodProperties"
+        ],
+        "Commit": "aa84e00f0fe6bd15c177e852c54a061f3721fccc",
+        "Timestamp": "20171226_220001"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_size_strings",
+        "Updated": "test_size_strings",
+        "Location": "pandas/tests/groupby/methods/test_size.py",
+        "Original Line": 82,
+        "Updated Line": 77,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_size_strings from the module pandas/tests/groupby/methods/test_size.py"
+        ],
+        "Commit": "354b61f88bc0523d4bb9f3cfe1d6c12f9a3d6567",
+        "Timestamp": "20250124_203930"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "main",
+        "Updated": "main",
+        "Location": "scripts/validate_rst_title_capitalization.py",
+        "Original Line": 265,
+        "Updated Line": 236,
+        "Description": [
+            "The parameters [ output_format ] of the method main from the module scripts/validate_rst_title_capitalization.py is/are removed"
+        ],
+        "Commit": "00ddacfa191734adcd7a062e336e5625ea65605f",
+        "Timestamp": "20210215_223146"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "deprecate_kwarg",
+        "Updated": "deprecate_kwarg",
+        "Location": "pandas/util/decorators.py",
+        "Original Line": 18,
+        "Updated Line": 18,
+        "Description": [
+            "The parameters [ mapping ] are added to the method deprecate_kwarg from the module pandas/util/decorators.py"
+        ],
+        "Commit": "18081a18ab4b0205be375b57873ff039c8f3ae9d",
+        "Timestamp": "20140909_080857"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_from_date_range",
+        "Updated": "time_from_date_range",
+        "Location": "asv_bench/benchmarks/period.py/PeriodIndexConstructor",
+        "Original Line": 48,
+        "Updated Line": 69,
+        "Description": [
+            "The parameters [ is_offset ] are added to the method time_from_date_range from the module asv_bench/benchmarks/period.py in class PeriodIndexConstructor"
+        ],
+        "Commit": "1d760af01308475a7efacd4943010d3455338996",
+        "Timestamp": "20181229_142305"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_from_ints",
+        "Updated": "time_from_ints",
+        "Location": "asv_bench/benchmarks/period.py/PeriodIndexConstructor",
+        "Original Line": 54,
+        "Updated Line": 75,
+        "Description": [
+            "The parameters [ is_offset ] are added to the method time_from_ints from the module asv_bench/benchmarks/period.py in class PeriodIndexConstructor"
+        ],
+        "Commit": "1d760af01308475a7efacd4943010d3455338996",
+        "Timestamp": "20181229_142305"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "time_from_pydatetime",
+        "Updated": "time_from_pydatetime",
+        "Location": "asv_bench/benchmarks/period.py/PeriodIndexConstructor",
+        "Original Line": 51,
+        "Updated Line": 72,
+        "Description": [
+            "The parameters [ is_offset ] are added to the method time_from_pydatetime from the module asv_bench/benchmarks/period.py in class PeriodIndexConstructor"
+        ],
+        "Commit": "1d760af01308475a7efacd4943010d3455338996",
+        "Timestamp": "20181229_142305"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_regression_allowlist_methods",
+        "Updated": "test_regression_allowlist_methods",
+        "Location": "pandas/tests/groupby/test_allowlist.py",
+        "Original Line": 68,
+        "Updated Line": 33,
+        "Description": [
+            "The parameters [ raw_frame ] of the method test_regression_allowlist_methods from the module pandas/tests/groupby/test_allowlist.py is/are removed"
+        ],
+        "Commit": "e96ed7601d0c59cf7c5796d534d0ca80d1603a77",
+        "Timestamp": "20230422_201811"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "import_optional_dependency",
+        "Updated": "import_optional_dependency",
+        "Location": "pandas/compat/_optional.py",
+        "Original Line": 60,
+        "Updated Line": 62,
+        "Description": [
+            "The parameters [ min_version ] are added to the method import_optional_dependency from the module pandas/compat/_optional.py"
+        ],
+        "Commit": "9952626851caffdb5737d1ca6428e1f0544daf6e",
+        "Timestamp": "20210104_001415"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_multiindex_get_loc",
+        "Updated": "test_multiindex_get_loc",
+        "Location": "pandas/tests/indexing/multiindex/test_indexing_slow.py",
+        "Original Line": 13,
+        "Updated Line": 44,
+        "Description": [
+            "The parameters [ lexsort_depth key frame ] are added to the method test_multiindex_get_loc from the module pandas/tests/indexing/multiindex/test_indexing_slow.py"
+        ],
+        "Commit": "99cb914952b5e664063c097a6c1f2e84e48d19b7",
+        "Timestamp": "20201022_234707"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "read_spss",
+        "Updated": "read_spss",
+        "Location": "pandas/io/spss.py",
+        "Original Line": 19,
+        "Updated Line": 22,
+        "Description": [
+            "The parameters [ use_nullable_dtypes ] are added to the method read_spss from the module pandas/io/spss.py"
+        ],
+        "Commit": "755a99b258ee885f1dadd4b6424d4d386e3519ca",
+        "Timestamp": "20230202_182506"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "Categoricals3",
+        "Updated": "Rank",
+        "Location": "asv_bench/benchmarks/categoricals.py",
+        "Description": " class Categoricals3 was renamed to class Rank ",
+        "Commit": "200227e456b0aae82248a057f923ae9090b295c9",
+        "Timestamp": "20171125_143659"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "Categoricals2",
+        "Updated": "SetCategories",
+        "Location": "asv_bench/benchmarks/categoricals.py",
+        "Description": " class Categoricals2 was renamed to class SetCategories ",
+        "Commit": "200227e456b0aae82248a057f923ae9090b295c9",
+        "Timestamp": "20171125_143659"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "Categoricals",
+        "Updated": "Concat",
+        "Location": "asv_bench/benchmarks/categoricals.py",
+        "Description": " class Categoricals was renamed to class Concat ",
+        "Commit": "200227e456b0aae82248a057f923ae9090b295c9",
+        "Timestamp": "20171125_143659"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "get_versions_from_setup",
+        "Updated": "get_versions_from_toml",
+        "Location": "scripts/validate_min_versions_in_sync.py",
+        "Original Line": 83,
+        "Updated Line": 87,
+        "Description": [
+            "The method get_versions_from_setup from the module scripts/validate_min_versions_in_sync.py is renamed to get_versions_from_toml"
+        ],
+        "Commit": "5422716d04959200b815621a4c100ac657c22f31",
+        "Timestamp": "20221129_185937"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "generate_regular_range",
+        "Updated": "generate_regular_range",
+        "Location": "pandas/core/arrays/_ranges.py",
+        "Original Line": 19,
+        "Updated Line": 20,
+        "Description": [
+            "The return type of method generate_regular_range from the module pandas/core/arrays/_ranges.py is updated"
+        ],
+        "Commit": "264da3bf12b2a4be4972ef61c4e0f3deed077fba",
+        "Timestamp": "20220610_035325"
+    },
+    {
+        "Refactoring Type": "Extract Method",
+        "Original": "test_to_csv_compression_encoding_gcs",
+        "Updated": "assert_equal_zip_safe",
+        "Location": "pandas/tests/io/test_gcs.py",
+        "Original Method Line": "(102,113)",
+        "Extracted/Inlined Method Line": 100,
+        "Extracted/Inlined Lines": [
+            142,
+            143
+        ],
+        "Description": " The method assert_equal_zip_safe from the module pandas/tests/io/test_gcs.py is extracted from method test_to_csv_compression_encoding_gcs from the module pandas/tests/io/test_gcs.py ",
+        "Commit": "cd07813fd988ddad270a2bb61c934c971823d6bb",
+        "Timestamp": "20210314_233331"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_duplicates",
+        "Updated": "test_duplicates",
+        "Location": "pandas/tests/indexes/interval/test_interval_tree.py/TestIntervalTree",
+        "Original Line": 54,
+        "Updated Line": 55,
+        "Description": [
+            "The parameters [ dtype ] are added to the method test_duplicates from the module pandas/tests/indexes/interval/test_interval_tree.py in class TestIntervalTree"
+        ],
+        "Commit": "2794474334cbd53315c248b605953579d010c693",
+        "Timestamp": "20180411_100547"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_get_indexer",
+        "Updated": "test_get_indexer",
+        "Location": "pandas/tests/indexes/interval/test_interval_tree.py/TestIntervalTree",
+        "Original Line": 35,
+        "Updated Line": 37,
+        "Description": [
+            "The parameters [ tree ] are added to the method test_get_indexer from the module pandas/tests/indexes/interval/test_interval_tree.py in class TestIntervalTree"
+        ],
+        "Commit": "2794474334cbd53315c248b605953579d010c693",
+        "Timestamp": "20180411_100547"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_get_indexer_non_unique",
+        "Updated": "test_get_indexer_non_unique",
+        "Location": "pandas/tests/indexes/interval/test_interval_tree.py/TestIntervalTree",
+        "Original Line": 43,
+        "Updated Line": 44,
+        "Description": [
+            "The parameters [ tree ] are added to the method test_get_indexer_non_unique from the module pandas/tests/indexes/interval/test_interval_tree.py in class TestIntervalTree"
+        ],
+        "Commit": "2794474334cbd53315c248b605953579d010c693",
+        "Timestamp": "20180411_100547"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_get_loc",
+        "Updated": "test_get_loc",
+        "Location": "pandas/tests/indexes/interval/test_interval_tree.py/TestIntervalTree",
+        "Original Line": 26,
+        "Updated Line": 29,
+        "Description": [
+            "The parameters [ tree ] are added to the method test_get_loc from the module pandas/tests/indexes/interval/test_interval_tree.py in class TestIntervalTree"
+        ],
+        "Commit": "2794474334cbd53315c248b605953579d010c693",
+        "Timestamp": "20180411_100547"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_addition_subtraction_preserve_frequency",
+        "Updated": "test_addition_subtraction_preserve_frequency",
+        "Location": "pandas/tests/scalar/timestamp/test_arithmetic.py/TestTimestampArithmetic",
+        "Original Line": 99,
+        "Updated Line": 107,
+        "Description": [
+            "The parameters [ freq td td64 ] are added to the method test_addition_subtraction_preserve_frequency from the module pandas/tests/scalar/timestamp/test_arithmetic.py in class TestTimestampArithmetic"
+        ],
+        "Commit": "f5038de41bcf7f921fc481baec7c8e01af89c38e",
+        "Timestamp": "20190703_131722"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_to_xarray_index_types",
+        "Updated": "test_to_xarray_index_types",
+        "Location": "pandas/tests/generic/test_to_xarray.py/TestDataFrameToXArray",
+        "Original Line": 32,
+        "Updated Line": 32,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_to_xarray_index_types from the module pandas/tests/generic/test_to_xarray.py in class TestDataFrameToXArray"
+        ],
+        "Commit": "8ba1ab08e81ff4147cffe6e624a294c82b3fb01f",
+        "Timestamp": "20231126_044157"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_to_xarray_with_multiindex",
+        "Updated": "test_to_xarray_with_multiindex",
+        "Location": "pandas/tests/generic/test_to_xarray.py/TestDataFrameToXArray",
+        "Original Line": 66,
+        "Updated Line": 68,
+        "Description": [
+            "The parameters [ using_infer_string ] are added to the method test_to_xarray_with_multiindex from the module pandas/tests/generic/test_to_xarray.py in class TestDataFrameToXArray"
+        ],
+        "Commit": "8ba1ab08e81ff4147cffe6e624a294c82b3fb01f",
+        "Timestamp": "20231126_044157"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "test_show_versions",
+        "Updated": "test_show_versions_console",
+        "Location": "pandas/tests/util/test_show_versions.py",
+        "Original Line": 29,
+        "Updated Line": 72,
+        "Description": [
+            "The method test_show_versions from the module pandas/tests/util/test_show_versions.py is renamed to test_show_versions_console"
+        ],
+        "Commit": "80fb7c6dbfcda173b50573f96ab02b5f4f8e3c57",
+        "Timestamp": "20210222_181808"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_to_xarray_index_types",
+        "Updated": "test_to_xarray_index_types",
+        "Location": "pandas/tests/generic/test_to_xarray.py/TestDataFrameToXArray",
+        "Original Line": 32,
+        "Updated Line": 33,
+        "Description": [
+            "The parameters [ request ] are added to the method test_to_xarray_index_types from the module pandas/tests/generic/test_to_xarray.py in class TestDataFrameToXArray"
+        ],
+        "Commit": "986074b4901511a4e87a99854fc62f8c24bdbb71",
+        "Timestamp": "20240514_190420"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_cummethods_bool",
+        "Updated": "test_cummethods_bool",
+        "Location": "pandas/tests/series/test_cumulative.py/TestSeriesCumulativeOps",
+        "Original Line": 101,
+        "Updated Line": 105,
+        "Description": [
+            "The parameters [ arg func method ] are added to the method test_cummethods_bool from the module pandas/tests/series/test_cumulative.py in class TestSeriesCumulativeOps"
+        ],
+        "Commit": "543bda98b5e83aed0ac2f7748b74281b3d6926ac",
+        "Timestamp": "20211228_005753"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "test_to_xarray_index_types",
+        "Updated": "test_to_xarray_index_types",
+        "Location": "pandas/tests/generic/test_to_xarray.py/TestDataFrameToXArray",
+        "Original Line": 33,
+        "Updated Line": 32,
+        "Description": [
+            "The parameters [ request ] of the method test_to_xarray_index_types from the module pandas/tests/generic/test_to_xarray.py in class TestDataFrameToXArray is/are removed"
+        ],
+        "Commit": "bf1bef572244af609a32a81ee139cdc879610943",
+        "Timestamp": "20240614_181414"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "type",
+        "Updated": "type",
+        "Location": "pandas/core/dtypes/base.py/ExtensionDtype",
+        "Original Line": 154,
+        "Updated Line": 158,
+        "Description": [
+            "The return type of method type from the module pandas/core/dtypes/base.py in class ExtensionDtype is updated"
+        ],
+        "Commit": "4e264655e6e421a80cebecb93441332b507e0531",
+        "Timestamp": "20210426_103944"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "register_extension_dtype",
+        "Updated": "register_extension_dtype",
+        "Location": "pandas/core/dtypes/base.py",
+        "Original Line": 367,
+        "Updated Line": 371,
+        "Description": [
+            "The return type of method register_extension_dtype from the module pandas/core/dtypes/base.py is updated"
+        ],
+        "Commit": "4e264655e6e421a80cebecb93441332b507e0531",
+        "Timestamp": "20210426_103944"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "generate_regular_range",
+        "Updated": "generate_regular_range",
+        "Location": "pandas/core/arrays/_ranges.py",
+        "Original Line": 13,
+        "Updated Line": 15,
+        "Description": [
+            "The return type of method generate_regular_range from the module pandas/core/arrays/_ranges.py is updated"
+        ],
+        "Commit": "fa92585678c0d80a484f5a6e1b561106002fef78",
+        "Timestamp": "20190621_014822"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "StringEncode",
+        "Updated": "Encode",
+        "Location": "asv_bench/benchmarks/strings.py",
+        "Description": " class StringEncode was renamed to class Encode ",
+        "Commit": "2f6c1b1449f2031e3323785f2e39da8598cb7d23",
+        "Timestamp": "20180106_171944"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "StringMethods",
+        "Updated": "Methods",
+        "Location": "asv_bench/benchmarks/strings.py",
+        "Description": " class StringMethods was renamed to class Methods ",
+        "Commit": "2f6c1b1449f2031e3323785f2e39da8598cb7d23",
+        "Timestamp": "20180106_171944"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "_parse_subtype",
+        "Updated": "_parse_subtype",
+        "Location": "pandas/core/arrays/sparse/dtype.py/SparseDtype",
+        "Original Line": 226,
+        "Updated Line": 226,
+        "Description": [
+            "The return type of method _parse_subtype from the module pandas/core/arrays/sparse/dtype.py in class SparseDtype is updated"
+        ],
+        "Commit": "29fdc6946be8a60373d089c0aded86eea5d3a567",
+        "Timestamp": "20191129_170113"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_methods_iloc_getitem_item_cache",
+        "Updated": "test_methods_iloc_getitem_item_cache",
+        "Location": "pandas/tests/copy_view/test_chained_assignment_deprecation.py",
+        "Original Line": 45,
+        "Updated Line": 46,
+        "Description": [
+            "The parameters [ warn_copy_on_write ] are added to the method test_methods_iloc_getitem_item_cache from the module pandas/tests/copy_view/test_chained_assignment_deprecation.py"
+        ],
+        "Commit": "8cb60d0e229c1e2ca3661961e98e3365eb65336d",
+        "Timestamp": "20240108_232749"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "series_dir",
+        "Updated": "Dir",
+        "Location": "asv_bench/benchmarks/series_methods.py",
+        "Description": " class series_dir was renamed to class Dir ",
+        "Commit": "f5fc3a035ffb05069b6c61815198f0b558c005b7",
+        "Timestamp": "20180103_111730"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_bad_version",
+        "Updated": "test_bad_version",
+        "Location": "pandas/tests/test_optional_dependency.py",
+        "Original Line": 25,
+        "Updated Line": 25,
+        "Description": [
+            "The parameters [ monkeypatch ] are added to the method test_bad_version from the module pandas/tests/test_optional_dependency.py"
+        ],
+        "Commit": "ac3056f2f13e5287dc66d09f31522f7fba592fec",
+        "Timestamp": "20200219_014738"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_no_version_raises",
+        "Updated": "test_no_version_raises",
+        "Location": "pandas/tests/test_optional_dependency.py",
+        "Original Line": 45,
+        "Updated Line": 45,
+        "Description": [
+            "The parameters [ monkeypatch ] are added to the method test_no_version_raises from the module pandas/tests/test_optional_dependency.py"
+        ],
+        "Commit": "ac3056f2f13e5287dc66d09f31522f7fba592fec",
+        "Timestamp": "20200219_014738"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "construct_array_type",
+        "Updated": "construct_array_type",
+        "Location": "pandas/core/arrays/sparse/dtype.py/SparseDtype",
+        "Original Line": 170,
+        "Updated Line": 173,
+        "Description": [
+            "The return type of method construct_array_type from the module pandas/core/arrays/sparse/dtype.py in class SparseDtype is updated"
+        ],
+        "Commit": "78217e0229d26900e5d0e3765b101c0a11a629a4",
+        "Timestamp": "20200131_114138"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "read_clipboard",
+        "Updated": "read_clipboard",
+        "Location": "pandas/io/clipboard.py",
+        "Original Line": 6,
+        "Updated Line": 6,
+        "Description": [
+            "The parameters [ sep ] are added to the method read_clipboard from the module pandas/io/clipboard.py"
+        ],
+        "Commit": "2e276fb2fec6dd04d6abcf5e79c03853ee86cd24",
+        "Timestamp": "20161107_205208"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method",
+            "Add Parameter"
+        ],
+        "Original": "test_bz2",
+        "Updated": "test_other_compression",
+        "Location": "pandas/tests/io/parser/compression.py/CompressionTests",
+        "Original Line": 93,
+        "Updated Line": 80,
+        "Description": [
+            "The method test_bz2 from the module pandas/tests/io/parser/compression.py in class CompressionTests is renamed to test_other_compression",
+            "The parameters [ compress_type compress_method ext ] are added to the method test_bz2 from the module pandas/tests/io/parser/compression.py in class CompressionTests"
+        ],
+        "Commit": "30d712fadc1cb348f119da3207316c7a7664d175",
+        "Timestamp": "20180316_113520"
+    },
+    {
+        "Refactoring Type": "Extract Method",
+        "Original": "show_versions",
+        "Updated": "_get_dependency_info",
+        "Location": "pandas/util/_print_versions.py",
+        "Original Method Line": "(59,90)",
+        "Extracted/Inlined Method Line": 47,
+        "Extracted/Inlined Lines": [
+            61,
+            90,
+            93,
+            94
+        ],
+        "Description": " The method _get_dependency_info from the module pandas/util/_print_versions.py is extracted from method show_versions from the module pandas/util/_print_versions.py ",
+        "Commit": "f6b6c1576345ce9f6b9c7d65b7fe74a7d285a964",
+        "Timestamp": "20200303_033626"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_asfreq_resample_set_correct_freq",
+        "Updated": "test_asfreq_resample_set_correct_freq",
+        "Location": "pandas/tests/frame/methods/test_asfreq.py/TestAsFreq",
+        "Original Line": 18,
+        "Updated Line": 113,
+        "Description": [
+            "The parameters [ frame_or_series ] are added to the method test_asfreq_resample_set_correct_freq from the module pandas/tests/frame/methods/test_asfreq.py in class TestAsFreq"
+        ],
+        "Commit": "2fa2d5cc5c16fcf546cd641e78dd270b66bef5f7",
+        "Timestamp": "20211029_172049"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "check_round_trip_frame",
+        "Updated": "check_round_trip_frame",
+        "Location": "pandas/tests/io/test_clipboard.py/TestClipboard",
+        "Original Line": 69,
+        "Updated Line": 83,
+        "Description": [
+            "The parameters [ data_type ] of the method check_round_trip_frame from the module pandas/tests/io/test_clipboard.py in class TestClipboard are changed/renamed to [data]"
+        ],
+        "Commit": "9d38e0ef5842fafcc4e391abc6aba486684e6dc7",
+        "Timestamp": "20180626_221941"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_invalid_encoding",
+        "Updated": "test_invalid_encoding",
+        "Location": "pandas/tests/io/test_clipboard.py/TestClipboard",
+        "Original Line": 127,
+        "Updated Line": 189,
+        "Description": [
+            "The parameters [ df ] are added to the method test_invalid_encoding from the module pandas/tests/io/test_clipboard.py in class TestClipboard"
+        ],
+        "Commit": "9d38e0ef5842fafcc4e391abc6aba486684e6dc7",
+        "Timestamp": "20180626_221941"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_round_trip_frame",
+        "Updated": "test_round_trip_frame",
+        "Location": "pandas/tests/io/test_clipboard.py/TestClipboard",
+        "Original Line": 89,
+        "Updated Line": 93,
+        "Description": [
+            "The parameters [ df ] are added to the method test_round_trip_frame from the module pandas/tests/io/test_clipboard.py in class TestClipboard"
+        ],
+        "Commit": "9d38e0ef5842fafcc4e391abc6aba486684e6dc7",
+        "Timestamp": "20180626_221941"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method",
+            "Add Parameter"
+        ],
+        "Original": "test_round_trip_frame_string",
+        "Updated": "test_round_trip_frame_sep",
+        "Location": "pandas/tests/io/test_clipboard.py/TestClipboard",
+        "Original Line": 85,
+        "Updated Line": 98,
+        "Description": [
+            "The method test_round_trip_frame_string from the module pandas/tests/io/test_clipboard.py in class TestClipboard is renamed to test_round_trip_frame_sep",
+            "The parameters [ df sep ] are added to the method test_round_trip_frame_string from the module pandas/tests/io/test_clipboard.py in class TestClipboard"
+        ],
+        "Commit": "9d38e0ef5842fafcc4e391abc6aba486684e6dc7",
+        "Timestamp": "20180626_221941"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_all_nans",
+        "Updated": "test_all_nans",
+        "Location": "pandas/tests/frame/test_asof.py/TestFrameAsof",
+        "Original Line": 81,
+        "Updated Line": 82,
+        "Description": [
+            "The parameters [ date_range_frame ] are added to the method test_all_nans from the module pandas/tests/frame/test_asof.py in class TestFrameAsof"
+        ],
+        "Commit": "a247f802aec7a2ed57b4aff1c819f5b2b73e777e",
+        "Timestamp": "20190310_214126"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_basic",
+        "Updated": "test_basic",
+        "Location": "pandas/tests/frame/test_asof.py/TestFrameAsof",
+        "Original Line": 19,
+        "Updated Line": 24,
+        "Description": [
+            "The parameters [ date_range_frame ] are added to the method test_basic from the module pandas/tests/frame/test_asof.py in class TestFrameAsof"
+        ],
+        "Commit": "a247f802aec7a2ed57b4aff1c819f5b2b73e777e",
+        "Timestamp": "20190310_214126"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_missing",
+        "Updated": "test_missing",
+        "Location": "pandas/tests/frame/test_asof.py/TestFrameAsof",
+        "Original Line": 64,
+        "Updated Line": 67,
+        "Description": [
+            "The parameters [ date_range_frame ] are added to the method test_missing from the module pandas/tests/frame/test_asof.py in class TestFrameAsof"
+        ],
+        "Commit": "a247f802aec7a2ed57b4aff1c819f5b2b73e777e",
+        "Timestamp": "20190310_214126"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_subset",
+        "Updated": "test_subset",
+        "Location": "pandas/tests/frame/test_asof.py/TestFrameAsof",
+        "Original Line": 38,
+        "Updated Line": 43,
+        "Description": [
+            "The parameters [ date_range_frame ] are added to the method test_subset from the module pandas/tests/frame/test_asof.py in class TestFrameAsof"
+        ],
+        "Commit": "a247f802aec7a2ed57b4aff1c819f5b2b73e777e",
+        "Timestamp": "20190310_214126"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "to_numeric_downcast",
+        "Updated": "ToNumericDowncast",
+        "Location": "asv_bench/benchmarks/inference.py",
+        "Description": " class to_numeric_downcast was renamed to class ToNumericDowncast ",
+        "Commit": "7a0ee19e95e29042c3373a1d912d2db27108c828",
+        "Timestamp": "20171218_130000"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "to_numeric",
+        "Updated": "ToNumeric",
+        "Location": "asv_bench/benchmarks/inference.py",
+        "Description": " class to_numeric was renamed to class ToNumeric ",
+        "Commit": "7a0ee19e95e29042c3373a1d912d2db27108c828",
+        "Timestamp": "20171218_130000"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "test_roll_yearday",
+        "Updated": "test_roll_qtrday_year",
+        "Location": "pandas/tests/tslibs/test_liboffsets.py",
+        "Original Line": 91,
+        "Updated Line": 91,
+        "Description": [
+            "The method test_roll_yearday from the module pandas/tests/tslibs/test_liboffsets.py is renamed to test_roll_qtrday_year"
+        ],
+        "Commit": "f984364f65dacd1fc0778bc94de8f45d3abcba30",
+        "Timestamp": "20200614_204718"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method"
+        ],
+        "Original": "test_roll_yearday2",
+        "Updated": "test_roll_qtrday_year2",
+        "Location": "pandas/tests/tslibs/test_liboffsets.py",
+        "Original Line": 108,
+        "Updated Line": 108,
+        "Description": [
+            "The method test_roll_yearday2 from the module pandas/tests/tslibs/test_liboffsets.py is renamed to test_roll_qtrday_year2"
+        ],
+        "Commit": "f984364f65dacd1fc0778bc94de8f45d3abcba30",
+        "Timestamp": "20200614_204718"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "_zip_axes_from_type",
+        "Updated": "_zip_axes_from_type",
+        "Location": "pandas/core/computation/align.py",
+        "Original Line": 32,
+        "Updated Line": 37,
+        "Description": [
+            "The return type of method _zip_axes_from_type from the module pandas/core/computation/align.py is updated"
+        ],
+        "Commit": "d1f82f7b5e692f02b6fd7c43acd432370ca2eca5",
+        "Timestamp": "20191231_124101"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "get_test_result",
+        "Updated": "get_test_result",
+        "Location": "pandas/core/computation/expressions.py",
+        "Original Line": 267,
+        "Updated Line": 269,
+        "Description": [
+            "The return type of method get_test_result from the module pandas/core/computation/expressions.py is updated"
+        ],
+        "Commit": "668724bbbde70fb13ef43475a293175580927f57",
+        "Timestamp": "20200831_204517"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "main",
+        "Updated": "main",
+        "Location": "scripts/validate_unwanted_patterns.py",
+        "Original Line": 292,
+        "Updated Line": 291,
+        "Description": [
+            "The parameters [ file_extensions_to_check ] are added to the method main from the module scripts/validate_unwanted_patterns.py"
+        ],
+        "Commit": "48838da24e78d03a55938f357dda9b600460c7da",
+        "Timestamp": "20200410_210816"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "_bool_arith_fallback",
+        "Updated": "_bool_arith_fallback",
+        "Location": "pandas/core/computation/expressions.py",
+        "Original Line": 209,
+        "Updated Line": 209,
+        "Description": [
+            "The parameters [ a b ] of the method _bool_arith_fallback from the module pandas/core/computation/expressions.py are changed/renamed to [left_op right_op]"
+        ],
+        "Commit": "e6e1987b988857bb511d3797400b4d1873e86760",
+        "Timestamp": "20241209_183704"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "_can_use_numexpr",
+        "Updated": "_can_use_numexpr",
+        "Location": "pandas/core/computation/expressions.py",
+        "Original Line": 77,
+        "Updated Line": 77,
+        "Description": [
+            "The parameters [ a b ] of the method _can_use_numexpr from the module pandas/core/computation/expressions.py are changed/renamed to [left_op right_op]"
+        ],
+        "Commit": "e6e1987b988857bb511d3797400b4d1873e86760",
+        "Timestamp": "20241209_183704"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "_evaluate_standard",
+        "Updated": "_evaluate_standard",
+        "Location": "pandas/core/computation/expressions.py",
+        "Original Line": 68,
+        "Updated Line": 68,
+        "Description": [
+            "The parameters [ a b ] of the method _evaluate_standard from the module pandas/core/computation/expressions.py are changed/renamed to [left_op right_op]"
+        ],
+        "Commit": "e6e1987b988857bb511d3797400b4d1873e86760",
+        "Timestamp": "20241209_183704"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "_where_numexpr",
+        "Updated": "_where_numexpr",
+        "Location": "pandas/core/computation/expressions.py",
+        "Original Line": 178,
+        "Updated Line": 178,
+        "Description": [
+            "The parameters [ a b ] of the method _where_numexpr from the module pandas/core/computation/expressions.py are changed/renamed to [left_op right_op]"
+        ],
+        "Commit": "e6e1987b988857bb511d3797400b4d1873e86760",
+        "Timestamp": "20241209_183704"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "_where_standard",
+        "Updated": "_where_standard",
+        "Location": "pandas/core/computation/expressions.py",
+        "Original Line": 173,
+        "Updated Line": 173,
+        "Description": [
+            "The parameters [ a b ] of the method _where_standard from the module pandas/core/computation/expressions.py are changed/renamed to [left_op right_op]"
+        ],
+        "Commit": "e6e1987b988857bb511d3797400b4d1873e86760",
+        "Timestamp": "20241209_183704"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "evaluate",
+        "Updated": "evaluate",
+        "Location": "pandas/core/computation/expressions.py",
+        "Original Line": 227,
+        "Updated Line": 227,
+        "Description": [
+            "The parameters [ a b ] of the method evaluate from the module pandas/core/computation/expressions.py are changed/renamed to [left_op right_op]"
+        ],
+        "Commit": "e6e1987b988857bb511d3797400b4d1873e86760",
+        "Timestamp": "20241209_183704"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "where",
+        "Updated": "where",
+        "Location": "pandas/core/computation/expressions.py",
+        "Original Line": 247,
+        "Updated Line": 247,
+        "Description": [
+            "The parameters [ a b ] of the method where from the module pandas/core/computation/expressions.py are changed/renamed to [left_op right_op]"
+        ],
+        "Commit": "e6e1987b988857bb511d3797400b4d1873e86760",
+        "Timestamp": "20241209_183704"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "setup",
+        "Updated": "setup",
+        "Location": "asv_bench/benchmarks/stat_ops.py/FrameOps",
+        "Original Line": 13,
+        "Updated Line": 13,
+        "Description": [
+            "The parameters [ use_bottleneck ] of the method setup from the module asv_bench/benchmarks/stat_ops.py in class FrameOps is/are removed"
+        ],
+        "Commit": "91e284bbf70d97c38ad30b349b9df5285d09bfc8",
+        "Timestamp": "20191205_163545"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "time_op",
+        "Updated": "time_op",
+        "Location": "asv_bench/benchmarks/stat_ops.py/FrameOps",
+        "Original Line": 23,
+        "Updated Line": 17,
+        "Description": [
+            "The parameters [ use_bottleneck ] of the method time_op from the module asv_bench/benchmarks/stat_ops.py in class FrameOps is/are removed"
+        ],
+        "Commit": "91e284bbf70d97c38ad30b349b9df5285d09bfc8",
+        "Timestamp": "20191205_163545"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "setup",
+        "Updated": "setup",
+        "Location": "asv_bench/benchmarks/stat_ops.py/SeriesOps",
+        "Original Line": 52,
+        "Updated Line": 46,
+        "Description": [
+            "The parameters [ use_bottleneck ] of the method setup from the module asv_bench/benchmarks/stat_ops.py in class SeriesOps is/are removed"
+        ],
+        "Commit": "91e284bbf70d97c38ad30b349b9df5285d09bfc8",
+        "Timestamp": "20191205_163545"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "time_op",
+        "Updated": "time_op",
+        "Location": "asv_bench/benchmarks/stat_ops.py/SeriesOps",
+        "Original Line": 62,
+        "Updated Line": 50,
+        "Description": [
+            "The parameters [ use_bottleneck ] of the method time_op from the module asv_bench/benchmarks/stat_ops.py in class SeriesOps is/are removed"
+        ],
+        "Commit": "91e284bbf70d97c38ad30b349b9df5285d09bfc8",
+        "Timestamp": "20191205_163545"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "setup",
+        "Updated": "setup",
+        "Location": "asv_bench/benchmarks/stat_ops.py/Correlation",
+        "Original Line": 107,
+        "Updated Line": 95,
+        "Description": [
+            "The parameters [ use_bottleneck ] of the method setup from the module asv_bench/benchmarks/stat_ops.py in class Correlation is/are removed"
+        ],
+        "Commit": "91e284bbf70d97c38ad30b349b9df5285d09bfc8",
+        "Timestamp": "20191205_163545"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "time_corr",
+        "Updated": "time_corr",
+        "Location": "asv_bench/benchmarks/stat_ops.py/Correlation",
+        "Original Line": 121,
+        "Updated Line": 103,
+        "Description": [
+            "The parameters [ use_bottleneck ] of the method time_corr from the module asv_bench/benchmarks/stat_ops.py in class Correlation is/are removed"
+        ],
+        "Commit": "91e284bbf70d97c38ad30b349b9df5285d09bfc8",
+        "Timestamp": "20191205_163545"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "time_corr_series",
+        "Updated": "time_corr_series",
+        "Location": "asv_bench/benchmarks/stat_ops.py/Correlation",
+        "Original Line": 133,
+        "Updated Line": 115,
+        "Description": [
+            "The parameters [ use_bottleneck ] of the method time_corr_series from the module asv_bench/benchmarks/stat_ops.py in class Correlation is/are removed"
+        ],
+        "Commit": "91e284bbf70d97c38ad30b349b9df5285d09bfc8",
+        "Timestamp": "20191205_163545"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method",
+            "Remove Parameter"
+        ],
+        "Original": "peakmem_corr_wide",
+        "Updated": "time_corr_wide",
+        "Location": "asv_bench/benchmarks/stat_ops.py/Correlation",
+        "Original Line": 130,
+        "Updated Line": 106,
+        "Description": [
+            "The method peakmem_corr_wide from the module asv_bench/benchmarks/stat_ops.py in class Correlation is renamed to time_corr_wide",
+            "The parameters [ use_bottleneck ] of the method peakmem_corr_wide from the module asv_bench/benchmarks/stat_ops.py in class Correlation is/are removed"
+        ],
+        "Commit": "91e284bbf70d97c38ad30b349b9df5285d09bfc8",
+        "Timestamp": "20191205_163545"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "time_corr_wide_nans",
+        "Updated": "time_corr_wide_nans",
+        "Location": "asv_bench/benchmarks/stat_ops.py/Correlation",
+        "Original Line": 127,
+        "Updated Line": 109,
+        "Description": [
+            "The parameters [ use_bottleneck ] of the method time_corr_wide_nans from the module asv_bench/benchmarks/stat_ops.py in class Correlation is/are removed"
+        ],
+        "Commit": "91e284bbf70d97c38ad30b349b9df5285d09bfc8",
+        "Timestamp": "20191205_163545"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "time_corrwith_cols",
+        "Updated": "time_corrwith_cols",
+        "Location": "asv_bench/benchmarks/stat_ops.py/Correlation",
+        "Original Line": 136,
+        "Updated Line": 118,
+        "Description": [
+            "The parameters [ use_bottleneck ] of the method time_corrwith_cols from the module asv_bench/benchmarks/stat_ops.py in class Correlation is/are removed"
+        ],
+        "Commit": "91e284bbf70d97c38ad30b349b9df5285d09bfc8",
+        "Timestamp": "20191205_163545"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "time_corrwith_rows",
+        "Updated": "time_corrwith_rows",
+        "Location": "asv_bench/benchmarks/stat_ops.py/Correlation",
+        "Original Line": 139,
+        "Updated Line": 121,
+        "Description": [
+            "The parameters [ use_bottleneck ] of the method time_corrwith_rows from the module asv_bench/benchmarks/stat_ops.py in class Correlation is/are removed"
+        ],
+        "Commit": "91e284bbf70d97c38ad30b349b9df5285d09bfc8",
+        "Timestamp": "20191205_163545"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "setup",
+        "Updated": "setup",
+        "Location": "asv_bench/benchmarks/stat_ops.py/Covariance",
+        "Original Line": 148,
+        "Updated Line": 130,
+        "Description": [
+            "The parameters [ use_bottleneck ] of the method setup from the module asv_bench/benchmarks/stat_ops.py in class Covariance is/are removed"
+        ],
+        "Commit": "91e284bbf70d97c38ad30b349b9df5285d09bfc8",
+        "Timestamp": "20191205_163545"
+    },
+    {
+        "Refactoring Type": [
+            "Remove Parameter"
+        ],
+        "Original": "time_cov_series",
+        "Updated": "time_cov_series",
+        "Location": "asv_bench/benchmarks/stat_ops.py/Covariance",
+        "Original Line": 158,
+        "Updated Line": 134,
+        "Description": [
+            "The parameters [ use_bottleneck ] of the method time_cov_series from the module asv_bench/benchmarks/stat_ops.py in class Covariance is/are removed"
+        ],
+        "Commit": "91e284bbf70d97c38ad30b349b9df5285d09bfc8",
+        "Timestamp": "20191205_163545"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method",
+            "Remove Parameter",
+            "Change Return Type"
+        ],
+        "Original": "get_filepath_or_buffer",
+        "Updated": "get_file_and_filesystem",
+        "Location": "pandas/io/s3.py",
+        "Original Line": 17,
+        "Updated Line": 20,
+        "Description": [
+            "The method get_filepath_or_buffer from the module pandas/io/s3.py is renamed to get_file_and_filesystem",
+            "The parameters [ encoding compression ] of the method get_filepath_or_buffer from the module pandas/io/s3.py is/are removed",
+            "The return type of method get_filepath_or_buffer from the module pandas/io/s3.py is updated"
+        ],
+        "Commit": "35821a5794e434117b14797f010602c8e412b36c",
+        "Timestamp": "20190812_191049"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "describe_1d",
+        "Updated": "describe_1d",
+        "Location": "pandas/core/describe.py",
+        "Original Line": 162,
+        "Updated Line": 237,
+        "Description": [
+            "The parameters [ percentiles datetime_is_numeric ] are added to the method describe_1d from the module pandas/core/describe.py"
+        ],
+        "Commit": "dba7641d1531d7b8cf0ba301b30c5de518dd24a3",
+        "Timestamp": "20210113_135235"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "describe_categorical_1d",
+        "Updated": "describe_categorical_1d",
+        "Location": "pandas/core/describe.py",
+        "Original Line": 99,
+        "Updated Line": 151,
+        "Description": [
+            "The parameters [ is_series ] are added to the method describe_categorical_1d from the module pandas/core/describe.py"
+        ],
+        "Commit": "dba7641d1531d7b8cf0ba301b30c5de518dd24a3",
+        "Timestamp": "20210113_135235"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "describe_numeric_1d",
+        "Updated": "describe_numeric_1d",
+        "Location": "pandas/core/describe.py",
+        "Original Line": 88,
+        "Updated Line": 128,
+        "Description": [
+            "The parameters [ percentiles ] are added to the method describe_numeric_1d from the module pandas/core/describe.py"
+        ],
+        "Commit": "dba7641d1531d7b8cf0ba301b30c5de518dd24a3",
+        "Timestamp": "20210113_135235"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "describe_timestamp_1d",
+        "Updated": "describe_timestamp_1d",
+        "Location": "pandas/core/describe.py",
+        "Original Line": 150,
+        "Updated Line": 213,
+        "Description": [
+            "The parameters [ percentiles ] are added to the method describe_timestamp_1d from the module pandas/core/describe.py"
+        ],
+        "Commit": "dba7641d1531d7b8cf0ba301b30c5de518dd24a3",
+        "Timestamp": "20210113_135235"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "wide_to_long_big",
+        "Updated": "WideToLong",
+        "Location": "asv_bench/benchmarks/reshape.py",
+        "Description": " class wide_to_long_big was renamed to class WideToLong ",
+        "Commit": "22601f7aaecf2917faef07f0b39047234adc4ed5",
+        "Timestamp": "20171226_213826"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "melt_dataframe",
+        "Updated": "Melt",
+        "Location": "asv_bench/benchmarks/reshape.py",
+        "Description": " class melt_dataframe was renamed to class Melt ",
+        "Commit": "22601f7aaecf2917faef07f0b39047234adc4ed5",
+        "Timestamp": "20171226_213826"
+    },
+    {
+        "Refactoring Type": "Rename Class",
+        "Original": "reshape_pivot_time_series",
+        "Updated": "Pivot",
+        "Location": "asv_bench/benchmarks/reshape.py",
+        "Description": " class reshape_pivot_time_series was renamed to class Pivot ",
+        "Commit": "22601f7aaecf2917faef07f0b39047234adc4ed5",
+        "Timestamp": "20171226_213826"
+    },
+    {
+        "Refactoring Type": "Extract Method",
+        "Original": "describe_ndframe",
+        "Updated": "_refine_percentiles",
+        "Location": "pandas/core/describe.py",
+        "Original Method Line": "(31,31)",
+        "Extracted/Inlined Method Line": 256,
+        "Extracted/Inlined Lines": [
+            67,
+            70,
+            73,
+            74,
+            75,
+            77,
+            80,
+            81,
+            82,
+            83,
+            84
+        ],
+        "Description": " The method _refine_percentiles from the module pandas/core/describe.py is extracted from method describe_ndframe from the module pandas/core/describe.py ",
+        "Commit": "4ecba519dc4d93f6524bde102c97b5ebb91aa3ae",
+        "Timestamp": "20210114_142042"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "setup",
+        "Updated": "setup",
+        "Location": "asv_bench/benchmarks/io/json.py/ToJSON",
+        "Original Line": 69,
+        "Updated Line": 72,
+        "Description": [
+            "The parameters [ frame ] are added to the method setup from the module asv_bench/benchmarks/io/json.py in class ToJSON"
+        ],
+        "Commit": "37f29e5bf967d76d76a05e84b5c9b14c9bc66f23",
+        "Timestamp": "20190726_163528"
+    },
+    {
+        "Refactoring Type": "Extract Method",
+        "Original": "info",
+        "Updated": "_get_ids_and_dtypes",
+        "Location": "pandas/io/formats/info.py",
+        "Original Method Line": "(16,63)",
+        "Extracted/Inlined Method Line": 42,
+        "Extracted/Inlined Lines": [
+            83,
+            85
+        ],
+        "Description": " The method _get_ids_and_dtypes from the module pandas/io/formats/info.py is extracted from method info from the module pandas/io/formats/info.py ",
+        "Commit": "9929fca82f305cd5388f235b4abd402b0f2e3653",
+        "Timestamp": "20200511_214427"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "read_feather",
+        "Updated": "read_feather",
+        "Location": "pandas/io/feather_format.py",
+        "Original Line": 86,
+        "Updated Line": 87,
+        "Description": [
+            "The parameters [ nthreads ] are added to the method read_feather from the module pandas/io/feather_format.py"
+        ],
+        "Commit": "0b6d483fef6ec0d12605a582284af6eed36eb682",
+        "Timestamp": "20170524_224811"
+    },
+    {
+        "Refactoring Type": [
+            "Change Return Type"
+        ],
+        "Original": "build_table_schema",
+        "Updated": "build_table_schema",
+        "Location": "pandas/io/json/_table_schema.py",
+        "Original Line": 185,
+        "Updated Line": 192,
+        "Description": [
+            "The return type of method build_table_schema from the module pandas/io/json/_table_schema.py is updated"
+        ],
+        "Commit": "55adcb8688582e3a3be66b1036d3604327ae5071",
+        "Timestamp": "20200614_095139"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "mock_read_gbq",
+        "Updated": "mock_read_gbq",
+        "Location": "pandas/tests/io/test_gbq.py",
+        "Original Line": 97,
+        "Updated Line": 95,
+        "Description": [
+            "The parameters [ sql ] are added to the method mock_read_gbq from the module pandas/tests/io/test_gbq.py"
+        ],
+        "Commit": "7706741fb92a97d09c63d1858cba8558e032ce1e",
+        "Timestamp": "20190420_183334"
+    },
+    {
+        "Refactoring Type": "Extract Method",
+        "Original": "test_compressed_urls",
+        "Updated": "check_compressed_urls",
+        "Location": "pandas/tests/io/parser/test_network.py",
+        "Original Method Line": "(27,26)",
+        "Extracted/Inlined Method Line": 31,
+        "Extracted/Inlined Lines": [
+            30,
+            33,
+            36,
+            38,
+            39,
+            41,
+            42
+        ],
+        "Description": " The method check_compressed_urls from the module pandas/tests/io/parser/test_network.py is extracted from method test_compressed_urls from the module pandas/tests/io/parser/test_network.py ",
+        "Commit": "bbb583c30bcee83ed3a2e9a3acfc83535f270632",
+        "Timestamp": "20170215_032523"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_convert_dtypes",
+        "Updated": "test_convert_dtypes",
+        "Location": "pandas/tests/series/methods/test_convert_dtypes.py/TestSeriesConvertDtypes",
+        "Original Line": 257,
+        "Updated Line": 138,
+        "Description": [
+            "The parameters [ expected_other ] are added to the method test_convert_dtypes from the module pandas/tests/series/methods/test_convert_dtypes.py in class TestSeriesConvertDtypes"
+        ],
+        "Commit": "dfa9d6f082e14e21f13dafc03faa89376887fdf9",
+        "Timestamp": "20201128_142720"
+    },
+    {
+        "Refactoring Type": [
+            "Change/Rename Parameter"
+        ],
+        "Original": "searchsorted",
+        "Updated": "searchsorted",
+        "Location": "pandas/core/indexes/frozen.py/FrozenNDArray",
+        "Original Line": 120,
+        "Updated Line": 122,
+        "Description": [
+            "The parameters [ v ] of the method searchsorted from the module pandas/core/indexes/frozen.py in class FrozenNDArray are changed/renamed to [value]"
+        ],
+        "Commit": "9b9f6bd0a6f8ebc750813b6ad7ddd70b3bc0733c",
+        "Timestamp": "20180915_175341"
+    },
+    {
+        "Refactoring Type": "Move Method",
+        "Original": "load_reduce",
+        "Updated": "load_reduce",
+        "Old Location": "pandas/compat/pickle_compat.py",
+        "New Location": "pandas/compat/pickle_compat.py/Unpickler",
+        "Old Method Line": 32,
+        "New Method Line": 73,
+        "Description": " method load_reduce from the module pandas/compat/pickle_compat.py was moved to class Unpickler of module pandas/compat/pickle_compat.py ",
+        "Commit": "ada009a40356feaddb5a412a1a23d8354741d07d",
+        "Timestamp": "20240222_224358"
+    },
+    {
+        "Refactoring Type": "Move Method",
+        "Original": "load_newobj",
+        "Updated": "load_newobj",
+        "Old Location": "pandas/compat/pickle_compat.py",
+        "New Location": "pandas/compat/pickle_compat.py/Unpickler",
+        "Old Method Line": 172,
+        "New Method Line": 96,
+        "Description": " method load_newobj from the module pandas/compat/pickle_compat.py was moved to class Unpickler of module pandas/compat/pickle_compat.py ",
+        "Commit": "ada009a40356feaddb5a412a1a23d8354741d07d",
+        "Timestamp": "20240222_224358"
+    },
+    {
+        "Refactoring Type": [
+            "Rename Method",
+            "Add Parameter"
+        ],
+        "Original": "_validate_periodindex",
+        "Updated": "compare_index_period",
+        "Location": "pandas/io/tests/test_pickle.py/TestPickle",
+        "Original Line": 205,
+        "Updated Line": 120,
+        "Description": [
+            "The method _validate_periodindex from the module pandas/io/tests/test_pickle.py in class TestPickle is renamed to compare_index_period",
+            "The parameters [ typ version ] are added to the method _validate_periodindex from the module pandas/io/tests/test_pickle.py in class TestPickle"
+        ],
+        "Commit": "6afd5d218e8e5a8e8653d32925301286935b3f58",
+        "Timestamp": "20160504_135612"
+    },
+    {
+        "Refactoring Type": [
+            "Add Parameter"
+        ],
+        "Original": "test_read_clipboard_infer_excel",
+        "Updated": "test_read_clipboard_infer_excel",
+        "Location": "pandas/tests/io/test_clipboard.py/TestClipboard",
+        "Original Line": 141,
+        "Updated Line": 186,
+        "Description": [
+            "The parameters [ request mock_clipboard ] are added to the method test_read_clipboard_infer_excel from the module pandas/tests/io/test_clipboard.py in class TestClipboard"
+        ],
+        "Commit": "8a1c8ad4bc9d152db1e4b8d2f304bc5077392a2d",
+        "Timestamp": "20180916_193952"
+    },
+    {
+        "Refactoring Type": "Extract Method",
+        "Original": "concat_compat",
+        "Updated": "_get_result_dtype",
+        "Location": "pandas/core/dtypes/concat.py",
+        "Original Method Line": "(52,48)",
+        "Extracted/Inlined Method Line": 128,
+        "Extracted/Inlined Lines": [
+            108,
+            109,
+            117,
+            126,
+            127,
+            145,
+            146,
+            148,
+            152
+        ],
+        "Description": " The method _get_result_dtype from the module pandas/core/dtypes/concat.py is extracted from method concat_compat from the module pandas/core/dtypes/concat.py ",
+        "Commit": "2f49f739b9eeeab16972d419b65da68b85c05960",
+        "Timestamp": "20230522_180902"
+    }
+]
