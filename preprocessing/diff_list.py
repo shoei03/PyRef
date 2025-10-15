@@ -1,6 +1,7 @@
 import json
 import os
 import signal
+import sys
 import threading
 import time
 from ast import *
@@ -49,10 +50,90 @@ def execution_reminder():
     print("Please wait, the process is still running. ", time.ctime())
 
 
-def build_diff_lists(changes_path, commit=None, directory=None, skip_time=None):
+def load_commits_from_file(file_path):
+    """
+    Load commit hashes from a JSON file.
+
+    Args:
+        file_path: Path to the JSON file with commit hashes as keys
+
+    Returns:
+        List of commit hashes (keys from the JSON)
+
+    Raises:
+        FileNotFoundError: If the file does not exist
+        SystemExit: If the file is empty or invalid JSON
+    """
+    if not os.path.exists(file_path):
+        print(f"Error: Commit file not found: {file_path}")
+        sys.exit(1)
+
+    try:
+        with open(file_path, "r") as f:
+            data = json.load(f)
+
+        if not isinstance(data, dict):
+            print(f"Error: Commit file must be a JSON object: {file_path}")
+            sys.exit(1)
+
+        commits = list(data.keys())
+
+        if not commits:
+            print(f"Error: Commit file contains no commit hashes: {file_path}")
+            sys.exit(1)
+
+        print(f"Loaded {len(commits)} commit(s) from {file_path}")
+        return commits
+
+    except json.JSONDecodeError as e:
+        print(f"Error: Invalid JSON format in {file_path}: {e}")
+        sys.exit(1)
+
+
+def build_diff_lists(
+    changes_path, commit=None, directory=None, skip_time=None, commits=None
+):
     refactorings = []
     t0 = time.time()
-    if commit is not None:
+
+    # Handle multiple commits (new parameter)
+    if commits is not None:
+        for idx, commit_hash in enumerate(commits, 1):
+            print(f"\n[{idx}/{len(commits)}] Processing commit: {commit_hash}")
+            print(commit_hash)
+            name = commit_hash + ".csv"
+            try:
+                df = pd.read_csv(changes_path + "/" + name)
+                if directory is not None:
+                    df = df[df["Path"].isin(directory)]
+                rev_a = Rev()
+                rev_b = Rev()
+                df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
+
+                if skip_time is not None:
+                    signal.signal(signal.SIGALRM, timeout_handler)
+                    signal.alarm(int(float(skip_time) * 60))
+                rt = RepeatedTimer(480, execution_reminder)
+                try:
+                    rev_difference = rev_a.revision_difference(rev_b)
+                    refs = rev_difference.get_refactorings()
+                    for ref in refs:
+                        refactorings.append((ref, name.split(".")[0]))
+                        print(">>>", str(ref))
+                except Exception as e:
+                    print("Failed to process commit.", e)
+                except TimeoutError:
+                    print("Commit skipped due to the long processing time")
+                finally:
+                    rt.stop()
+                    if skip_time is not None:
+                        signal.alarm(0)
+            except FileNotFoundError:
+                print(
+                    f"Warning: CSV file not found for commit {commit_hash}, skipping."
+                )
+    # Handle single commit (existing behavior)
+    elif commit is not None:
         print(commit)
         name = commit + ".csv"
         df = pd.read_csv(changes_path + "/" + name)
@@ -67,6 +148,7 @@ def build_diff_lists(changes_path, commit=None, directory=None, skip_time=None):
         for ref in refs:
             refactorings.append((ref, name.split(".")[0]))
             print(">>>", str(ref))
+    # Handle all commits (existing behavior)
     else:
         for root, dirs, files in os.walk(changes_path):
             for ind, name in enumerate(files):
@@ -141,6 +223,12 @@ def extract_refs(args):
     from repomanager import repo_changes
 
     repo_path = args.repopath
+
+    # Check for mutually exclusive arguments
+    if args.commit is not None and args.commit_file is not None:
+        print("Error: Cannot specify both -c/--commit and --commit-file")
+        sys.exit(1)
+
     if args.skip is not None:
         skip_time = args.skip
         print(
@@ -150,13 +238,32 @@ def extract_refs(args):
         )
     else:
         skip_time = None
-    if args.commit is not None:
+
+    # Determine commits to process
+    commits_to_process = None
+
+    if args.commit_file is not None:
+        # Load commits from file
+        commits_to_process = load_commits_from_file(args.commit_file)
+        print(f"\nExtracting commit history for {len(commits_to_process)} commit(s)...")
+        repo_changes.all_commits(repo_path, commits_to_process)
+        print("\nExtracting Refs...")
+        # Process all commits in one call
+        build_diff_lists(
+            repo_path + "/changes/",
+            directory=args.directory,
+            skip_time=skip_time,
+            commits=commits_to_process,
+        )
+    elif args.commit is not None:
+        # Single commit
         repo_changes.all_commits(repo_path, [args.commit])
         print("\nExtracting Refs...")
         build_diff_lists(
             repo_path + "/changes/", args.commit, args.directory, skip_time
         )
     else:
+        # All commits
         print("\nExtracting commit history...")
         repo_changes.all_commits(repo_path)
         print("\nExtracting Refs...")
