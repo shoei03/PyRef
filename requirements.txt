@@ -1,5 +1,7 @@
+numpy==1.21.6
 pandas~=1.2.2
 anytree~=2.8.0
 astunparse~=1.6.3
 editdistance~=0.5.3
 gitpython~=3.1.18
+tqdm~=4.64.0
