@@ -1,13 +1,13 @@
 import json
-import time
-from os import path
-import threading
-from preprocessing.revision import Rev
-from preprocessing.conditions_match import *
-from ast import *
 import os
-import time
 import signal
+import threading
+import time
+from ast import *
+from os import path
+
+from preprocessing.conditions_match import *
+from preprocessing.revision import Rev
 from preprocessing.utils import to_tree
 
 
@@ -71,7 +71,7 @@ def build_diff_lists(changes_path, commit=None, directory=None, skip_time=None):
         for root, dirs, files in os.walk(changes_path):
             for ind, name in enumerate(files):
                 if name.endswith(".csv"):
-                    print(ind, '/', len(files), ' --- ', name[:-4])
+                    print(ind, "/", len(files), " --- ", name[:-4])
                     df = pd.read_csv(changes_path + "/" + name)
                     if directory is not None:
                         df = df[df["Path"].isin(directory)]
@@ -80,7 +80,7 @@ def build_diff_lists(changes_path, commit=None, directory=None, skip_time=None):
                     df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
                     if skip_time is not None:
                         signal.signal(signal.SIGALRM, timeout_handler)
-                        signal.alarm(int(float(skip_time)*60))
+                        signal.alarm(int(float(skip_time) * 60))
                     rt = RepeatedTimer(480, execution_reminder)
                     try:
                         rev_difference = rev_a.revision_difference(rev_b)
@@ -90,7 +90,7 @@ def build_diff_lists(changes_path, commit=None, directory=None, skip_time=None):
                             print(">>>", str(ref))
                     except Exception as e:
                         print("Failed to process commit.", e)
-                    except TimeoutError as e:
+                    except TimeoutError:
                         print("Commit skipped due to the long processing time")
                     finally:
                         rt.stop()
@@ -99,7 +99,9 @@ def build_diff_lists(changes_path, commit=None, directory=None, skip_time=None):
 
     t1 = time.time()
     total = t1 - t0
-    print("-----------------------------------------------------------------------------------------------------------")
+    print(
+        "-----------------------------------------------------------------------------------------------------------"
+    )
     print("Total Time:", total)
     print("Total Number of Refactorings:", len(refactorings))
     refactorings.sort(key=lambda x: x[1])
@@ -110,9 +112,14 @@ def build_diff_lists(changes_path, commit=None, directory=None, skip_time=None):
         data["Commit"] = ref[1]
         json_outputs.append(data)
         # ref[0].to_graph()
-    changes_path = changes_path.replace('//', '/')
+    changes_path = changes_path.replace("//", "/")
     repo_name = changes_path.split("/")[-3]
-    with open(repo_name + '_data.json', 'w') as outfile:
+
+    # Create data directory if it doesn't exist
+    os.makedirs("data", exist_ok=True)
+
+    output_path = os.path.join("data", repo_name + "_data.json")
+    with open(output_path, "w") as outfile:
         outfile.write(json.dumps(json_outputs, indent=4))
 
     return refactorings
@@ -122,18 +129,24 @@ def extract_refs(args):
     # owner_name = args.repo.split("/")[0]
     # repo_name = args.repo.split("/")[1]
 
-    from repomanager import repo_utils, repo_changes
+    from repomanager import repo_changes
 
     repo_path = args.repopath
     if args.skip is not None:
         skip_time = args.skip
-        print("\nCommit will be skipped if the processing time is longer than", skip_time, 'minutes.')
+        print(
+            "\nCommit will be skipped if the processing time is longer than",
+            skip_time,
+            "minutes.",
+        )
     else:
         skip_time = None
     if args.commit is not None:
         repo_changes.all_commits(repo_path, [args.commit])
         print("\nExtracting Refs...")
-        build_diff_lists(repo_path + "/changes/", args.commit, args.directory, skip_time)
+        build_diff_lists(
+            repo_path + "/changes/", args.commit, args.directory, skip_time
+        )
     else:
         print("\nExtracting commit history...")
         repo_changes.all_commits(repo_path)
@@ -143,20 +156,28 @@ def extract_refs(args):
 
 def validate(args):
     validations = pd.read_csv(args.path)
-    validations["correct"] = validations["correct"].apply(lambda x: 'true' if x == 1 else 'false')
-    validations = validations.groupby(['commit']).agg(lambda x: ','.join(x)).reset_index()
+    validations["correct"] = validations["correct"].apply(
+        lambda x: "true" if x == 1 else "false"
+    )
+    validations = (
+        validations.groupby(["commit"]).agg(lambda x: ",".join(x)).reset_index()
+    )
     validations["project"] = validations["project"].apply(lambda x: x.split(",")[0])
     validations = validations.to_dict("records")
 
-    from repomanager import repo_utils, repo_changes
+    from repomanager import repo_changes, repo_utils
 
     for validation in validations:
-        if validation["commit"] == "bf9c26bb128d50ff8369c3bc7fbfc63d066d1ea8" or not "false" in validation["correct"]:
+        if (
+            validation["commit"] == "bf9c26bb128d50ff8369c3bc7fbfc63d066d1ea8"
+            or "false" not in validation["correct"]
+        ):
             continue
 
         repo = validation["project"].split("_")
         print(
-            "-----------------------------------------------------------------------------------------------------------")
+            "-----------------------------------------------------------------------------------------------------------"
+        )
         print("Cloning %s/%s" % (repo[0], repo[1]))
         repo_utils.clone_repo(repo[0], repo[1])
 
@@ -166,7 +187,9 @@ def validate(args):
         path_to_repo = "./Repos/" + repo[1]
         repo_changes.all_commits(path_to_repo, [validation["commit"]])
 
-        while not path.exists("./Repos/" + repo[1] + "/changes/" + validation["commit"] + ".csv"):
+        while not path.exists(
+            "./Repos/" + repo[1] + "/changes/" + validation["commit"] + ".csv"
+        ):
             time.sleep(1)
 
         print("Validation of %s: %s" % (validation["type"], validation["correct"]))
