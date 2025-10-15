@@ -1,0 +1,192 @@
+{
+  "method_622a275a": {
+    "current_name": "methodB",
+    "current_location": "example_1.py/example_class_child",
+    "created_at_commit": "0e6a02bb4208d5b6325a919273fd5cd2168fc85d",
+    "history": [
+      {
+        "commit": "0e6a02bb4208d5b6325a919273fd5cd2168fc85d",
+        "timestamp": "2024-01-01T10:00:00Z",
+        "refactoring_type": "Remove Parameter",
+        "description": [
+          "The parameters [ par2 ] of the method methodB from the module example.py in class example_class is/are removed"
+        ]
+      },
+      {
+        "commit": "190e835416e782723d6b42d2787f7d926858c467",
+        "timestamp": "2024-01-02T10:00:00Z",
+        "refactoring_type": "Rename Method",
+        "old_name": "methodA",
+        "new_name": "methodB",
+        "location": "example.py/example_class"
+      },
+      {
+        "commit": "4944c056b484c77ccddb902962c1b385d20507e0",
+        "timestamp": "2024-01-04T10:00:00Z",
+        "refactoring_type": "Inline Method",
+        "inlined_method": "methodC",
+        "inlined_lines": [
+          4.0
+        ],
+        "note": "Inlined method ID not found"
+      },
+      {
+        "commit": "4e4f1e859757c4ac7d2d956ae477f13cf8ece9eb",
+        "timestamp": "2024-01-05T10:00:00Z",
+        "refactoring_type": "Push Down Method",
+        "old_location": "example.py/example_class",
+        "new_location": "example_1.py/example_class_child",
+        "method_name": "methodB"
+      }
+    ],
+    "lineage": {
+      "parent_methods": [],
+      "child_methods": []
+    }
+  },
+  "method_aa42231b": {
+    "current_name": "methodC",
+    "current_location": "example.py/example_class",
+    "created_at_commit": "58ae1f7229ae4b278c642a170599c7629c8d7fa0",
+    "history": [
+      {
+        "commit": "58ae1f7229ae4b278c642a170599c7629c8d7fa0",
+        "timestamp": "2024-01-06T10:00:00Z",
+        "refactoring_type": "Change/Rename Parameter",
+        "description": [
+          "The parameters [ par1 ] of the method methodB from the module example.py in class example_class are changed/renamed to [par2]"
+        ]
+      },
+      {
+        "commit": "68c9cf8e43e62a3bbb1043028ce93da8f23eb2f2",
+        "timestamp": "2024-01-08T10:00:00Z",
+        "refactoring_type": "Rename Method",
+        "old_name": "methodB",
+        "new_name": "methodC",
+        "location": "example.py/example_class"
+      }
+    ],
+    "lineage": {
+      "parent_methods": [],
+      "child_methods": []
+    }
+  },
+  "method_84617763": {
+    "current_name": "methodB",
+    "current_location": "example.py/example_class",
+    "created_at_commit": "68c9cf8e43e62a3bbb1043028ce93da8f23eb2f2",
+    "history": [
+      {
+        "commit": "68c9cf8e43e62a3bbb1043028ce93da8f23eb2f2",
+        "timestamp": "2024-01-08T10:00:00Z",
+        "refactoring_type": "Extract Method",
+        "extracted_method": "methodD",
+        "extracted_method_id": "method_5dc8547b",
+        "extracted_lines": [
+          6.0
+        ]
+      }
+    ],
+    "lineage": {
+      "parent_methods": [],
+      "child_methods": [
+        "method_5dc8547b"
+      ]
+    }
+  },
+  "method_5dc8547b": {
+    "current_name": "methodB",
+    "current_location": "example.py/example_class",
+    "created_at_commit": "68c9cf8e43e62a3bbb1043028ce93da8f23eb2f2",
+    "history": [
+      {
+        "commit": "68c9cf8e43e62a3bbb1043028ce93da8f23eb2f2",
+        "timestamp": "2024-01-08T10:00:00Z",
+        "refactoring_type": "Extracted from Method",
+        "parent_method": "methodB",
+        "parent_method_id": "method_84617763",
+        "extracted_lines": [
+          6.0
+        ]
+      },
+      {
+        "commit": "ade0df1fa981c81ccdc3d3048fd35675af91d77b",
+        "timestamp": "2024-01-10T10:00:00Z",
+        "refactoring_type": "Rename Method",
+        "old_name": "methodD",
+        "new_name": "methodB",
+        "location": "example.py/example_class"
+      },
+      {
+        "commit": "eb758a9af2ea623fa15b8bc6137c9ee65db42b33",
+        "timestamp": "2024-01-11T10:00:00Z",
+        "refactoring_type": "Add Parameter",
+        "description": [
+          "The parameters [ par1 ] are added to the method methodB from the module example.py in class example_class"
+        ]
+      },
+      {
+        "commit": "f4070dbc6fa3dc05056863ca8d1522afceb4778e",
+        "timestamp": "2024-01-12T10:00:00Z",
+        "refactoring_type": "Add Parameter",
+        "description": [
+          "The parameters [ par1 ] are added to the method methodB from the module example.py in class example_class"
+        ]
+      }
+    ],
+    "lineage": {
+      "parent_methods": [
+        "method_84617763"
+      ],
+      "child_methods": []
+    }
+  },
+  "method_0a3f9a8b": {
+    "current_name": "methodA",
+    "current_location": "example.py/example",
+    "created_at_commit": "87d6c845c46f393d8b23ae788efbe1ee55a856ac",
+    "history": [
+      {
+        "commit": "87d6c845c46f393d8b23ae788efbe1ee55a856ac",
+        "timestamp": "2024-01-09T10:00:00Z",
+        "refactoring_type": "Extract Method",
+        "extracted_method": "methodB",
+        "extracted_method_id": "method_5a224e3e",
+        "extracted_lines": [
+          3.0,
+          4.0
+        ]
+      }
+    ],
+    "lineage": {
+      "parent_methods": [],
+      "child_methods": [
+        "method_5a224e3e"
+      ]
+    }
+  },
+  "method_5a224e3e": {
+    "current_name": "methodB",
+    "current_location": "example.py/example",
+    "created_at_commit": "87d6c845c46f393d8b23ae788efbe1ee55a856ac",
+    "history": [
+      {
+        "commit": "87d6c845c46f393d8b23ae788efbe1ee55a856ac",
+        "timestamp": "2024-01-09T10:00:00Z",
+        "refactoring_type": "Extracted from Method",
+        "parent_method": "methodA",
+        "parent_method_id": "method_0a3f9a8b",
+        "extracted_lines": [
+          3.0,
+          4.0
+        ]
+      }
+    ],
+    "lineage": {
+      "parent_methods": [
+        "method_0a3f9a8b"
+      ],
+      "child_methods": []
+    }
+  }
+}

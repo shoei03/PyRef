@@ -1,0 +1,28 @@
+{
+  "extract_relations": [
+    {
+      "parent_method_id": "method_84617763",
+      "parent_method_name": "methodB",
+      "child_method_id": "method_5dc8547b",
+      "child_method_name": "methodD",
+      "commit": "68c9cf8e43e62a3bbb1043028ce93da8f23eb2f2",
+      "timestamp": "2024-01-08T10:00:00Z",
+      "extracted_lines": [
+        6.0
+      ]
+    },
+    {
+      "parent_method_id": "method_0a3f9a8b",
+      "parent_method_name": "methodA",
+      "child_method_id": "method_5a224e3e",
+      "child_method_name": "methodB",
+      "commit": "87d6c845c46f393d8b23ae788efbe1ee55a856ac",
+      "timestamp": "2024-01-09T10:00:00Z",
+      "extracted_lines": [
+        3.0,
+        4.0
+      ]
+    }
+  ],
+  "inline_relations": []
+}
