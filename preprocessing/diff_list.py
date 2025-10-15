@@ -90,20 +90,105 @@ def load_commits_from_file(file_path):
         sys.exit(1)
 
 
+def load_and_sort_commits(repo_path, specific_commits=None):
+    """
+    Load commit_timestamps.json and return commits sorted in chronological order.
+
+    Args:
+        repo_path: Path to the repository (e.g., "Repos/DummyRef")
+        specific_commits: List of specific commits to filter and sort.
+                         If None, all commits from the file will be sorted.
+
+    Returns:
+        List of commit hashes sorted in chronological order (oldest to newest)
+
+    Raises:
+        SystemExit: If commit_timestamps.json does not exist
+    """
+    # Extract repo name from path like "Repos/DummyRef" or "Repos/DummyRef/"
+    repo_name = repo_path.rstrip("/").split("/")[-1]
+    timestamp_file = os.path.join("data", repo_name, "commit_timestamps.json")
+
+    # Check if timestamp file exists
+    if not os.path.exists(timestamp_file):
+        print(f"Error: commit_timestamps.json not found: {timestamp_file}")
+        print("Please generate it first using: scripts/generate_commit_timestamps.sh")
+        sys.exit(1)
+
+    # Load timestamps
+    try:
+        with open(timestamp_file, "r") as f:
+            timestamps = json.load(f)
+    except json.JSONDecodeError as e:
+        print(f"Error: Invalid JSON format in {timestamp_file}: {e}")
+        sys.exit(1)
+
+    # Filter to specific commits if provided
+    if specific_commits:
+        filtered = {k: v for k, v in timestamps.items() if k in specific_commits}
+        if len(filtered) < len(specific_commits):
+            missing = set(specific_commits) - set(filtered.keys())
+            print(
+                f"Warning: {len(missing)} commit(s) not found in timestamps, skipping: {list(missing)[:3]}..."
+                if len(missing) > 3
+                else f"Warning: {len(missing)} commit(s) not found in timestamps: {missing}"
+            )
+    else:
+        filtered = timestamps
+
+    # Sort by timestamp (ascending = oldest to newest)
+    sorted_commits = sorted(filtered.keys(), key=lambda x: filtered[x])
+
+    print(f"Loaded and sorted {len(sorted_commits)} commit(s) in chronological order")
+    return sorted_commits
+
+
 def build_diff_lists(
     changes_path, commit=None, directory=None, skip_time=None, commits=None
 ):
     refactorings = []
     t0 = time.time()
 
-    # Handle multiple commits (new parameter)
-    if commits is not None:
-        for idx, commit_hash in enumerate(commits, 1):
-            print(f"\n[{idx}/{len(commits)}] Processing commit: {commit_hash}")
-            print(commit_hash)
+    # Handle single commit (existing behavior - no sorting needed)
+    if commit is not None:
+        print(commit)
+        name = commit + ".csv"
+        df = pd.read_csv(changes_path + "/" + name)
+        if directory is not None:
+            df = df[df["Path"].isin(directory)]
+        rev_a = Rev()
+        rev_b = Rev()
+        df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
+        # try:
+        rev_difference = rev_a.revision_difference(rev_b)
+        refs = rev_difference.get_refactorings()
+        for ref in refs:
+            refactorings.append((ref, name.split(".")[0]))
+            print(">>>", str(ref))
+    # Handle multiple commits or all commits - sort chronologically
+    else:
+        # Extract repo_path from changes_path
+        # e.g., "Repos/DummyRef/changes/" -> "Repos/DummyRef"
+        repo_path = changes_path.rstrip("/").replace("/changes", "")
+
+        # Load and sort commits chronologically
+        sorted_commits = load_and_sort_commits(repo_path, commits)
+
+        print(f"\nProcessing {len(sorted_commits)} commits in chronological order...")
+
+        # Process commits in chronological order
+        for idx, commit_hash in enumerate(sorted_commits, 1):
+            print(f"\n[{idx}/{len(sorted_commits)}] Processing commit: {commit_hash}")
             name = commit_hash + ".csv"
+            csv_path = os.path.join(changes_path, name)
+
+            # Check if CSV exists
+            if not os.path.exists(csv_path):
+                print(f"Warning: CSV file not found: {csv_path}, skipping")
+                continue
+
             try:
-                df = pd.read_csv(changes_path + "/" + name)
+                df = pd.read_csv(csv_path)
                 if directory is not None:
                     df = df[df["Path"].isin(directory)]
                 rev_a = Rev()
@@ -128,56 +213,8 @@ def build_diff_lists(
                     rt.stop()
                     if skip_time is not None:
                         signal.alarm(0)
-            except FileNotFoundError:
-                print(
-                    f"Warning: CSV file not found for commit {commit_hash}, skipping."
-                )
-    # Handle single commit (existing behavior)
-    elif commit is not None:
-        print(commit)
-        name = commit + ".csv"
-        df = pd.read_csv(changes_path + "/" + name)
-        if directory is not None:
-            df = df[df["Path"].isin(directory)]
-        rev_a = Rev()
-        rev_b = Rev()
-        df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
-        # try:
-        rev_difference = rev_a.revision_difference(rev_b)
-        refs = rev_difference.get_refactorings()
-        for ref in refs:
-            refactorings.append((ref, name.split(".")[0]))
-            print(">>>", str(ref))
-    # Handle all commits (existing behavior)
-    else:
-        for root, dirs, files in os.walk(changes_path):
-            for ind, name in enumerate(files):
-                if name.endswith(".csv"):
-                    print(ind, "/", len(files), " --- ", name[:-4])
-                    df = pd.read_csv(changes_path + "/" + name)
-                    if directory is not None:
-                        df = df[df["Path"].isin(directory)]
-                    rev_a = Rev()
-                    rev_b = Rev()
-                    df.apply(lambda row: populate(row, rev_a, rev_b), axis=1)
-                    if skip_time is not None:
-                        signal.signal(signal.SIGALRM, timeout_handler)
-                        signal.alarm(int(float(skip_time) * 60))
-                    rt = RepeatedTimer(480, execution_reminder)
-                    try:
-                        rev_difference = rev_a.revision_difference(rev_b)
-                        refs = rev_difference.get_refactorings()
-                        for ref in refs:
-                            refactorings.append((ref, name.split(".")[0]))
-                            print(">>>", str(ref))
-                    except Exception as e:
-                        print("Failed to process commit.", e)
-                    except TimeoutError:
-                        print("Commit skipped due to the long processing time")
-                    finally:
-                        rt.stop()
-                        if skip_time is not None:
-                            signal.alarm(0)
+            except Exception as e:
+                print(f"Error reading CSV file {csv_path}: {e}")
 
     t1 = time.time()
     total = t1 - t0
@@ -186,7 +223,7 @@ def build_diff_lists(
     )
     print("Total Time:", total)
     print("Total Number of Refactorings:", len(refactorings))
-    refactorings.sort(key=lambda x: x[1])
+    # No need to sort - refactorings are already in chronological order
     json_outputs = []
     for ref in refactorings:
         print("commit: %3s - %s" % (ref[1], str(ref[0]).strip()))
