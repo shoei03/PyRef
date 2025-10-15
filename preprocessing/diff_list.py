@@ -113,7 +113,15 @@ def build_diff_lists(changes_path, commit=None, directory=None, skip_time=None):
         json_outputs.append(data)
         # ref[0].to_graph()
     changes_path = changes_path.replace("//", "/")
-    repo_name = changes_path.split("/")[-2]
+    # Extract repo name from path like "Repos/DummyRef/changes/" -> "DummyRef"
+    path_parts = changes_path.rstrip("/").split("/")
+    if "changes" in path_parts:
+        # Get the directory before "changes"
+        changes_index = path_parts.index("changes")
+        repo_name = path_parts[changes_index - 1]
+    else:
+        # Fallback to previous logic
+        repo_name = path_parts[-2] if len(path_parts) >= 2 else "unknown"
 
     # Create data/{repo_name} directory if it doesn't exist
     output_dir = os.path.join("data", repo_name)
