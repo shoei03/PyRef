@@ -113,12 +113,13 @@ def build_diff_lists(changes_path, commit=None, directory=None, skip_time=None):
         json_outputs.append(data)
         # ref[0].to_graph()
     changes_path = changes_path.replace("//", "/")
-    repo_name = changes_path.split("/")[-3]
+    repo_name = changes_path.split("/")[-2]
 
-    # Create data directory if it doesn't exist
-    os.makedirs("data", exist_ok=True)
+    # Create data/{repo_name} directory if it doesn't exist
+    output_dir = os.path.join("data", repo_name)
+    os.makedirs(output_dir, exist_ok=True)
 
-    output_path = os.path.join("data", repo_name + "_data.json")
+    output_path = os.path.join(output_dir, "refactoring_mining.json")
     with open(output_path, "w") as outfile:
         outfile.write(json.dumps(json_outputs, indent=4))
 
